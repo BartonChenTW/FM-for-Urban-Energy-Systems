@@ -15,6 +15,15 @@ heading_anchors: true
 
 nav_sort: case_insensitive
 
+# Files kept in the repo but not built into the site
+exclude:
+  - TODO.md
+  - outline.md
+  - log.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+
 back_to_top: true
 back_to_top_text: "Back to top"
 
