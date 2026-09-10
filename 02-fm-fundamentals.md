@@ -1,10 +1,14 @@
 ---
 title: II. FM Fundamentals
 nav_order: 3
+status: draft
+last_reviewed: 2026-09-10
 ---
 
 # Part II — Foundation Model Fundamentals
 {: .no_toc }
+
+{% include page-status.html %}
 
 1. TOC
 {:toc}

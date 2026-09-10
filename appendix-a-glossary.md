@@ -1,9 +1,13 @@
 ---
 title: Appendix A — Glossary
 nav_order: 12
+status: draft
+last_reviewed: 2026-09-10
 ---
 
 # Appendix A — Glossary
+
+{% include page-status.html %}
 
 | Term | Meaning |
 | :--- | :--- |

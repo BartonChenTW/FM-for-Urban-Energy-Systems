@@ -1,10 +1,14 @@
 ---
 title: II. Choosing a Basic Element
 nav_order: 4
+status: draft
+last_reviewed: 2026-09-10
 ---
 
 # Choosing a Basic Element
 {: .no_toc }
+
+{% include page-status.html %}
 
 If you read only one page, read this one. It gives the criterion for deciding whether a foundation model is viable in a given sub-domain at all — before any question of architecture, data volume, or compute.
 {: .fs-6 .fw-300 }

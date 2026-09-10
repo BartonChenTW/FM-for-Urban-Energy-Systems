@@ -1,0 +1,35 @@
+# Config for lychee, the link checker run by .github/workflows/link-check.yml
+# https://lychee.cli.rs/usage/config/
+
+# Don't fail the whole run on transient network errors / rate limits —
+# only on links that are actually broken.
+max_retries = 3
+retry_wait_time = 10
+
+# Some sites (arXiv, DOI resolvers, publisher pages) block or slow-path
+# unrecognised bots; a normal browser UA avoids false positives.
+user_agent = "Mozilla/5.0 (compatible; lychee link checker)"
+
+# Reference-style links inside <details> blocks in add/reference.md, and
+# relative .html links between chapters (Jekyll pages, not raw .md), are
+# both valid but easy to get false-positives on in a Markdown-only check.
+accept = [200, 429]
+
+# Known-flaky or intentionally-unfetchable targets.
+exclude = [
+  # localhost / internal notes referenced conceptually, not real links
+  '^http://localhost',
+  # Internal cross-chapter links use the *rendered* Jekyll path
+  # (chapter-name.html) since that's what works once the site is built,
+  # but lychee runs against the raw .md source, where no such file
+  # exists on disk. These are relative, extensionless-source links by
+  # design — skip them here; a site-wide check of the built HTML output
+  # would be the correct way to validate these instead.
+  '^[a-zA-Z0-9_-]+\.html(#.*)?$',
+]
+
+# Skip files that aren't meant to be checked as published pages.
+exclude_path = [
+  "_site",
+  "vendor",
+]

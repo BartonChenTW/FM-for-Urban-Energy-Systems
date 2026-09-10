@@ -1,10 +1,14 @@
 ---
 title: IV. Tier 3 — Design & Sizing
 nav_order: 9
+status: draft
+last_reviewed: 2026-09-10
 ---
 
 # Tier 3 — Design and Sizing Optimisation
 {: .no_toc }
+
+{% include page-status.html %}
 
 1. TOC
 {:toc}

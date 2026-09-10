@@ -1,10 +1,14 @@
 ---
 title: II. The FM Landscape
 nav_order: 5
+status: draft
+last_reviewed: 2026-09-10
 ---
 
 # What Already Exists in Energy
 {: .no_toc }
+
+{% include page-status.html %}
 
 1. TOC
 {:toc}

@@ -1,10 +1,14 @@
 ---
 title: IV. Tier 2 — Multi-Hub, Multi-Carrier
 nav_order: 8
+status: draft
+last_reviewed: 2026-09-10
 ---
 
 # Tier 2 — Multi-Hub, Multi-Carrier, Dispatch Only
 {: .no_toc }
+
+{% include page-status.html %}
 
 1. TOC
 {:toc}

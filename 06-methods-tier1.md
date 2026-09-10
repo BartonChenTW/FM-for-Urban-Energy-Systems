@@ -1,10 +1,14 @@
 ---
 title: IV. Tier 1 — Single Hub Dispatch
 nav_order: 7
+status: draft
+last_reviewed: 2026-09-10
 ---
 
 # Part IV — Methods by Problem Class
 {: .no_toc }
+
+{% include page-status.html %}
 
 This is the operational core. Three tiers of increasing difficulty.
 {: .fs-6 .fw-300 }

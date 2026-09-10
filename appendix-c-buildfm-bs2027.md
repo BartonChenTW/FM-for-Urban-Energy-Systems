@@ -1,9 +1,13 @@
 ---
 title: Appendix C — Project Notes
 nav_order: 14
+status: draft
+last_reviewed: 2026-09-10
 ---
 
 # Appendix C — Project Notes: An Applied Example
+
+{% include page-status.html %}
 
 {: .note }
 This page is a **public, redacted** version of internal working notes for a specific paper submission. Author names, internal sign-off status, and details of an unannounced position at the originating lab have been removed. It is kept here because the reasoning is a useful worked example of applying this textbook's framework to a real submission — not because the submission details themselves are the point.

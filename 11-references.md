@@ -1,9 +1,13 @@
 ---
 title: VII. Reference Pointers
 nav_order: 15
+status: draft
+last_reviewed: 2026-09-10
 ---
 
 # Part VII — Reference Pointers
+
+{% include page-status.html %}
 
 Grouped by what they are useful for. URLs given where they were retrieved directly.
 

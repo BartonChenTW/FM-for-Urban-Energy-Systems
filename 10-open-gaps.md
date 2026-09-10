@@ -1,10 +1,14 @@
 ---
 title: VI. Open Gaps
 nav_order: 11
+status: draft
+last_reviewed: 2026-09-10
 ---
 
 # Part VI — Open Gaps
 {: .no_toc }
+
+{% include page-status.html %}
 
 Ordered by how defensible they are as research contributions.
 {: .fs-6 .fw-300 }

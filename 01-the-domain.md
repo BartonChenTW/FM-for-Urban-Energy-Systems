@@ -1,10 +1,14 @@
 ---
 title: I. The Domain
 nav_order: 2
+status: draft
+last_reviewed: 2026-09-10
 ---
 
 # Part I — The Domain
 {: .no_toc }
+
+{% include page-status.html %}
 
 1. TOC
 {:toc}

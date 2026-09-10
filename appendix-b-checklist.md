@@ -1,9 +1,13 @@
 ---
 title: Appendix B — Pre-Project Checklist
 nav_order: 13
+status: draft
+last_reviewed: 2026-09-10
 ---
 
 # Appendix B — Questions to Ask Before Starting Any Project in This Space
+
+{% include page-status.html %}
 
 1. What is one training example? (D1)
 2. **What is the basic element, and does it satisfy all four requirements of [§6.6](03-basic-elements.html#66-the-criterion)?** If not, which one does it break, and what does that cost?

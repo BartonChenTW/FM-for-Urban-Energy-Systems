@@ -1,10 +1,14 @@
 ---
 title: V. Building It
 nav_order: 10
+status: draft
+last_reviewed: 2026-09-10
 ---
 
 # Part V — Building It
 {: .no_toc }
+
+{% include page-status.html %}
 
 1. TOC
 {:toc}

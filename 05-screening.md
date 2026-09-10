@@ -1,10 +1,14 @@
 ---
 title: III. Screening Tasks
 nav_order: 6
+status: draft
+last_reviewed: 2026-09-10
 ---
 
 # Part III — Which Fields Could Support a Foundation Model
 {: .no_toc }
+
+{% include page-status.html %}
 
 1. TOC
 {:toc}
