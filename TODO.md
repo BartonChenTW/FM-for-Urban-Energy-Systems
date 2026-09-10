@@ -15,9 +15,9 @@ Items tagged **[Claude]** are suggestions from Claude (2026-09-11), not yet agre
 
 ## Next
 
-- [ ] **Merge `add/` notes into the textbook.** `add/FM_for_UES.md` and `add/reference.md` hold material from an earlier conversation. Fold their content into the relevant chapter `.md` files.
-- [ ] **Add detailed references with footnotes.** Many chapters have lots of text but few citations. Kramdown (Jekyll's Markdown engine) supports footnotes natively: `text[^key]` in the body, `[^key]: Author (Year). Title.` at the bottom of the page. They render as numbered superscripts with a back-linked list at the page end.
-- [ ] **Create a `references/` folder for Zotero import.** Keep a master `.bib` (BibTeX) file, optionally also `.ris`, that people can import straight into Zotero (File → Import). Exclude it from the site build if it shouldn't appear as a page.
+- [ ] **Merge `add/` notes into the textbook.** `add/FM_for_UES.md` and `add/reference.md` hold material from an earlier conversation. Fold their content into the relevant chapter `.md` files. *(Blocked on agreeing the outline — see below — so content isn't moved twice.)*
+- [ ] **Add detailed references with footnotes.** Many chapters have lots of text but few citations. Kramdown (Jekyll's Markdown engine) supports footnotes natively: `text[^key]` in the body, `[^key]: Author (Year). Title.` at the bottom of the page. They render as numbered superscripts with a back-linked list at the page end. Use the citation keys now in `references/fm-for-ues.bib` as footnote names.
+- [x] **Create a `references/` folder for Zotero import.** Done 2026-09-11: [`references/fm-for-ues.bib`](references/fm-for-ues.bib) (starter set, ~16 entries seeded from `add/reference.md` §1–4 and `11-references.md`, limited to entries with confirmed metadata) plus [`references/README.md`](references/README.md) explaining import and how to add entries. Excluded the `.bib` from the site build; kept the README as a page.
 - [ ] **Restructure the textbook into clearer layers.** Proposed chapters (draft in [outline.md](outline.md)):
   1. Background of UES and FMs
   2. Foundation knowledge of FMs
@@ -31,14 +31,14 @@ Items tagged **[Claude]** are suggestions from Claude (2026-09-11), not yet agre
 
 ### Setup
 
-- [ ] **[Claude] Exclude `add/` from the site now.** GitHub Pages renders `.md` files even without front matter, so `add/FM_for_UES.md` and `add/reference.md` are probably reachable by URL today, including the "personal communication" references (`add/reference.md` §8). Add `add/` to `exclude:` in `_config.yml` until the content is merged.
+- [x] **[Claude] Exclude `add/` from the site now.** Done 2026-09-11: added `add/` to `exclude:` in `_config.yml`.
 - [ ] **[Claude] Decide the references workflow before writing footnotes.** `jekyll-scholar` (auto-build citations from a `.bib`) is not supported by the standard GitHub Pages build. Choose one:
   - (a) hand-written footnotes whose names match `.bib` citation keys — simple, but two copies to keep in sync;
   - (b) build the site with a GitHub Actions workflow so `jekyll-scholar` can run — more setup, single source of truth.
-  - Either way: manage references in Zotero with the Better BibTeX plugin, which gives stable citation keys and auto-exports the `.bib`. Agree a key convention (e.g. `raissi2019physics`).
-- [ ] **[Claude] Add `jekyll-redirect-from` before renaming files.** The restructure changes page URLs; redirects keep old shared links working. The plugin is supported on GitHub Pages.
-- [ ] **[Claude] Add a LICENSE.** No license means others legally can't reuse the content. CC BY 4.0 is the usual choice for text (MIT if code is added later).
-- [ ] **[Claude] Add `CONTRIBUTING.md` and GitHub issue templates** (e.g. "suggest a reference", "report an error", "propose a section"). Outside contributions are what make it a living knowledge base.
+  - Either way: manage references in Zotero with the Better BibTeX plugin, which gives stable citation keys and auto-exports the `.bib`. Key convention `firstauthorYEARshortname` (e.g. `raissi2019physics`) already used in `references/fm-for-ues.bib` — confirm or change.
+- [x] **[Claude] Add `jekyll-redirect-from` before renaming files.** Done 2026-09-11: added to `plugins:` in `_config.yml` (bundled via the `github-pages` gem already in the Gemfile, no Gemfile change needed). Not yet *used* — add `redirect_from:` front matter when pages are actually renamed in the restructure.
+- [x] **[Claude] Add a LICENSE.** Done 2026-09-11: [`LICENSE`](LICENSE), CC BY 4.0 for the written content.
+- [x] **[Claude] Add `CONTRIBUTING.md` and GitHub issue templates.** Done 2026-09-11: [`CONTRIBUTING.md`](CONTRIBUTING.md) plus three templates in `.github/ISSUE_TEMPLATE/` (error report, reference suggestion, section proposal).
 - [ ] **[Claude] Add a status / last-reviewed line to each page** (e.g. `status: draft | reviewed`, `last_reviewed: 2026-09-11` in front matter, displayed at the top), so readers can tell mature pages from rough ones.
 - [ ] **[Claude] Add an automated link checker** (e.g. lychee or html-proofer in GitHub Actions). Reference-heavy pages collect broken links quickly.
 
