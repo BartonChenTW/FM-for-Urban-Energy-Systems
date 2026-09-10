@@ -1,0 +1,32 @@
+title: Foundation Models for Urban Energy Systems
+description: >-
+  A working textbook on what gets simulated in urban energy systems,
+  what could plausibly be learned by a foundation model, and how to build it.
+baseurl: "/FM-for-Urban-Energy-Systems"
+url: ""
+
+remote_theme: just-the-docs/just-the-docs
+plugins:
+  - jekyll-remote-theme
+
+color_scheme: light
+search_enabled: true
+heading_anchors: true
+
+nav_sort: case_insensitive
+
+back_to_top: true
+back_to_top_text: "Back to top"
+
+footer_content: "Working textbook, actively revised. Corrections and additions welcome via issue or PR."
+
+callouts:
+  note:
+    title: Note
+    color: blue
+  warning:
+    title: Caution
+    color: yellow
+  important:
+    title: Important
+    color: red
