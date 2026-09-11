@@ -1,0 +1,18 @@
+---
+# This front matter is required for Jekyll/Sass to process this file.
+---
+
+@import "{{ site.theme }}";
+
+// The site title ("Foundation Models for Urban Energy Systems") is long
+// enough to wrap onto a second line in the sidebar header at normal
+// widths. just-the-docs' default site-title block uses a fixed line-height
+// tuned for a single short line, which clips the ascenders (e.g. the top
+// of "F" in "Foundation") on a wrapped second line. Give it room to wrap
+// cleanly instead.
+.site-title {
+  line-height: 1.3;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  white-space: normal;
+}
