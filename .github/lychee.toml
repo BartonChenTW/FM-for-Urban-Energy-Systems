@@ -2,9 +2,12 @@
 # https://lychee.cli.rs/usage/config/
 
 # Don't fail the whole run on transient network errors / rate limits —
-# only on links that are actually broken.
+# only on links that are actually broken. DOI resolvers in particular can
+# be slow (they redirect through the publisher's own site), so give each
+# request more than lychee's short default timeout before it's retried.
 max_retries = 3
 retry_wait_time = 10
+timeout = 30
 
 # Some sites (arXiv, DOI resolvers, publisher pages) block or slow-path
 # unrecognised bots; a normal browser UA avoids false positives.
@@ -23,11 +26,20 @@ exclude = [
   # chapter's folder like ../chapter-4-directions/4-9-1-methods-tier1.html)
   # since that's what works once the site is built, but lychee runs
   # against the raw .md source, where no such file exists on disk.
-  # These are relative, extensionless-source links by design — skip them
-  # here; a site-wide check of the built HTML output would be the correct
-  # way to validate these instead. Matches any relative (non-http, not
-  # starting with /) path ending in .html, with an optional #fragment.
-  '^(?:\.\./)*[a-zA-Z0-9_/-]+\.html(#[^\s)]*)?$',
+  #
+  # IMPORTANT: lychee resolves a relative link to a full file:// URL
+  # *before* applying `exclude` — the pattern is matched against
+  # something like file:///home/runner/work/<repo>/<repo>/appendices/
+  # a-glossary.html, not the original relative "appendices/a-glossary.html"
+  # text from the Markdown source. An anchor on the relative form (the
+  # previous version of this pattern) therefore never matches anything
+  # and silently lets every internal link through to be checked as a
+  # real file, which is always a 404 here (confirmed by a failing CI run
+  # on 2026-09-11). Match on the resolved file:// URL instead: every
+  # local .html link in this repo is a Jekyll-rendered page path, not a
+  # real file in the source tree, so excluding all file:// ... .html
+  # links is correct site-wide, not just for some of them.
+  '^file://.*\.html(#[^\s)]*)?$',
 ]
 
 # Skip files that aren't meant to be checked as published pages.
