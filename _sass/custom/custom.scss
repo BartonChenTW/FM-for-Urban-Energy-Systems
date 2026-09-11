@@ -1,0 +1,30 @@
+// Custom style overrides for the just-the-docs theme.
+//
+// This is the convention just-the-docs documents for CSS overrides, and
+// it works with `remote_theme` (which this site uses) as well as with a
+// gem-based `theme`. The theme imports this file itself, after its own
+// styles, so overrides here win without needing an @import.
+//
+// Do NOT go back to overriding assets/css/just-the-docs.scss with
+// `@import "{{ site.theme }}"`: `site.theme` is empty on a remote_theme
+// site, so that import resolves to `@import ""` and can fail the Sass
+// build.
+
+// The site title ("Foundation Models for Urban Energy Systems") wraps to
+// several lines in the sidebar at normal widths. The theme's site-header
+// keeps a fixed height sized for a short, single-line title, so a wrapped
+// title gets clipped at the top -- "Foundation" disappears above the
+// visible area. Both the header and the title need room to grow.
+.site-header {
+  height: auto;
+  min-height: 6rem;
+}
+
+.site-title {
+  display: block;
+  height: auto;
+  line-height: 1.25;
+  padding-top: 1rem;
+  padding-bottom: 0.75rem;
+  white-space: normal;
+}
