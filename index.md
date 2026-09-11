@@ -16,7 +16,7 @@ Version 2.0 — 11 September 2026
 Started by [Barton Chen](https://github.com/BartonChenTW) — open for anyone to contribute. See [how to contribute](chapter-6-outlook/6-2-how-to-contribute.html).
 {: .fs-3 }
 
-Drafted and edited with AI assistance (Claude Opus 5 and Claude Sonnet 5, Anthropic) under Barton Chen's direction and review — see [`CONTRIBUTING.md`](https://github.com/BartonChenTW/FM-for-Urban-Energy-Systems/blob/main/CONTRIBUTING.md) for how claims are sourced and checked.
+Drafted and edited with AI assistance (Claude Opus 5 and Claude Sonnet 5, Anthropic) under Barton Chen's direction and review — see [`CONTRIBUTING.md`](https://github.com/BartonChenTW/FM4UES/blob/main/CONTRIBUTING.md) for how claims are sourced and checked.
 {: .fs-2 }
 
 ---

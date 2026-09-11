@@ -1,13 +1,16 @@
 # Foundation Models for Urban Energy Systems — A Working Textbook
 
+**📖 Read it here: https://bartonchentw.github.io/FM4UES/**
+
 A working textbook on what gets simulated in urban energy systems, what could plausibly be
 learned by a foundation model, and how to build it. Written for someone who knows urban
 energy systems well and machine learning less well.
 
 **An open, community-editable textbook.** Started by [Barton Chen](https://github.com/BartonChenTW)
 as its initiator and current maintainer, but the intent is that anyone in the UES or FM
-communities can contribute — corrections, references, new sections. See
-[`CONTRIBUTING.md`](CONTRIBUTING.md).
+communities can contribute — corrections, references, new sections. Contributions go
+through a pull request (fork → branch → PR); see [`CONTRIBUTING.md`](CONTRIBUTING.md) for
+the full guide.
 
 **AI assistance.** Much of the text has been drafted and edited with Claude (Opus 5 and
 Sonnet 5, Anthropic) under Barton Chen's direction and review — prompting, fact-checking
@@ -15,11 +18,7 @@ against source material, and final sign-off are his. Citations are meant to trac
 checkable sources (see the references workflow in `CONTRIBUTING.md`); if you spot a claim
 that doesn't, please flag it via issue.
 
-**Read it as a website:** once GitHub Pages is enabled for this repo (Settings → Pages →
-Source: Deploy from a branch → `main` / root), it will be published at
-`https://<your-username>.github.io/FM-for-Urban-Energy-Systems/`.
-
-**Read it as Markdown:** every page is a plain `.md` file in this repo, starting at
+**Read it as Markdown instead:** every page is a plain `.md` file in this repo, starting at
 [`index.md`](index.md).
 
 ## Structure
@@ -51,5 +50,5 @@ bundle install
 bundle exec jekyll serve
 ```
 
-Requires Ruby and Bundler. Not needed to publish — GitHub Pages builds this automatically
-from the `main` branch once enabled in repo Settings.
+Requires Ruby and Bundler. Not needed to publish — GitHub Pages builds and deploys the
+site automatically from the `main` branch on every push.

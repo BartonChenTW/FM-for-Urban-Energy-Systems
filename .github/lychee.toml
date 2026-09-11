@@ -2,17 +2,40 @@
 # https://lychee.cli.rs/usage/config/
 
 # Don't fail the whole run on transient network errors / rate limits —
-# only on links that are actually broken.
+# only on links that are actually broken. DOI resolvers in particular can
+# be slow (they redirect through the publisher's own site), so give each
+# request more than lychee's short default timeout before it's retried.
 max_retries = 3
 retry_wait_time = 10
+timeout = 60
+
+# Treat a timeout as "couldn't check", not "broken link". GitHub's
+# runners hit https://doi.org/10.5334/jors.188 (the PyPSA reference)
+# slowly enough to time out even at 30s, while the same URL resolves
+# fine locally and by hand -- verified it redirects correctly to the
+# real paper at openresearchsoftware.metajnl.com. A slow publisher
+# redirect shouldn't fail the whole check; genuine errors (404s, DNS
+# failures, refused connections) still do, since this only forgives
+# timeouts and nothing else.
+accept_timeouts = true
 
 # Some sites (arXiv, DOI resolvers, publisher pages) block or slow-path
 # unrecognised bots; a normal browser UA avoids false positives.
 user_agent = "Mozilla/5.0 (compatible; lychee link checker)"
 
-# Relative .html links between section pages (Jekyll pages, not raw .md)
-# are valid but easy to get false-positives on in a Markdown-only check.
-accept = [200, 429]
+# IMPORTANT: setting `accept` at all REPLACES lychee's default range
+# (100..=103, 200..=299), it does not add to it -- confirmed by testing
+# locally: accept = [429] alone rejected plain 200 OK responses. So this
+# list has to restate the default range explicitly, not just list the
+# extra codes needed on top of it.
+#
+# 202 is IEEE Xplore's normal response code for a real, working document
+# page (confirmed by hand via Crossref for several of the IEEE DOIs
+# cited in this repo) -- already covered by 200..=299 below, kept
+# implicit rather than listed separately.
+# 429 is a rate limit, not a dead link -- accept it so retries/backoff
+# handle it instead of failing the check outright.
+accept = ["100..=103", "200..=299", 429]
 
 # Known-flaky or intentionally-unfetchable targets.
 exclude = [
@@ -23,11 +46,34 @@ exclude = [
   # chapter's folder like ../chapter-4-directions/4-9-1-methods-tier1.html)
   # since that's what works once the site is built, but lychee runs
   # against the raw .md source, where no such file exists on disk.
-  # These are relative, extensionless-source links by design — skip them
-  # here; a site-wide check of the built HTML output would be the correct
-  # way to validate these instead. Matches any relative (non-http, not
-  # starting with /) path ending in .html, with an optional #fragment.
-  '^(?:\.\./)*[a-zA-Z0-9_/-]+\.html(#[^\s)]*)?$',
+  #
+  # IMPORTANT: lychee resolves a relative link to a full file:// URL
+  # *before* applying `exclude` — the pattern is matched against
+  # something like file:///home/runner/work/<repo>/<repo>/appendices/
+  # a-glossary.html, not the original relative "appendices/a-glossary.html"
+  # text from the Markdown source. An anchor on the relative form (the
+  # previous version of this pattern) therefore never matches anything
+  # and silently lets every internal link through to be checked as a
+  # real file, which is always a 404 here (confirmed by a failing CI run
+  # on 2026-09-11). Match on the resolved file:// URL instead: every
+  # local .html link in this repo is a Jekyll-rendered page path, not a
+  # real file in the source tree, so excluding all file:// ... .html
+  # links is correct site-wide, not just for some of them.
+  '^file://.*\.html(#[^\s)]*)?$',
+  # `exclude` matches the URL as it appears in the Markdown source, not
+  # the resolved redirect target -- a pattern on science.org/wiley.com
+  # (where these actually redirect to) never matches, because lychee
+  # always checks/reports against the original https://doi.org/... URL.
+  # These two publishers (Wiley Online Library, Science/AAAS) return 403
+  # Forbidden to lychee even with a browser user agent -- they block
+  # automated checkers, not because the page is missing. Verified by
+  # hand for each (Crossref API lookup + confirming the resolved URL is
+  # the real, correct paper) before excluding, rather than assuming
+  # every 403 from every publisher is benign -- see chapter-2-fm-
+  # foundations/2-4-5-geospatial-weather-fms.md and chapter-3-sim-opt/
+  # 3-3-energy-hub-formalism.md for the citations these belong to.
+  '^https://doi\.org/10\.1126/science\.adi2336$',
+  '^https://doi\.org/10\.1002/etep\.112$',
 ]
 
 # Skip files that aren't meant to be checked as published pages.

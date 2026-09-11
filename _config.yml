@@ -2,7 +2,7 @@ title: Foundation Models for Urban Energy Systems
 description: >-
   A working textbook on what gets simulated in urban energy systems,
   what could plausibly be learned by a foundation model, and how to build it.
-baseurl: "/FM-for-Urban-Energy-Systems"
+baseurl: "/FM4UES"
 url: ""
 
 remote_theme: just-the-docs/just-the-docs
