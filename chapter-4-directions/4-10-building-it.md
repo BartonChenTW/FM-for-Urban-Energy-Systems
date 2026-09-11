@@ -64,7 +64,7 @@ Four mechanisms, in increasing order of strength and cost:
 
 Notes from practice:
 
-- Bounded decoders and physics-informed regularisation preserve operational feasibility in GNN-based OPF, but residual violations may still require post-processing for strict feasibility.[^wen2026lghgnn-410]
+- Bounded decoders and physics-informed regularisation preserve operational feasibility in GNN-based OPF, but residual violations may still require post-processing for strict feasibility.[^wen2026lghgnn]
 - Physics-informed approaches embedding multi-physics dynamic constraints in the loss enable physically consistent solutions with limited training samples and improve accuracy under sparse data — a valuable property when simulator runs are expensive.
 - Feasibility-restoration layers are an active area; repair layers for networks with hard constraints are being developed as reusable components.[^chu2026snarenet]
 
@@ -122,7 +122,7 @@ The anchored format matches the budget reality above: it does not depend on a tr
 
 **Audience translation is part of the format choice.** Writing FM concepts for a domain audience means introducing every ML idea through its domain counterpart ([§2.3.1](../chapter-2-fm-foundations/2-3-choosing-a-basic-element.html#231-the-criterion) does this with discretisation), avoiding unexplained vocabulary, and including a short glossary. The test: if a paragraph requires ML background to parse, rewrite it.
 
-[^wen2026lghgnn-410]: Wen, A., Wen, B., Li, J., Xu, J. (2026). [Heterogeneous graph neural network with local and global message passing for AC-optimal power flow solutions](https://doi.org/10.3390/asi9010018). *Applied System Innovation*, 9(1), 18.
+[^wen2026lghgnn]: Wen, A., Wen, B., Li, J., Xu, J. (2026). [Heterogeneous graph neural network with local and global message passing for AC-optimal power flow solutions](https://doi.org/10.3390/asi9010018). *Applied System Innovation*, 9(1), 18.
 [^chu2026snarenet]: Chu, Y.-C., Boukas, A., Udell, M. (2026). [SnareNet: Flexible repair layers for neural networks with hard constraints](https://arxiv.org/abs/2602.09317). arXiv:2602.09317
 
 ---
