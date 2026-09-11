@@ -100,8 +100,11 @@ exclude = [
   # OSTI (osti.gov, DOE's technical report repository) does the same
   # thing -- these two NREL technical reports return 403 to lychee while
   # resolving fine in a browser. Excluded by DOI prefix (10.2172, OSTI's
-  # registrant prefix). Both current citations verified against the
-  # Crossref API before excluding:
+  # registrant prefix) for the same reason as MDPI above: more OSTI
+  # reports are a plausible future addition (NREL publishes ResStock/
+  # ComStock-adjacent work this way routinely) and per-DOI entries would
+  # go stale. Both current citations verified against the Crossref API
+  # before excluding:
   #   10.2172/1854582 -- Wilson et al. 2022, ResStock end-use load
   #     profiles methodology (section 4.2)
   #   10.2172/1967948 -- Parker et al. 2023, ComStock reference

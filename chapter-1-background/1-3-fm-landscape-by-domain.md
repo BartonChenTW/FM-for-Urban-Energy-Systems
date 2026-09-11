@@ -19,11 +19,11 @@ last_reviewed: 2026-09-11
 | Domain | Representative models | What they learn |
 | :--- | :--- | :--- |
 | Language | GPT-5-class, Gemini, Claude, Llama | Sequences of text tokens |
-| Vision | ViT, SAM/SAM2,[^kirillov2023sam] DINO | Sequences of image patches |
+| Vision | ViT (Vision Transformer), SAM/SAM2 (Segment Anything Model),[^kirillov2023sam] DINO (self-**DI**stillation with **NO** labels) | Sequences of image patches |
 | Multimodal | Unified generation-and-understanding models | Cross-modal alignment across text, image, audio |
 | Weather / climate | GraphCast,[^lam2023graphcast] FengWu,[^chen2023fengwu] Aurora[^bodnar2025aurora] | Physical fields on a spatiotemporal grid |
 | Geospatial / remote sensing | Prithvi,[^jakubik2023prithvi] ScaleMAE,[^reed2023scalemae] Granite-GFM | Satellite pixels and patches over space and time |
-| Time series | TimesFM,[^das2024timesfm] Chronos,[^ansari2024chronos] Moirai,[^woo2024moirai] TTM,[^ekambaram2024ttm] Toto,[^cohen2025toto] TimeGPT[^garza2023timegpt] | Numeric sequences |
+| Time series | TimesFM,[^das2024timesfm] Chronos,[^ansari2024chronos] Moirai,[^woo2024moirai] TTM (Tiny Time Mixers),[^ekambaram2024ttm] Toto,[^cohen2025toto] TimeGPT[^garza2023timegpt] | Numeric sequences |
 | Graph-structured systems | Emerging graph FMs, GridFM-v0[^hamann2024foundation] | Node/edge-structured data |
 | Robotics / embodied | Vision-language-action models | Vision, language, touch, force, proprioception |
 
