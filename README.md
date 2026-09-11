@@ -9,6 +9,12 @@ as its initiator and current maintainer, but the intent is that anyone in the UE
 communities can contribute — corrections, references, new sections. See
 [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
+**AI assistance.** Much of the text has been drafted and edited with Claude (Opus 5 and
+Sonnet 5, Anthropic) under Barton Chen's direction and review — prompting, fact-checking
+against source material, and final sign-off are his. Citations are meant to trace to real,
+checkable sources (see the references workflow in `CONTRIBUTING.md`); if you spot a claim
+that doesn't, please flag it via issue.
+
 **Read it as a website:** once GitHub Pages is enabled for this repo (Settings → Pages →
 Source: Deploy from a branch → `main` / root), it will be published at
 `https://<your-username>.github.io/FM-for-Urban-Energy-Systems/`.

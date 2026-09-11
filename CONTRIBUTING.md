@@ -5,6 +5,12 @@ This is a living, open-contribution knowledge base — started by
 and new sections are welcome from anyone in the urban energy systems (UES)
 or foundation model (FM) communities.
 
+Much of the existing text was drafted and edited with Claude (Opus 5 and
+Sonnet 5, Anthropic) under Barton's direction and review. That doesn't
+change what's expected of new contributions: claims should trace to a real,
+checkable source (see the references workflow below), whether written by a
+person, drafted with AI assistance, or both.
+
 ## Ways to contribute
 
 - **Report an error or an outdated claim** — open an issue.
