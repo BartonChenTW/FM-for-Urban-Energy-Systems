@@ -1,0 +1,41 @@
+{%- comment -%}
+  Open external links in a new tab, leaving internal navigation alone.
+
+  Why a script rather than editing every link: the book's citations are
+  Markdown footnotes written as [Title](https://doi.org/...), and Markdown
+  has no syntax for target="_blank". Adding raw <a target="_blank"> to each
+  of the ~90 external links would make the source far less readable and be
+  easy to forget on new citations. This handles every external link
+  automatically, including ones added later.
+
+  Internal links (chapter pages, anchors, the glossary) deliberately stay
+  in the same tab -- opening a new tab for each step of normal navigation
+  through the book would litter the reader's tab bar.
+
+  rel="noopener noreferrer" is set alongside target="_blank": without
+  noopener, the opened page gets a reference to this one via window.opener
+  and can navigate it elsewhere (the "tabnabbing" issue). Modern browsers
+  imply noopener for target="_blank", but older ones do not, and it costs
+  nothing to be explicit.
+{%- endcomment -%}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('a[href]');
+    for (var i = 0; i < links.length; i++) {
+      var link = links[i];
+      // link.hostname is resolved by the browser, so this correctly
+      // classifies relative hrefs ("2-3-foo.html", "../appendices/x.html")
+      // as internal without needing to parse them by hand.
+      var isExternal = link.hostname && link.hostname !== window.location.hostname;
+      // Leave in-page anchors (#section) and non-http schemes
+      // (mailto:, tel:) alone.
+      var href = link.getAttribute('href') || '';
+      var isAnchor = href.charAt(0) === '#';
+      var isHttp = link.protocol === 'http:' || link.protocol === 'https:';
+      if (isExternal && isHttp && !isAnchor) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+      }
+    }
+  });
+</script>
