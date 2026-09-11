@@ -7,7 +7,17 @@
 # request more than lychee's short default timeout before it's retried.
 max_retries = 3
 retry_wait_time = 10
-timeout = 30
+timeout = 60
+
+# Treat a timeout as "couldn't check", not "broken link". GitHub's
+# runners hit https://doi.org/10.5334/jors.188 (the PyPSA reference)
+# slowly enough to time out even at 30s, while the same URL resolves
+# fine locally and by hand -- verified it redirects correctly to the
+# real paper at openresearchsoftware.metajnl.com. A slow publisher
+# redirect shouldn't fail the whole check; genuine errors (404s, DNS
+# failures, refused connections) still do, since this only forgives
+# timeouts and nothing else.
+accept_timeouts = true
 
 # Some sites (arXiv, DOI resolvers, publisher pages) block or slow-path
 # unrecognised bots; a normal browser UA avoids false positives.
