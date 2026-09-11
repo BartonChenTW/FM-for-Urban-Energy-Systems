@@ -86,6 +86,17 @@ exclude = [
   # Journal of Open Research Software 6(1):4 -- exactly what
   # chapter-3-sim-opt/3-6-tool-landscape.md cites.
   '^https://doi\.org/10\.5334/jors\.188$',
+  # MDPI (DOI prefix 10.3390) does the same thing -- every MDPI DOI in
+  # this bibliography returns 403 to lychee while resolving fine in a
+  # browser. Excluded by DOI prefix rather than one-by-one, since MDPI
+  # is now a recurring publisher here (Applied System Innovation,
+  # Energies) and listing individual DOIs would go stale as citations
+  # are added. Each MDPI citation currently in the book was verified
+  # against the Crossref API (title/authors/journal/volume/year all
+  # match what the text cites) before this exclusion was added:
+  #   10.3390/asi9010018  -- Wen et al. 2026, LG-HGNN (sections 4.9.2, 4.10)
+  #   10.3390/en19163769  -- Naeem et al. 2026, LLMs in power systems (section 1.3)
+  '^https://doi\.org/10\.3390/',
 ]
 
 # Skip files that aren't meant to be checked as published pages.
