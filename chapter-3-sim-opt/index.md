@@ -26,7 +26,7 @@ flowchart LR
     E --> H["3.8 Where the cost is"]
 ```
 
-## In this part
+## In this chapter
 
 | § | Page | Covers |
 | :--- | :--- | :--- |

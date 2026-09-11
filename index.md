@@ -13,6 +13,9 @@ A working textbook: what gets simulated, what could be learned, and how to build
 Version 2.0 — 11 September 2026
 {: .label }
 
+Started by [Barton Chen](https://github.com/BartonChenTW) — open for anyone to contribute. See [how to contribute](chapter-6-outlook/6-2-how-to-contribute.html).
+{: .fs-3 }
+
 ---
 
 ## How to use this document
@@ -35,7 +38,7 @@ The **[Methods by Problem Class](chapter-4-directions/4-9-methods-landing.html)*
 
 ## Contents
 
-| Part | Page | Covers |
+| Chapter | Page | Covers |
 | :--- | :--- | :--- |
 | 1 | [Background: UES and FMs](chapter-1-background/index.html) | What the domain is, what FMs are, why the two should meet now |
 | 2 | [Foundation Knowledge of FMs](chapter-2-fm-foundations/index.html) | What makes a model a foundation model; [Choosing a Basic Element](chapter-2-fm-foundations/2-3-choosing-a-basic-element.html); the FM landscape today; ML basics (self-supervision, transformers, GNNs, neural operators); surrogates vs FMs |

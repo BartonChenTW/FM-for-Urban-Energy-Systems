@@ -4,6 +4,11 @@ A working textbook on what gets simulated in urban energy systems, what could pl
 learned by a foundation model, and how to build it. Written for someone who knows urban
 energy systems well and machine learning less well.
 
+**An open, community-editable textbook.** Started by [Barton Chen](https://github.com/BartonChenTW)
+as its initiator and current maintainer, but the intent is that anyone in the UES or FM
+communities can contribute — corrections, references, new sections. See
+[`CONTRIBUTING.md`](CONTRIBUTING.md).
+
 **Read it as a website:** once GitHub Pages is enabled for this repo (Settings → Pages →
 Source: Deploy from a branch → `main` / root), it will be published at
 `https://<your-username>.github.io/FM-for-Urban-Energy-Systems/`.
@@ -13,8 +18,8 @@ Source: Deploy from a branch → `main` / root), it will be published at
 
 ## Structure
 
-One page per section, nested by Part using just-the-docs' `parent:` /
-`has_children:` front matter. Each Part is a folder; each folder has an
+One page per section, nested by chapter using just-the-docs' `parent:` /
+`has_children:` front matter. Each chapter is a folder; each folder has an
 `index.md` landing page plus one file per numbered section.
 
 | Folder / file | Contents |

@@ -15,7 +15,7 @@ A broad, neutral survey of which problems a foundation model could plausibly lea
 {: .fs-6 .fw-300 }
 
 {: .note }
-**Chapter 4 vs Chapter 5.** This part surveys the field broadly: what's already usable off the shelf, which sub-fields pass a screening test, and the methods landscape by problem tier. It does not commit to one representation or one roadmap. [Chapter 5](../chapter-5-case-study/index.html) does exactly that, for one specific case — a foundation model for multi-carrier energy hubs.
+**Chapter 4 vs Chapter 5.** This chapter surveys the field broadly: what's already usable off the shelf, which sub-fields pass a screening test, and the methods landscape by problem tier. It does not commit to one representation or one roadmap. [Chapter 5](../chapter-5-case-study/index.html) does exactly that, for one specific case — a foundation model for multi-carrier energy hubs.
 
 ```mermaid
 flowchart TD
@@ -33,7 +33,7 @@ flowchart TD
     M --> N
 ```
 
-## In this part
+## In this chapter
 
 | § | Page | Covers |
 | :--- | :--- | :--- |

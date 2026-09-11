@@ -13,7 +13,7 @@ redirect_from: /06-methods-tier1.html
 
 {% include page-status.html %}
 
-The operational core of this part. Three tiers of increasing difficulty.
+The operational core of this chapter. Three tiers of increasing difficulty.
 {: .fs-6 .fw-300 }
 
 ```mermaid

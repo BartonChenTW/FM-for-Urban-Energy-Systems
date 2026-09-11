@@ -25,7 +25,7 @@ flowchart TD
     H["2.8 Surrogates vs foundation models"] --> A
 ```
 
-## In this part
+## In this chapter
 
 | § | Page | Covers |
 | :--- | :--- | :--- |

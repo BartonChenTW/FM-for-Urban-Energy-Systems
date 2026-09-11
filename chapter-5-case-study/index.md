@@ -15,7 +15,7 @@ One specific, opinionated proposal, worked through in full technical depth: repr
 {: .fs-6 .fw-300 }
 
 {: .note }
-**This part is a case study, not a survey.** It commits to one representation and one roadmap, where [Chapter 4](../chapter-4-directions/index.html) deliberately stayed neutral across many directions. Treat everything here as one group's specific bet, argued in full — not as "what the field has established."
+**This chapter is a case study, not a survey.** It commits to one representation and one roadmap, where [Chapter 4](../chapter-4-directions/index.html) deliberately stayed neutral across many directions. Treat everything here as one group's specific bet, argued in full — not as "what the field has established."
 
 ```mermaid
 flowchart TD
@@ -29,7 +29,7 @@ flowchart TD
     G --> H["5.8 Risks & open questions"]
 ```
 
-## In this part
+## In this chapter
 
 | § | Page | Covers |
 | :--- | :--- | :--- |

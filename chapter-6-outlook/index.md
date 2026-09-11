@@ -14,7 +14,7 @@ last_reviewed: 2026-09-11
 What is open, and how readers can contribute.
 {: .fs-6 .fw-300 }
 
-## In this part
+## In this chapter
 
 | § | Page | Covers |
 | :--- | :--- | :--- |

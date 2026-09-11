@@ -23,7 +23,7 @@ flowchart LR
     E --> F["1.6 Scope and how to use this book"]
 ```
 
-## In this part
+## In this chapter
 
 | § | Page | Covers |
 | :--- | :--- | :--- |

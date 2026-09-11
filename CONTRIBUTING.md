@@ -1,8 +1,9 @@
 # Contributing
 
-This is a living knowledge base — corrections, references, and new sections
-are welcome from anyone in the urban energy systems (UES) or foundation
-model (FM) communities.
+This is a living, open-contribution knowledge base — started by
+[Barton Chen](https://github.com/BartonChenTW), but corrections, references,
+and new sections are welcome from anyone in the urban energy systems (UES)
+or foundation model (FM) communities.
 
 ## Ways to contribute
 
@@ -29,9 +30,9 @@ model (FM) communities.
 - Each page has Jekyll front matter (`title`, `parent`, `nav_order`, and for
   section pages also `status` and `last_reviewed`, rendered via
   `{% include page-status.html %}`). Match the existing pattern when adding
-  a page — see any section file for the format. Parts are folders with an
-  `index.md` (`has_children: true`) and one file per numbered section
-  (`parent:` pointing back to the Part's title).
+  a page — see any section file for the format. Chapters are folders with
+  an `index.md` (`has_children: true`) and one file per numbered section
+  (`parent:` pointing back to the chapter's title).
 
 ## References workflow
 
