@@ -6,6 +6,16 @@ Record structural changes, content merges, renamed or moved pages, and decisions
 
 ---
 
+## 2026-09-11 (branch protection docs + site link)
+
+Barton turned on branch protection for `main` (require PR before merging, require the `lychee` link-check status check, block force-push/deletion, no bypass even for the owner) via the GitHub UI — I don't have `gh` CLI access in this environment, so this was applied by Barton directly, not by me.
+
+Updated docs to match the new workflow:
+- `CONTRIBUTING.md`: new "How changes get in" section explaining the fork → branch → PR flow and that the link-check must pass; added a "Read the book" link at the top.
+- `README.md`: added a prominent site link at the top and in the founder-attribution paragraph ("Contributions go through a pull request"); replaced the old placeholder ("once GitHub Pages is enabled... `https://<your-username>.github.io/...`") with the real live URL now that Pages is confirmed working; removed a redundant second copy of the site link; fixed the "Building locally" closing line, which still described Pages as not-yet-enabled.
+
+Site URL used throughout: `https://bartonchentw.github.io/FM-for-Urban-Energy-Systems/` — superseded later the same day when the repo was renamed to `FM4UES`; the current URL is `https://bartonchentw.github.io/FM4UES/`.
+
 ## 2026-09-11 (attribution + leftover "Part" wording)
 
 Added author/founder attribution at Barton's request, framed as an open, community-editable textbook rather than sole-authored: a credit line on `index.md` ("Started by Barton Chen — open for anyone to contribute", linking to the how-to-contribute page), a paragraph on `README.md`, and an opening-line credit on `CONTRIBUTING.md`. `LICENSE` already said "Barton Chen and contributors" — no change needed there.

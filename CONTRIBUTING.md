@@ -1,5 +1,7 @@
 # Contributing
 
+📖 Read the book: **https://bartonchentw.github.io/FM4UES/**
+
 This is a living, open-contribution knowledge base — started by
 [Barton Chen](https://github.com/BartonChenTW), but corrections, references,
 and new sections are welcome from anyone in the urban energy systems (UES)
@@ -10,6 +12,23 @@ Sonnet 5, Anthropic) under Barton's direction and review. That doesn't
 change what's expected of new contributions: claims should trace to a real,
 checkable source (see the references workflow below), whether written by a
 person, drafted with AI assistance, or both.
+
+## How changes get in
+
+`main` is protected — nobody, including the maintainer, pushes to it
+directly. Every change goes through a pull request:
+
+1. **Fork** this repo (or, if you've been added as a collaborator, create a
+   branch directly).
+2. Make your change on a branch.
+3. Open a **pull request** against `main`. The `lychee` link-check workflow
+   runs automatically; it needs to pass before the PR can merge.
+4. The maintainer (or another reviewer, once there are some) reviews and
+   merges.
+
+For small fixes (typos, a broken link) this whole cycle can be quick —
+GitHub's web editor can create the fork, branch, and PR for you in one go
+from the file's "Edit" (pencil) button.
 
 ## Ways to contribute
 
