@@ -24,9 +24,9 @@ This is written for someone who knows urban energy systems well and machine lear
 3. **Survey the directions** — of all the tasks in the domain, which could plausibly support a foundation model, broadly and neutrally.
 4. **Work through one case study in depth** — a specific, concrete proposal for a foundation model for multi-carrier energy hubs.
 
-**If you read only one page**, read [Choosing a Basic Element](part-2-fm-foundations/2-3-choosing-a-basic-element.html) (§2.3) — it gives the criterion for deciding whether a foundation model is viable in a sub-domain at all, before any question of architecture or compute.
+**If you read only one page**, read [Choosing a Basic Element](chapter-2-fm-foundations/2-3-choosing-a-basic-element.html) (§2.3) — it gives the criterion for deciding whether a foundation model is viable in a sub-domain at all, before any question of architecture or compute.
 
-The **[Methods by Problem Class](part-4-directions/4-9-methods-landing.html)** pages (§4.9) are the operational core of the directions survey: three tiers of increasing difficulty (single-hub dispatch → multi-hub multi-carrier dispatch → design and sizing optimisation), each with a concrete build path.
+The **[Methods by Problem Class](chapter-4-directions/4-9-methods-landing.html)** pages (§4.9) are the operational core of the directions survey: three tiers of increasing difficulty (single-hub dispatch → multi-hub multi-carrier dispatch → design and sizing optimisation), each with a concrete build path.
 
 {: .warning }
 **The field moves fast.** Publication counts on LLM-and-energy alone went from roughly 1 (2022) to 13 (2023) to 128 (2024) to 464 (2025), with 348 already indexed in the first half of 2026. Re-check anything that reads as a landscape or novelty claim before it is used to justify a proposal or paper.
@@ -37,11 +37,11 @@ The **[Methods by Problem Class](part-4-directions/4-9-methods-landing.html)** p
 
 | Part | Page | Covers |
 | :--- | :--- | :--- |
-| 1 | [Background: UES and FMs](part-1-background/index.html) | What the domain is, what FMs are, why the two should meet now |
-| 2 | [Foundation Knowledge of FMs](part-2-fm-foundations/index.html) | What makes a model a foundation model; [Choosing a Basic Element](part-2-fm-foundations/2-3-choosing-a-basic-element.html); the FM landscape today; ML basics (self-supervision, transformers, GNNs, neural operators); surrogates vs FMs |
-| 3 | [Simulation and Optimisation in UES](part-3-sim-opt/index.html) | Task taxonomy, building simulation data, the energy hub formalism, dispatch and design optimisation, the tool landscape, where cost lives |
-| 4 | [Directions for FMs in UES](part-4-directions/index.html) | A broad, neutral survey: off-the-shelf FMs, building-stock FMs, LLM agents, generative design, screening, and methods by problem tier |
-| 5 | [Case Study: A Foundation Model for Multi-Carrier Energy Hubs](part-5-case-study/index.html) | One concrete proposal — representation, token schema, module decomposition, a phased roadmap, risks |
-| 6 | [Outlook](part-6-outlook/index.html) | Nine open gaps; how to contribute |
+| 1 | [Background: UES and FMs](chapter-1-background/index.html) | What the domain is, what FMs are, why the two should meet now |
+| 2 | [Foundation Knowledge of FMs](chapter-2-fm-foundations/index.html) | What makes a model a foundation model; [Choosing a Basic Element](chapter-2-fm-foundations/2-3-choosing-a-basic-element.html); the FM landscape today; ML basics (self-supervision, transformers, GNNs, neural operators); surrogates vs FMs |
+| 3 | [Simulation and Optimisation in UES](chapter-3-sim-opt/index.html) | Task taxonomy, building simulation data, the energy hub formalism, dispatch and design optimisation, the tool landscape, where cost lives |
+| 4 | [Directions for FMs in UES](chapter-4-directions/index.html) | A broad, neutral survey: off-the-shelf FMs, building-stock FMs, LLM agents, generative design, screening, and methods by problem tier |
+| 5 | [Case Study: A Foundation Model for Multi-Carrier Energy Hubs](chapter-5-case-study/index.html) | One concrete proposal — representation, token schema, module decomposition, a phased roadmap, risks |
+| 6 | [Outlook](chapter-6-outlook/index.html) | Nine open gaps; how to contribute |
 | — | [Glossary](appendices/a-glossary.html) | Plain-language definitions of every ML term used |
 | — | [Pre-Project Checklist](appendices/b-checklist.html) | Thirteen questions to ask before starting |

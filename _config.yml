@@ -16,7 +16,7 @@ heading_anchors: true
 
 nav_sort: case_insensitive
 
-# just-the-docs Mermaid support, for the diagrams in Part landing pages
+# just-the-docs Mermaid support, for the diagrams in chapter landing pages
 # and the token-schema / temporal-hierarchy sections.
 mermaid:
   version: "11.4.1"

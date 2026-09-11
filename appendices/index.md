@@ -17,4 +17,4 @@ last_reviewed: 2026-09-11
 | B | [Pre-Project Checklist](b-checklist.html) | Thirteen questions to ask before starting a project |
 
 ---
-[← Previous: Part 6 — Outlook](../part-6-outlook/index.html) · [Back to Home](../index.html)
+[← Previous: Chapter 6 — Outlook](../chapter-6-outlook/index.html) · [Back to Home](../index.html)

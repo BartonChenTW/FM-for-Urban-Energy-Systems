@@ -20,7 +20,7 @@ exclude = [
   '^http://localhost',
   # Internal cross-page links use the *rendered* Jekyll path (e.g.
   # 2-3-choosing-a-basic-element.html, or a relative path into another
-  # Part's folder like ../part-4-directions/4-9-1-methods-tier1.html)
+  # chapter's folder like ../chapter-4-directions/4-9-1-methods-tier1.html)
   # since that's what works once the site is built, but lychee runs
   # against the raw .md source, where no such file exists on disk.
   # These are relative, extensionless-source links by design — skip them

@@ -15,7 +15,7 @@ Items tagged **[Claude]** are suggestions from Claude (2026-09-11), not yet agre
 
 ## Next
 
-- [ ] **Fill in the four stub sections in Part 4.** [§4.1](part-4-directions/4-1-off-the-shelf-fms.md) (off-the-shelf FMs), [§4.2](part-4-directions/4-2-fms-for-building-stocks.md) (FMs for building stocks), [§4.3](part-4-directions/4-3-llm-agents-for-simulation.md) (LLM agents for simulation), [§4.4](part-4-directions/4-4-generative-design.md) (generative design) are each marked `{: .note }` "Stub — needs expansion" — they state the direction and cross-reference the rest of the book but don't yet contain a worked example, benchmark numbers, or a literature survey specific to that sub-topic.
+- [ ] **Fill in the four stub sections in Chapter 4.** [§4.1](chapter-4-directions/4-1-off-the-shelf-fms.md) (off-the-shelf FMs), [§4.2](chapter-4-directions/4-2-fms-for-building-stocks.md) (FMs for building stocks), [§4.3](chapter-4-directions/4-3-llm-agents-for-simulation.md) (LLM agents for simulation), [§4.4](chapter-4-directions/4-4-generative-design.md) (generative design) are each marked `{: .note }` "Stub — needs expansion" — they state the direction and cross-reference the rest of the book but don't yet contain a worked example, benchmark numbers, or a literature survey specific to that sub-topic.
 - [ ] **Add remaining diagrams.** Every Part landing page (1–5), the Tier progression page (§4.9), the roadmap (§5.1), and the token schema/temporal hierarchy (§5.5) now have Mermaid diagrams (enabled via `mermaid:` in `_config.yml`, 2026-09-11). Not yet illustrated: individual section pages within each Part (e.g. the four-requirements table in §2.3, the bipartite graph worked example in §5.4) — the phasing note below still applies to these.
 - [ ] **Verify the just-the-docs Mermaid version pin (`11.4.1` in `_config.yml`) still resolves** once this is actually built via GitHub Pages/`bundle exec jekyll serve` — set from current documented just-the-docs convention but not yet build-verified in this repo.
 
@@ -23,9 +23,9 @@ Items tagged **[Claude]** are suggestions from Claude (2026-09-11), not yet agre
 
 - [x] **Merged `add/` notes into the textbook.** `add/FM_for_UES.md` and `add/reference.md` fully folded into the new section pages (see [log.md](log.md) for the detailed mapping) and deleted, along with `add/`.
 - [x] **Added detailed references with footnotes** throughout the new section pages, using the citation keys in `references/fm-for-ues.bib` (extended from ~16 to ~22 entries during the merge).
-- [x] **Restructured the textbook into six Parts**, one page per numbered section, per [outline.md](outline.md) as amended (6-part split: Part 4 neutral survey vs. Part 5 case study vs. Part 6 outlook, instead of the outline's original 5-part draft). See [log.md](log.md) for the full before/after mapping.
-- [x] **Broadened Part 4** with off-the-shelf FMs, building-stock FMs, LLM/agent-built simulation models, and generative design (stubs, see Next above).
-- [x] **Added ML-basics content to Part 2**: self-supervised pretraining, fine-tuning, scaling laws (§2.6), transformer/GNN/neural-operator architectures (§2.7), and a surrogates-vs-FMs section (§2.8).
+- [x] **Restructured the textbook into six Parts**, one page per numbered section, per [outline.md](outline.md) as amended (6-part split: Chapter 4 neutral survey vs. Chapter 5 case study vs. Chapter 6 outlook, instead of the outline's original 5-part draft). See [log.md](log.md) for the full before/after mapping.
+- [x] **Broadened Chapter 4** with off-the-shelf FMs, building-stock FMs, LLM/agent-built simulation models, and generative design (stubs, see Next above).
+- [x] **Added ML-basics content to Chapter 2**: self-supervised pretraining, fine-tuning, scaling laws (§2.6), transformer/GNN/neural-operator architectures (§2.7), and a surrogates-vs-FMs section (§2.8).
 - [x] **Added illustrations to the highest-value spots**: every Part landing page, the tier-progression page, the roadmap, and the token schema/temporal hierarchy. Per-section illustration (previously flagged as ~40 diagrams of work) intentionally deferred — see Next above.
 - [x] **Moved Appendix C and the concept-paper notes to a private file** (`notes-concept-paper.md`, excluded from the site build) rather than keeping them as a public appendix.
 - [x] **Added `redirect_from:` front matter** for all 13 old public URLs (`01-the-domain.html` through `11-references.html`, plus both old appendices) so existing links don't 404.
@@ -50,13 +50,13 @@ Items tagged **[Claude]** are suggestions from Claude (2026-09-11), not yet agre
 
 All items below are now implemented as part of the 2026-09-11 restructure (see "Restructure (done 2026-09-11)" above and [log.md](log.md) for details).
 
-- [x] **[Claude] Separate the neutral survey from the research proposal.** Implemented as the Part 4 (neutral survey) / Part 5 (case study) / Part 6 (outlook) split.
-- [x] **[Claude] Broaden Part 4 (Directions).** Added as §4.1–4.4 (off-the-shelf FMs, building-stock FMs, LLM/agent-built simulation models, generative design) — currently stubs, see Next above.
-- [x] **[Claude] Add ML basics to Part 2.** Added as §2.6 (self-supervision, fine-tuning, scaling laws) and §2.7 (transformers, GNNs, neural operators).
-- [x] **[Claude] Add a "surrogate models vs FMs" section to Part 2.** Added as §2.8.
-- [x] **[Claude] Frame Part 3 as "UES through an ML lens".** Reframed throughout — see e.g. §3.2 ("Framed for an ML reader"), §3.4, §3.5.
-- [x] **[Claude] Add a dedicated data and benchmarks section to Part 3.** Added as §3.2 (BuildingsBench, EnergyBench, ResStock/ComStock, CESAR-P).
-- [x] **[Claude] Resolve the overlap between basic elements and the representation problem.** §2.3 (Part 2) is the general criterion and concept; §5.2 (Part 5) is its application to the specific case-study representation — explicitly cross-referenced both ways.
+- [x] **[Claude] Separate the neutral survey from the research proposal.** Implemented as the Chapter 4 (neutral survey) / Chapter 5 (case study) / Chapter 6 (outlook) split.
+- [x] **[Claude] Broaden Chapter 4 (Directions).** Added as §4.1–4.4 (off-the-shelf FMs, building-stock FMs, LLM/agent-built simulation models, generative design) — currently stubs, see Next above.
+- [x] **[Claude] Add ML basics to Chapter 2.** Added as §2.6 (self-supervision, fine-tuning, scaling laws) and §2.7 (transformers, GNNs, neural operators).
+- [x] **[Claude] Add a "surrogate models vs FMs" section to Chapter 2.** Added as §2.8.
+- [x] **[Claude] Frame Chapter 3 as "UES through an ML lens".** Reframed throughout — see e.g. §3.2 ("Framed for an ML reader"), §3.4, §3.5.
+- [x] **[Claude] Add a dedicated data and benchmarks section to Chapter 3.** Added as §3.2 (BuildingsBench, EnergyBench, ResStock/ComStock, CESAR-P).
+- [x] **[Claude] Resolve the overlap between basic elements and the representation problem.** §2.3 (Chapter 2) is the general criterion and concept; §5.2 (Chapter 5) is its application to the specific case-study representation — explicitly cross-referenced both ways.
 - [x] **[Claude] Phase the illustrations.** Done for Part landing pages, the tier-progression page, the roadmap, and the token schema. Per-section illustration remains open — see Next above.
 
 ## Later / ideas
