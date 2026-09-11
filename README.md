@@ -13,27 +13,25 @@ Source: Deploy from a branch → `main` / root), it will be published at
 
 ## Structure
 
-| File | Contents |
+One page per section, nested by Part using just-the-docs' `parent:` /
+`has_children:` front matter. Each Part is a folder; each folder has an
+`index.md` landing page plus one file per numbered section.
+
+| Folder / file | Contents |
 | :--- | :--- |
 | `index.md` | Landing page and table of contents |
-| `01-the-domain.md` | Scales, task taxonomy, tool landscape, where cost lives |
-| `02-fm-fundamentals.md` | What makes a model a foundation model; the five design decisions |
-| `03-basic-elements.md` | **The core argument** — a criterion for choosing a basic element, applied to buildings |
-| `04-fm-landscape.md` | Time-series FMs, grid FMs, tabular FMs and the cell, what doesn't exist yet |
-| `05-screening.md` | Which sub-domains pass the screen for FM treatment |
-| `06-methods-tier1.md` | Single-hub dispatch: build path and baselines |
-| `07-methods-tier2.md` | Multi-hub, multi-carrier: graph neural networks and neural operators |
-| `08-methods-tier3.md` | Design and sizing: amortised optimisation, the decision-space problem |
-| `09-building-it.md` | Data generation, physics enforcement, evaluation, budget realism |
-| `10-open-gaps.md` | Nine open gaps, ordered by defensibility as research contributions |
-| `appendix-a-glossary.md` | Plain-language definitions of every ML term used |
-| `appendix-b-checklist.md` | Thirteen questions to ask before starting a project |
-| `appendix-c-buildfm-bs2027.md` | An applied example — public, redacted |
-| `11-references.md` | Full bibliography |
+| `part-1-background/` | §1.1–1.6 — what a UES contains, FMs in one page, the FM landscape, why UES/why now, scope of the book |
+| `part-2-fm-foundations/` | §2.1–2.8 — what defines an FM, the five design decisions, **Choosing a Basic Element** (the core argument), existing FMs relevant to energy, ML basics (self-supervision, transformers, GNNs, neural operators), surrogates vs FMs |
+| `part-3-sim-opt/` | §3.1–3.8 — task taxonomy, building simulation data, the energy hub formalism, dispatch and design/sizing optimisation as ML problems, the tool landscape, schemas, where cost lives |
+| `part-4-directions/` | §4.1–4.10 — a neutral survey: off-the-shelf FMs, building-stock FMs, LLM agents for simulation, generative design, screening, candidate sub-fields, methods by problem tier (Tier 1–3), building it |
+| `part-5-case-study/` | §5.1–5.8 — one concrete proposal: roadmap (Phases 0–5), the representation problem, data generation, a concrete representation, token schema, physics loss, module decomposition, risks |
+| `part-6-outlook/` | §6.1–6.2 — nine open gaps (G1–G9), how to contribute |
+| `appendices/` | Glossary (A), pre-project checklist (B) |
+| `references/` | `fm-for-ues.bib` (Zotero import) and its README |
 
 ## Status
 
-Version 1.1 — actively revised. Corrections and additions welcome via issue or pull request.
+Version 2.0 — actively revised. Corrections and additions welcome via issue or pull request.
 
 ## Building locally (optional)
 

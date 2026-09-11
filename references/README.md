@@ -1,6 +1,7 @@
 ---
 title: Zotero / BibTeX References
 nav_order: 16
+redirect_from: /11-references.html
 ---
 
 # References (Zotero / BibTeX)
@@ -18,12 +19,13 @@ format.
 
 ## Where the entries come from
 
-Seeded from the categorised reference lists in
-[`add/reference.md`](../add/reference.md) and
-[`11-references.md`](../11-references.md), limited for now to entries with
-a confirmed author list, venue, year, and link (DOI or arXiv ID). Entries
-in `add/reference.md` marked `[to confirm]` are not yet included — see
-[`TODO.md`](../TODO.md).
+Seeded from the categorised reference lists that used to live in
+`add/reference.md` and `11-references.md` — both removed in the 2026-09-11
+restructure, once their content was folded into per-page footnotes
+throughout the book (see [`log.md`](../log.md) for the restructure record).
+Limited to entries with a confirmed author list, venue, year, and link (DOI
+or arXiv ID); entries that were marked `[to confirm]` in those source files
+were not carried over.
 
 ## Adding a reference
 
@@ -39,5 +41,5 @@ in `add/reference.md` marked `[to confirm]` are not yet included — see
 
 Set in `_config.yml`'s `exclude:` list — it's a machine-readable data file
 for reference managers, not a page meant to be browsed. The rendered
-bibliography for readers lives in the chapter pages (as footnotes) and in
-[`11-references.md`](../11-references.md).
+bibliography for readers lives entirely in the section pages, as
+Markdown footnotes.

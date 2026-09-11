@@ -16,12 +16,17 @@ heading_anchors: true
 
 nav_sort: case_insensitive
 
+# just-the-docs Mermaid support, for the diagrams in Part landing pages
+# and the token-schema / temporal-hierarchy sections.
+mermaid:
+  version: "11.4.1"
+
 # Files kept in the repo but not built into the site
 exclude:
   - TODO.md
   - outline.md
   - log.md
-  - add/
+  - notes-concept-paper.md
   - references/fm-for-ues.bib
   - Gemfile
   - Gemfile.lock

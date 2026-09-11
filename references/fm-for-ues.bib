@@ -1,13 +1,15 @@
 % Foundation Models for Urban Energy Systems — bibliography
 %
 % Import into Zotero via File → Import. Citation keys match the footnote
-% names used in the textbook chapters (see CONTRIBUTING.md).
+% names used in the textbook section pages (see CONTRIBUTING.md).
 %
-% This is a starter set seeded from add/reference.md (§1–4), limited to
-% entries with confirmed authors/venue/year/link. Entries in add/reference.md
-% marked [to confirm] are not yet included — see TODO.md. Please add missing
-% fields via pull request or the "Suggest a reference" issue template rather
-% than guessing them.
+% Seeded from add/reference.md (§1-7, before that file was merged and
+% removed in the 2026-09-11 restructure) and 11-references.md (also removed
+% in that restructure, folded into per-page footnotes), limited to entries
+% with confirmed authors/venue/year/link. Entries marked [to confirm] in the
+% original source notes were not included. Please add missing fields via
+% pull request or the "Suggest a reference" issue template rather than
+% guessing them.
 
 @article{hamann2024foundation,
   title   = {Foundation models for the electric power grid},
@@ -146,4 +148,80 @@
   howpublished = {Hugging Face dataset},
   url   = {https://huggingface.co/datasets/ai-iot/EnergyBench},
   note  = {CC-BY-SA-4.0}
+}
+
+% --- Added 2026-09-11, restructure: seeded from add/reference.md §5-7 ---
+
+@article{geidl2007opf,
+  title   = {Optimal power flow of multiple energy carriers},
+  author  = {Geidl, Martin and Andersson, G{\"o}ran},
+  journal = {IEEE Transactions on Power Systems},
+  volume  = {22},
+  number  = {1},
+  pages   = {145--155},
+  year    = {2007},
+  doi     = {10.1109/TPWRS.2006.888988}
+}
+
+@article{geidl2007future,
+  title   = {Energy hubs for the future},
+  author  = {Geidl, Martin and Koeppel, Gaudenz and Favre-Perrod, Patrick and others},
+  journal = {IEEE Power and Energy Magazine},
+  volume  = {5},
+  number  = {1},
+  pages   = {24--30},
+  year    = {2007},
+  doi     = {10.1109/MPAE.2007.264850}
+}
+
+@article{geidl2006operational,
+  title   = {Operational and structural optimization of multi-carrier energy systems},
+  author  = {Geidl, Martin and Andersson, G{\"o}ran},
+  journal = {European Transactions on Electrical Power},
+  volume  = {16},
+  number  = {5},
+  pages   = {463--477},
+  year    = {2006},
+  doi     = {10.1002/etep.113}
+}
+
+@article{zimmerman2011matpower,
+  title   = {MATPOWER: Steady-state operations, planning, and analysis tools for power systems research and education},
+  author  = {Zimmerman, Ray D. and Murillo-S{\'a}nchez, Carlos E. and Thomas, Robert J.},
+  journal = {IEEE Transactions on Power Systems},
+  volume  = {26},
+  number  = {1},
+  pages   = {12--19},
+  year    = {2011},
+  doi     = {10.1109/TPWRS.2010.2051168}
+}
+
+@article{brown2018pypsa,
+  title   = {PyPSA: Python for power system analysis},
+  author  = {Brown, Tom and H{\"o}rsch, Jonas and Schlachtberger, David},
+  journal = {Journal of Open Research Software},
+  volume  = {6},
+  number  = {1},
+  pages   = {4},
+  year    = {2018},
+  doi     = {10.5334/jors.188}
+}
+
+@misc{babaeinejadsarookolaee2019pglib,
+  title  = {The power grid library for benchmarking AC optimal power flow algorithms},
+  author = {Babaeinejadsarookolaee, Sogol and Birchfield, Adam and Christie, Richard D. and others},
+  year   = {2019},
+  eprint = {1908.02788},
+  archivePrefix = {arXiv}
+}
+
+@article{orehounig2022cesarp,
+  title   = {CESAR-P: A dynamic urban building energy simulation tool},
+  author  = {Orehounig, Kristina and Fierz, Leonie and Allan, Jack and others},
+  journal = {Journal of Open Source Software},
+  volume  = {7},
+  number  = {78},
+  pages   = {4261},
+  year    = {2022},
+  doi     = {10.21105/joss.04261}
 }

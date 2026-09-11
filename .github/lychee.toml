@@ -10,22 +10,24 @@ retry_wait_time = 10
 # unrecognised bots; a normal browser UA avoids false positives.
 user_agent = "Mozilla/5.0 (compatible; lychee link checker)"
 
-# Reference-style links inside <details> blocks in add/reference.md, and
-# relative .html links between chapters (Jekyll pages, not raw .md), are
-# both valid but easy to get false-positives on in a Markdown-only check.
+# Relative .html links between section pages (Jekyll pages, not raw .md)
+# are valid but easy to get false-positives on in a Markdown-only check.
 accept = [200, 429]
 
 # Known-flaky or intentionally-unfetchable targets.
 exclude = [
   # localhost / internal notes referenced conceptually, not real links
   '^http://localhost',
-  # Internal cross-chapter links use the *rendered* Jekyll path
-  # (chapter-name.html) since that's what works once the site is built,
-  # but lychee runs against the raw .md source, where no such file
-  # exists on disk. These are relative, extensionless-source links by
-  # design — skip them here; a site-wide check of the built HTML output
-  # would be the correct way to validate these instead.
-  '^[a-zA-Z0-9_-]+\.html(#.*)?$',
+  # Internal cross-page links use the *rendered* Jekyll path (e.g.
+  # 2-3-choosing-a-basic-element.html, or a relative path into another
+  # Part's folder like ../part-4-directions/4-9-1-methods-tier1.html)
+  # since that's what works once the site is built, but lychee runs
+  # against the raw .md source, where no such file exists on disk.
+  # These are relative, extensionless-source links by design — skip them
+  # here; a site-wide check of the built HTML output would be the correct
+  # way to validate these instead. Matches any relative (non-http, not
+  # starting with /) path ending in .html, with an optional #fragment.
+  '^(?:\.\./)*[a-zA-Z0-9_/-]+\.html(#[^\s)]*)?$',
 ]
 
 # Skip files that aren't meant to be checked as published pages.
