@@ -43,7 +43,7 @@ Three things converged only recently:
 
 What has **not** converged yet is a basic element for multi-carrier urban energy systems analogous to the grid bus — that gap, and what to do about it, is the subject of [Chapter 4](../chapter-4-directions/index.html) and [Chapter 5](../chapter-5-case-study/index.html).
 
-[^hamann2024foundation]: Hamann, H. F., Gjorgiev, B., Brunschwiler, T. et al. (2024). Foundation models for the electric power grid. *Joule*, 8(12), 3245–3258. https://doi.org/10.1016/j.joule.2024.11.002
+[^hamann2024foundation]: Hamann, H. F., Gjorgiev, B., Brunschwiler, T. et al. (2024). [Foundation models for the electric power grid](https://doi.org/10.1016/j.joule.2024.11.002). *Joule*, 8(12), 3245–3258.
 
 ---
 [← Previous: 1.4 Directions the Field Is Moving](1-4-fm-field-directions.html) · [Next: 1.6 Scope of This Book →](1-6-scope-and-how-to-use.html)

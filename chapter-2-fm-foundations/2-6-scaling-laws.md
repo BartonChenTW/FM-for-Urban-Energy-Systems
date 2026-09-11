@@ -56,7 +56,7 @@ A scaling law is an empirical relationship between a model's size (or its traini
 
 Time-series foundation models are a directly relevant recent example: Toto 2.0 is reported as the first time-series model to demonstrate classic scaling-law behaviour.[^cohen2025toto] That this needed demonstrating, and was notable when it was, is itself informative — scaling behaviour in a new data modality is a finding, not an assumption.
 
-[^cohen2025toto]: Cohen, B., Khwaja, E., Doubli, Y. et al. (2025). This time is different: An observability perspective on time series foundation models. arXiv:2505.14766.
+[^cohen2025toto]: Cohen, B., Khwaja, E., Doubli, Y. et al. (2025). [This time is different: An observability perspective on time series foundation models](https://arxiv.org/abs/2505.14766). arXiv:2505.14766.
 
 ---
 [← Previous: 2.5 What Does Not Exist Yet](2-5-what-does-not-exist-yet.html) · [Next: 2.7 Architectures →](2-7-architectures.html)

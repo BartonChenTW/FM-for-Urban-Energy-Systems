@@ -28,9 +28,9 @@ A family that does not target energy systems directly but is a plausible input e
 {: .note }
 This sub-section is intentionally brief: geospatial/weather FMs are adjacent rather than core to this book's subject, and the honest state of the art here is "plausible encoder, no demonstrated fusion with UES data yet."
 
-[^lam2023graphcast]: Lam, R., Sanchez-Gonzalez, A., Willson, M. et al. (2023). Learning skillful medium-range global weather forecasting. *Science*, 382(6677), 1416–1421. https://doi.org/10.1126/science.adi2336
-[^jakubik2023prithvi]: Jakubik, J., Roy, S., Phillips, C. E. et al. (2023). Foundation models for generalist geospatial artificial intelligence. arXiv:2310.18660.
-[^szwarcman2024prithvieo2]: Szwarcman, D., Roy, S., Fraccaro, P. et al. (2024). Prithvi-EO-2.0: A versatile multi-temporal foundation model for Earth observation applications. arXiv:2412.02732.
+[^lam2023graphcast]: Lam, R., Sanchez-Gonzalez, A., Willson, M. et al. (2023). [Learning skillful medium-range global weather forecasting](https://doi.org/10.1126/science.adi2336). *Science*, 382(6677), 1416–1421.
+[^jakubik2023prithvi]: Jakubik, J., Roy, S., Phillips, C. E. et al. (2023). [Foundation models for generalist geospatial artificial intelligence](https://arxiv.org/abs/2310.18660). arXiv:2310.18660.
+[^szwarcman2024prithvieo2]: Szwarcman, D., Roy, S., Fraccaro, P. et al. (2024). [Prithvi-EO-2.0: A versatile multi-temporal foundation model for Earth observation applications](https://arxiv.org/abs/2412.02732). arXiv:2412.02732.
 
 ---
 [← Previous: 2.4.4 Tabular FMs](2-4-4-tabular-fms.html) · [Next: 2.5 What Does Not Exist Yet →](2-5-what-does-not-exist-yet.html)

@@ -74,6 +74,18 @@ exclude = [
   # 3-3-energy-hub-formalism.md for the citations these belong to.
   '^https://doi\.org/10\.1126/science\.adi2336$',
   '^https://doi\.org/10\.1002/etep\.112$',
+  # The PyPSA reference. Its publisher host
+  # (openresearchsoftware.metajnl.com, which this DOI redirects to) is
+  # unreliable specifically from GitHub's runners: it has failed CI
+  # twice in two different ways -- first as a TIMEOUT (which
+  # accept_timeouts above now forgives), then as "Connection failed",
+  # which is a different error class and is not covered by
+  # accept_timeouts. It resolves fine locally and by hand.
+  # Verified real via the Crossref API before excluding: Brown, Hörsch
+  # & Schlachtberger (2018), "PyPSA: Python for Power System Analysis",
+  # Journal of Open Research Software 6(1):4 -- exactly what
+  # chapter-3-sim-opt/3-6-tool-landscape.md cites.
+  '^https://doi\.org/10\.5334/jors\.188$',
 ]
 
 # Skip files that aren't meant to be checked as published pages.

@@ -31,7 +31,7 @@ The defining feature versus classical power systems: **multiple carriers, couple
 
 The **energy hub** abstraction is the standard formalism: a node where multiple input carriers are converted, stored and dispatched to meet multiple output demands, represented by a coupling matrix mapping inputs to outputs.[^geidl2007opf] Most district-scale optimisation models are, structurally, either a single hub or a network of hubs.
 
-[^geidl2007opf]: Geidl, M. and Andersson, G. (2007). Optimal power flow of multiple energy carriers. *IEEE Transactions on Power Systems*, 22(1), 145–155. https://doi.org/10.1109/TPWRS.2006.888988
+[^geidl2007opf]: Geidl, M. and Andersson, G. (2007). [Optimal power flow of multiple energy carriers](https://doi.org/10.1109/TPWRS.2006.888988). *IEEE Transactions on Power Systems*, 22(1), 145–155.
 
 ---
 [← Back to Chapter 1](index.html) · [Next: 1.2 FMs in One Page →](1-2-fms-in-one-page.html)
