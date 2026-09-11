@@ -27,7 +27,7 @@ Before roughly 2018, a typical machine learning project trained one model for on
 
 Since around 2018, a different recipe has taken over large parts of AI: train one very large model on a very large, broad collection of data, using a self-supervised objective — the model learns by predicting parts of its own input that were deliberately hidden from it (a missing word, a masked patch, the next value in a sequence), rather than needing a human to label every example. This pretraining run is expensive, but it is done once. The resulting model is then **adapted** — with a small amount of additional data, or sometimes none at all — to many different downstream uses.
 
-This is the **foundation model** (FM) recipe: broad pretraining, transfer to new instances, reuse across many tasks. GPT-class language models, image models like SAM, and weather models like GraphCast are all instances of the same underlying pattern applied to different kinds of data.
+This is the **foundation model** (FM) recipe: broad pretraining, transfer to new instances, reuse across many tasks. GPT-class language models, image models like SAM,[^kirillov2023sam] and weather models like GraphCast[^lam2023graphcast] are all instances of the same underlying pattern applied to different kinds of data.
 
 ## Why this matters for a domain expert
 
@@ -41,6 +41,9 @@ Three consequences follow directly from the recipe, and they are the reason this
 
 {: .note }
 This page deliberately does not cover architectures (transformers, graph neural networks, etc.) or training mechanics (self-supervision, fine-tuning, scaling laws) — those are covered properly, with more precision, in [Chapter 2](../chapter-2-fm-foundations/index.html) once the domain motivation is established.
+
+[^kirillov2023sam]: Kirillov, A., Mintun, E., Ravi, N. et al. (2023). Segment Anything. *ICCV 2023*. [arXiv:2304.02643](https://arxiv.org/abs/2304.02643)
+[^lam2023graphcast]: Lam, R., Sanchez-Gonzalez, A., Willson, M. et al. (2023). Learning skillful medium-range global weather forecasting. *Science*, 382(6677), 1416–1421. https://doi.org/10.1126/science.adi2336
 
 ---
 [← Previous: 1.1 What a UES Contains](1-1-what-is-ues.html) · [Next: 1.3 The FM Landscape by Domain →](1-3-fm-landscape-by-domain.html)
