@@ -64,9 +64,9 @@ Four mechanisms, in increasing order of strength and cost:
 
 Notes from practice:
 
-- Bounded decoders and physics-informed regularisation preserve operational feasibility in GNN-based OPF, but residual violations may still require post-processing for strict feasibility.
+- Bounded decoders and physics-informed regularisation preserve operational feasibility in GNN-based OPF, but residual violations may still require post-processing for strict feasibility.[^wen2026lghgnn-410]
 - Physics-informed approaches embedding multi-physics dynamic constraints in the loss enable physically consistent solutions with limited training samples and improve accuracy under sparse data — a valuable property when simulator runs are expensive.
-- Feasibility-restoration layers are an active area; repair layers for networks with hard constraints are being developed as reusable components.
+- Feasibility-restoration layers are an active area; repair layers for networks with hard constraints are being developed as reusable components.[^chu2026snarenet]
 
 **Recommendation for multi-carrier energy systems:** architectural enforcement of per-carrier energy balance (make the outputs sum correctly by construction), plus soft penalties for inequality constraints, plus a projection step if hard feasibility is required downstream. See also [§5.6](../chapter-5-case-study/5-6-physics-loss.html) for the physics-loss inventory attached to this book's specific case-study representation.
 
@@ -121,6 +121,9 @@ The same logic applies to papers. For a novel concept with limited empirical res
 The anchored format matches the budget reality above: it does not depend on a trained model existing by the deadline, and it fails gracefully — if training slips, the paper still stands; if it succeeds, a results subsection is added without restructuring.
 
 **Audience translation is part of the format choice.** Writing FM concepts for a domain audience means introducing every ML idea through its domain counterpart ([§2.3.1](../chapter-2-fm-foundations/2-3-choosing-a-basic-element.html#231-the-criterion) does this with discretisation), avoiding unexplained vocabulary, and including a short glossary. The test: if a paragraph requires ML background to parse, rewrite it.
+
+[^wen2026lghgnn-410]: Wen, A., Wen, B., Li, J., Xu, J. (2026). [Heterogeneous graph neural network with local and global message passing for AC-optimal power flow solutions](https://doi.org/10.3390/asi9010018). *Applied System Innovation*, 9(1), 18.
+[^chu2026snarenet]: Chu, Y.-C., Boukas, A., Udell, M. (2026). [SnareNet: Flexible repair layers for neural networks with hard constraints](https://arxiv.org/abs/2602.09317). arXiv:2602.09317
 
 ---
 [← Previous: 4.9.3 Tier 3](4-9-3-methods-tier3.html) · [Back to Chapter 4](index.html) · [Next: Chapter 5 — Case Study →](../chapter-5-case-study/index.html)
