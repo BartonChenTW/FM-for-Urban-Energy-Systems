@@ -1,0 +1,31 @@
+---
+title: "1.4 Directions the FM Field Is Moving"
+parent: Part 1 — Background
+nav_order: 4
+status: draft
+last_reviewed: 2026-09-11
+---
+
+# 1.4 Directions the Foundation Model Field Is Moving
+{: .no_toc }
+
+{% include page-status.html %}
+
+1. TOC
+{:toc}
+
+---
+
+- **Time series has matured and converged on decoder-only architectures.** By 2026 the major families — Google TimesFM 2.5, Amazon Chronos-2, Salesforce Moirai 2.0, Datadog Toto 2.0, IBM Granite, Nixtla TimeGPT-2, NVIDIA NV-Tesseract — have all been refreshed. The practical question has shifted from "how do I train a model" to "which pretrained model do I select." See [§2.4.1](../part-2-fm-foundations/2-4-1-time-series-fms.html).
+- **Scaling laws now hold for time series.** Toto 2.0 is the first time-series model where classic scaling behaviour (more data and parameters → predictably better performance) has been demonstrated.[^cohen2025toto] This matters because scaling laws are what justified the FM bet in language in the first place — see [§2.6](../part-2-fm-foundations/2-6-scaling-laws.html).
+- **Multimodality is becoming the default**, not a special case. Cross-attending heterogeneous inputs is now standard design.
+- **Physics-informed / hybrid FMs** are emerging wherever domain equations are known. GridFM-v0's masked-reconstruction-plus-power-flow-loss is the archetype in power systems — see [§2.4.2](../part-2-fm-foundations/2-4-2-power-grid-fms.html).
+- **Efficiency is a parallel axis to scale.** IBM's TTM family runs at 1–5 M parameters and is CPU-capable[^ekambaram2024ttm] — the opposite bet from billion-parameter LLMs.
+- **Synthetic and simulation-grounded pretraining** is rising wherever real annotated data is scarce or privacy-constrained.
+- **Graph FMs are a genuinely new frontier**, less mature than sequence FMs. GridFM-v0 sits at this edge.
+
+[^cohen2025toto]: Cohen, B., Khwaja, E., Doubli, Y. et al. (2025). This time is different: An observability perspective on time series foundation models. arXiv:2505.14766.
+[^ekambaram2024ttm]: Ekambaram, V., Jati, A., Dayama, P. et al. (2024). Tiny Time Mixers (TTMs): Fast pre-trained models for enhanced zero/few-shot forecasting. NeurIPS 2024. arXiv:2401.03955.
+
+---
+[← Previous: 1.3 The FM Landscape by Domain](1-3-fm-landscape-by-domain.html) · [Next: 1.5 Why UES, Why Now →](1-5-why-ues-why-now.html)

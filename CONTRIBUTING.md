@@ -22,12 +22,16 @@ model (FM) communities.
 
 - Written for a reader who knows urban energy systems well and machine
   learning less well (or vice versa) — define jargon on first use, or link
-  to [`appendix-a-glossary.md`](appendix-a-glossary.md).
+  to [`appendices/a-glossary.md`](appendices/a-glossary.md).
 - Cite claims. See the references workflow below.
 - British English spelling, matching the existing text (e.g. "optimisation",
   "modelling").
-- Each page has Jekyll front matter (`title`, `nav_order`). Match the
-  existing pattern when adding a page — see any chapter file for the format.
+- Each page has Jekyll front matter (`title`, `parent`, `nav_order`, and for
+  section pages also `status` and `last_reviewed`, rendered via
+  `{% include page-status.html %}`). Match the existing pattern when adding
+  a page — see any section file for the format. Parts are folders with an
+  `index.md` (`has_children: true`) and one file per numbered section
+  (`parent:` pointing back to the Part's title).
 
 ## References workflow
 

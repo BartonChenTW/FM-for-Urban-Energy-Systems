@@ -6,7 +6,7 @@ labels: correction
 ---
 
 **Page / section**
-Which file or section? (e.g. `04-fm-landscape.md`, "7.2 Power-grid foundation models")
+Which file or section? (e.g. `part-2-fm-foundations/2-4-2-power-grid-fms.md`, "2.4.2 Power-grid foundation models")
 
 **What's wrong**
 Describe the error or what's outdated.

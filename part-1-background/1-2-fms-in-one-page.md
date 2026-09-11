@@ -1,0 +1,46 @@
+---
+title: "1.2 FMs in One Page"
+parent: Part 1 — Background
+nav_order: 2
+status: draft
+last_reviewed: 2026-09-11
+---
+
+# 1.2 FMs in One Page: What Changed in AI Since ~2018
+{: .no_toc }
+
+{% include page-status.html %}
+
+A short, non-technical orientation for readers with no machine learning background. If you already know what a foundation model is, skip to [§1.3](1-3-fm-landscape-by-domain.html).
+{: .fs-6 .fw-300 }
+
+1. TOC
+{:toc}
+
+---
+
+## The old way: one model per task
+
+Before roughly 2018, a typical machine learning project trained one model for one narrow task, on data collected for that task alone. A load-forecasting model for building A was trained on building A's meter data and was not expected to say anything useful about building B. If the task changed even slightly — a new building, a new horizon, a new set of inputs — the model was retrained, often from a blank slate.
+
+## The new way: pretrain once, adapt many times
+
+Since around 2018, a different recipe has taken over large parts of AI: train one very large model on a very large, broad collection of data, using a self-supervised objective — the model learns by predicting parts of its own input that were deliberately hidden from it (a missing word, a masked patch, the next value in a sequence), rather than needing a human to label every example. This pretraining run is expensive, but it is done once. The resulting model is then **adapted** — with a small amount of additional data, or sometimes none at all — to many different downstream uses.
+
+This is the **foundation model** (FM) recipe: broad pretraining, transfer to new instances, reuse across many tasks. GPT-class language models, image models like SAM, and weather models like GraphCast are all instances of the same underlying pattern applied to different kinds of data.
+
+## Why this matters for a domain expert
+
+Three consequences follow directly from the recipe, and they are the reason this book exists:
+
+1. **The unit of learning changes.** A foundation model needs something to pretrain on that is plentiful, comparable across instances, and assembles into whole systems — a *basic element*. Text has the word/subword token; images have the patch; power grids have the bus. Finding (or failing to find) this element for a given domain is the central technical question, not an implementation detail. [Part 2](../part-2-fm-foundations/index.html) develops this in full.
+
+2. **The economics change.** A model trained once and reused across many future studies has a fundamentally different cost structure from a bespoke model trained and discarded within a single project. This is the amortisation argument that recurs throughout the book (see [§3.4](../part-3-sim-opt/3-4-dispatch-optimisation.html) and [Part 5](../part-5-case-study/index.html)).
+
+3. **What "understanding" means changes.** A foundation model does not need to be told the equations governing a system to produce useful output — it infers regularities from data. This is powerful where equations are known but expensive to solve (a plausible substitute), and risky where the model must extrapolate beyond what it has seen, because nothing forces it to respect physics it was never shown examples of. [§15](../part-5-case-study/5-6-physics-loss.html) and related sections return to how this risk is managed.
+
+{: .note }
+This page deliberately does not cover architectures (transformers, graph neural networks, etc.) or training mechanics (self-supervision, fine-tuning, scaling laws) — those are covered properly, with more precision, in [Part 2](../part-2-fm-foundations/index.html) once the domain motivation is established.
+
+---
+[← Previous: 1.1 What a UES Contains](1-1-what-is-ues.html) · [Next: 1.3 The FM Landscape by Domain →](1-3-fm-landscape-by-domain.html)
