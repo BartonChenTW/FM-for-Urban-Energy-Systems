@@ -32,7 +32,7 @@ Each row is a distinct *task* with a distinct mathematical structure — and fou
 
 ## Notes on each task's structure
 
-**T1 — Demand modelling.** Bottom-up physics-based Urban Building Energy Modelling (UBEM) simulates buildings at large scale from geometry, envelope and usage archetypes. Reviews of these tools compare them along required inputs, reported outputs, workflow, applicability and intended users — and note that choosing a tool while balancing complexity, accuracy, usability and computing needs remains a genuine challenge for users. A persistent and important weakness: occupant behaviour. Inappropriate choice of occupant-behaviour model can lead to oversized district energy systems, over-investment and low operational efficiency — one of the main causes of the building "performance gap".
+**T1 — Demand modelling.** Bottom-up physics-based Urban Building Energy Modelling (UBEM) simulates buildings at large scale from geometry, envelope and usage archetypes. Reviews of these tools compare them along required inputs, reported outputs, workflow, applicability and intended users — and note that choosing a tool while balancing complexity, accuracy, usability and computing needs remains a genuine challenge for users.[^ferrando2020ubem] A persistent and important weakness: occupant behaviour. Inappropriate choice of occupant-behaviour model can lead to oversized district energy systems, over-investment and low operational efficiency — one of the main causes of the building "performance gap".[^doma2023occupant]
 
 {: .note }
 T1 also carries a representation problem the other tasks do not, because the decomposition of a building into elements is itself a modelling choice rather than a property of the object. See [§2.3 Choosing a Basic Element](../chapter-2-fm-foundations/2-3-choosing-a-basic-element.html).
@@ -42,6 +42,9 @@ T1 also carries a representation problem the other tasks do not, because the dec
 **T5 — Design/sizing.** The literature consolidates around deterministic programming (LP/MILP/MINLP) for transparent, reproducible co-optimisation of capacity investment and operational dispatch, alongside evolutionary and swarm methods for nonconvex, mixed-variable, simulation-driven sizing problems — while flagging the need for rigorous constraint handling and transparent reporting of computational budgets. Hybrid strategies that integrate global search with exact dispatch solvers, surrogate-assisted learning, decomposition and control–co-design are identified as the most promising direction. Treated in [§3.5](3-5-design-sizing-optimisation.html).
 
 **T6 — Networks.** Electrical (AC/DC power flow), thermal (hydraulics + heat transfer, with transport delays), gas (pressure dynamics). These are where genuine PDE/DAE structure lives, and where runtimes explode.
+
+[^ferrando2020ubem]: Ferrando, M., Causone, F., Hong, T., Chen, Y. (2020). [Urban building energy modeling (UBEM) tools: A state-of-the-art review of bottom-up physics-based approaches](https://arxiv.org/abs/2103.01761). *Sustainable Cities and Society*, 62, 102408.
+[^doma2023occupant]: Doma, A., Ouf, M. (2023). [Modelling occupant behaviour for urban scale simulation: Review of available approaches and tools](https://doi.org/10.1007/s12273-022-0939-3). *Building Simulation*, 16, 169–184.
 
 ---
 [← Back to Chapter 3](index.html) · [Next: 3.2 Building Energy Simulation →](3-2-building-simulation-data.html)

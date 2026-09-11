@@ -27,13 +27,16 @@ This distinction matters because it changes what the model needs to represent. T
 
 ## Relationship to the rest of this book
 
-Generative design for energy systems is the design-space analogue of what diffusion and other generative models already do for images and molecules: propose plausible new instances rather than only score given ones. No existing energy foundation model surveyed in [§2.4](../chapter-2-fm-foundations/2-4-existing-fms-relevant-to-energy.html) attempts this for multi-carrier hub design; it is a genuinely open direction rather than an established one.
+Generative design for energy systems is the design-space analogue of what diffusion and other generative models already do for images[^ho2020ddpm] and molecules:[^hoogeboom2022edm] propose plausible new instances rather than only score given ones. No existing energy foundation model surveyed in [§2.4](../chapter-2-fm-foundations/2-4-existing-fms-relevant-to-energy.html) attempts this for multi-carrier hub design; it is a genuinely open direction rather than an established one.
 
 ## What would need to be added here
 
 - A survey of generative design approaches in adjacent engineering domains (structural design, mechanical design) that could plausibly transfer.
 - Discussion of feasibility: a generatively-proposed design still needs the feasibility guarantees discussed in [§4.9.3](4-9-3-methods-tier3.html) — a generated device combination that cannot actually be built or connected is not useful.
 - How this direction would interact with the decision-space representation problem in [G9](../chapter-6-outlook/6-1-open-gaps.html#g9), which is currently unsolved rather than merely under-explored.
+
+[^ho2020ddpm]: Ho, J., Jain, A., Abbeel, P. (2020). [Denoising diffusion probabilistic models](https://arxiv.org/abs/2006.11239). NeurIPS 2020. arXiv:2006.11239
+[^hoogeboom2022edm]: Hoogeboom, E., Satorras, V. G., Vignac, C., Welling, M. (2022). [Equivariant diffusion for molecule generation in 3D](https://arxiv.org/abs/2203.17003). ICML 2022. arXiv:2203.17003
 
 ---
 [← Previous: 4.3 LLM Agents for Simulation](4-3-llm-agents-for-simulation.html) · [Next: 4.5 Screening: Which Sub-Fields Fit the FM Pattern →](4-5-screening-fields.html)

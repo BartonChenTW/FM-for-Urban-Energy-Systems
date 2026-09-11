@@ -88,7 +88,7 @@ Run this **before** committing to a large data-generation campaign or an archite
 
 **Step 2 — Zero-shot TSFM evaluation.** Chronos-2, Moirai 2.0, TimesFM 2.5, TabPFN-TS. Prioritise the covariate-aware ones — Chronos-2 and TabPFN-TS model target and covariates jointly; TabPFN-TS is the one that also ingests static metadata, which maps onto your installed capacities. (See [§2.4.4](../chapter-2-fm-foundations/2-4-4-tabular-fms.html) — a tabular FM here is also the strongest available instance of the R1 baseline, so this step doubles as part of Step 1. See also [§4.1](4-1-off-the-shelf-fms.html) for this same move applied to pure forecasting.)
 
-**Step 3 — Fine-tune.** Chronos-2 ships in five sizes from 9M to 710M parameters, so this fits a modest compute budget comfortably. Lag-Llama is architecturally identical to LLMs, so LoRA/PEFT tooling applies directly (see [§2.6](../chapter-2-fm-foundations/2-6-scaling-laws.html)) and it is the easiest to fine-tune on a large set of proprietary series.
+**Step 3 — Fine-tune.** Chronos-2 ships in five sizes from 9M to 710M parameters, so this fits a modest compute budget comfortably. Lag-Llama[^rasul2023laglama] is architecturally identical to LLMs, so LoRA/PEFT tooling applies directly (see [§2.6](../chapter-2-fm-foundations/2-6-scaling-laws.html)) and it is the easiest to fine-tune on a large set of proprietary series.
 
 **Step 4 — Custom architecture, only if steps 1–3 leave a gap you can characterise.**
 
@@ -103,6 +103,8 @@ Off-the-shelf models will fail on three things. These are the contribution:
 **(c) Long horizons.** All these models degrade beyond their trained maximum prediction length. Seasonal storage requires exactly the horizons where they are weakest.
 
 **Bonus result available cheaply:** because your covariate–target relationship is *physically determined*, you can rigorously test how well these models actually exploit covariates — an open question the community has flagged as under-verified. That is a clean, publishable side contribution.
+
+[^rasul2023laglama]: Rasul, K., Ashok, A., Williams, A. R. et al. (2023). [Lag-Llama: Towards foundation models for probabilistic time series forecasting](https://arxiv.org/abs/2310.08278). arXiv:2310.08278
 
 ---
 [← Previous: 4.9 Methods Landing](4-9-methods-landing.html) · [Next: 4.9.2 Tier 2 →](4-9-2-methods-tier2.html)
