@@ -41,9 +41,9 @@ The coupling-matrix formalism is designed for solvers: it specifies constraints 
 
 This is the classical-formalism counterpart to the representation problem developed at length in [§5.2](../chapter-5-case-study/5-2-representation-problem.html) — the energy hub gives humans and solvers a working formalism; it does not by itself give a learned model a basic element.
 
-[^geidl2007opf]: Geidl, M. and Andersson, G. (2007). Optimal power flow of multiple energy carriers. *IEEE Transactions on Power Systems*, 22(1), 145–155. https://doi.org/10.1109/TPWRS.2006.888988
-[^geidl2007future]: Geidl, M., Koeppel, G., Favre-Perrod, P. et al. (2007). Energy hubs for the future. *IEEE Power and Energy Magazine*, 5(1), 24–30. https://doi.org/10.1109/MPAE.2007.264850
-[^geidl2006operational]: Geidl, M. and Andersson, G. (2006). Operational and structural optimization of multi-carrier energy systems. *European Transactions on Electrical Power*, 16(5), 463–477. https://doi.org/10.1002/etep.112
+[^geidl2007opf]: Geidl, M. and Andersson, G. (2007). [Optimal power flow of multiple energy carriers](https://doi.org/10.1109/TPWRS.2006.888988). *IEEE Transactions on Power Systems*, 22(1), 145–155.
+[^geidl2007future]: Geidl, M., Koeppel, G., Favre-Perrod, P. et al. (2007). [Energy hubs for the future](https://doi.org/10.1109/MPAE.2007.264850). *IEEE Power and Energy Magazine*, 5(1), 24–30.
+[^geidl2006operational]: Geidl, M. and Andersson, G. (2006). [Operational and structural optimization of multi-carrier energy systems](https://doi.org/10.1002/etep.112). *European Transactions on Electrical Power*, 16(5), 463–477.
 
 ---
 [← Previous: 3.2 Building Simulation](3-2-building-simulation-data.html) · [Next: 3.4 Operation / Dispatch Optimisation →](3-4-dispatch-optimisation.html)

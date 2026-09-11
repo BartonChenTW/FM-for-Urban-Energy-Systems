@@ -68,9 +68,9 @@ Next-step prediction, masked reconstruction, supervised imitation of a solver, o
 
 What counts as success, and on what held-out distribution? For physical systems this must include **feasibility and conservation**, not only error.
 
-[^unistruct2024]: Representation Learning of Structured Data for Medical Foundation Models (UniStruct). arXiv:2410.13351.
-[^earthcoupling2026]: Toward AI-Enabled Earth System Coupling. arXiv:2604.03289.
-[^woo2024moirai]: Woo, G., Liu, C., Kumar, A. et al. (2024). Unified training of universal time series forecasting transformers. ICML 2024. arXiv:2402.02592.
+[^unistruct2024]: [Representation Learning of Structured Data for Medical Foundation Models (UniStruct)](https://arxiv.org/abs/2410.13351). arXiv:2410.13351.
+[^earthcoupling2026]: [Toward AI-Enabled Earth System Coupling](https://arxiv.org/abs/2604.03289). arXiv:2604.03289.
+[^woo2024moirai]: Woo, G., Liu, C., Kumar, A. et al. (2024). [Unified training of universal time series forecasting transformers](https://arxiv.org/abs/2402.02592). ICML 2024. arXiv:2402.02592.
 
 ---
 [← Previous: 2.1 What Defines an FM](2-1-what-defines-an-fm.html) · [Next: 2.3 Choosing a Basic Element →](2-3-choosing-a-basic-element.html)

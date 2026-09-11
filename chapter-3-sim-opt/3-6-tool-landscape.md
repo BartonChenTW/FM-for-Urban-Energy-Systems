@@ -38,8 +38,8 @@ A second and more consequential way to read this table is **by the basic element
 
 MATPOWER — steady-state operations, planning and analysis tools for power systems research and education — is repeatedly invoked in this book as "the tool that made the bus a shared, learnable object."[^zimmerman2011matpower] No equivalent tool exists yet for multi-carrier hubs; this is the "MATPOWER moment" gap named in [§5.1](../chapter-5-case-study/5-1-roadmap.html)'s roadmap.
 
-[^zimmerman2011matpower]: Zimmerman, R. D., Murillo-Sánchez, C. E., Thomas, R. J. (2011). MATPOWER: Steady-state operations, planning, and analysis tools for power systems research and education. *IEEE Transactions on Power Systems*, 26(1), 12–19. https://doi.org/10.1109/TPWRS.2010.2051168
-[^brown2018pypsa]: Brown, T., Hörsch, J., Schlachtberger, D. (2018). PyPSA: Python for power system analysis. *Journal of Open Research Software*, 6(1), 4. https://doi.org/10.5334/jors.188
+[^zimmerman2011matpower]: Zimmerman, R. D., Murillo-Sánchez, C. E., Thomas, R. J. (2011). [MATPOWER: Steady-state operations, planning, and analysis tools for power systems research and education](https://doi.org/10.1109/TPWRS.2010.2051168). *IEEE Transactions on Power Systems*, 26(1), 12–19.
+[^brown2018pypsa]: Brown, T., Hörsch, J., Schlachtberger, D. (2018). [PyPSA: Python for power system analysis](https://doi.org/10.5334/jors.188). *Journal of Open Research Software*, 6(1), 4.
 
 ---
 [← Previous: 3.5 Design and Sizing Optimisation](3-5-design-sizing-optimisation.html) · [Next: 3.7 Schemas and Data Standards →](3-7-schemas-and-standards.html)

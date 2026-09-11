@@ -24,8 +24,8 @@ last_reviewed: 2026-09-11
 - **Synthetic and simulation-grounded pretraining** is rising wherever real annotated data is scarce or privacy-constrained.
 - **Graph FMs are a genuinely new frontier**, less mature than sequence FMs. GridFM-v0 sits at this edge.
 
-[^cohen2025toto]: Cohen, B., Khwaja, E., Doubli, Y. et al. (2025). This time is different: An observability perspective on time series foundation models. arXiv:2505.14766.
-[^ekambaram2024ttm]: Ekambaram, V., Jati, A., Dayama, P. et al. (2024). Tiny Time Mixers (TTMs): Fast pre-trained models for enhanced zero/few-shot forecasting. NeurIPS 2024. arXiv:2401.03955.
+[^cohen2025toto]: Cohen, B., Khwaja, E., Doubli, Y. et al. (2025). [This time is different: An observability perspective on time series foundation models](https://arxiv.org/abs/2505.14766). arXiv:2505.14766.
+[^ekambaram2024ttm]: Ekambaram, V., Jati, A., Dayama, P. et al. (2024). [Tiny Time Mixers (TTMs): Fast pre-trained models for enhanced zero/few-shot forecasting](https://arxiv.org/abs/2401.03955). NeurIPS 2024. arXiv:2401.03955.
 
 ---
 [← Previous: 1.3 The FM Landscape by Domain](1-3-fm-landscape-by-domain.html) · [Next: 1.5 Why UES, Why Now →](1-5-why-ues-why-now.html)
