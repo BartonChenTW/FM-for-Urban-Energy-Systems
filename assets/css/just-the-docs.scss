@@ -4,15 +4,23 @@
 
 @import "{{ site.theme }}";
 
-// The site title ("Foundation Models for Urban Energy Systems") is long
-// enough to wrap onto a second line in the sidebar header at normal
-// widths. just-the-docs' default site-title block uses a fixed line-height
-// tuned for a single short line, which clips the ascenders (e.g. the top
-// of "F" in "Foundation") on a wrapped second line. Give it room to wrap
-// cleanly instead.
+// The site title ("Foundation Models for Urban Energy Systems") wraps to
+// several lines in the sidebar at normal widths. The first fix here
+// (just .site-title's line-height/padding) wasn't enough on its own: the
+// parent .site-header keeps a fixed height sized for a short, single-line
+// title, so the wrapped title still gets clipped at the top even once it
+// has room to wrap internally. Both the header and the title need to be
+// allowed to grow.
+.site-header {
+  height: auto;
+  min-height: 6rem;
+}
+
 .site-title {
-  line-height: 1.3;
+  display: block;
+  height: auto;
+  line-height: 1.25;
   padding-top: 1rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.75rem;
   white-space: normal;
 }
