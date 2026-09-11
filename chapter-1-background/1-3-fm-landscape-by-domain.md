@@ -16,11 +16,13 @@ last_reviewed: 2026-09-11
 
 ---
 
+The term and the underlying pattern were named and surveyed at length by the Stanford Center for Research on Foundation Models — the reference point for the "broad pretraining, transfer, multi-task" definition used throughout this book (see [§2.1](../chapter-2-fm-foundations/2-1-what-defines-an-fm.html)).[^bommasani2021foundation] The table below is this book's own snapshot of where that pattern has and hasn't landed, organised by domain rather than by architecture. The "what they learn" column describes the models named in the row to its left — its citation is theirs, not a separate claim; rows with no citation (Language, Robotics/embodied) name a class of model rather than one specific paper, and the description is a characterisation of the class rather than a reported result.
+
 | Domain | Representative models | What they learn |
 | :--- | :--- | :--- |
 | Language | GPT-5-class, Gemini, Claude, Llama | Sequences of text tokens |
-| Vision | ViT (Vision Transformer), SAM/SAM2 (Segment Anything Model),[^kirillov2023sam] DINO (self-**DI**stillation with **NO** labels) | Sequences of image patches |
-| Multimodal | Unified generation-and-understanding models | Cross-modal alignment across text, image, audio |
+| Vision | ViT (Vision Transformer), SAM/SAM2 (Segment Anything Model),[^kirillov2023sam] DINO (self-**DI**stillation with **NO** labels)[^caron2021dino] | Sequences of image patches |
+| Multimodal | Unified generation-and-understanding models, e.g. Janus[^wu2024janus] | Cross-modal alignment across text, image, audio |
 | Weather / climate | GraphCast,[^lam2023graphcast] FengWu,[^chen2023fengwu] Aurora[^bodnar2025aurora] | Physical fields on a spatiotemporal grid |
 | Geospatial / remote sensing | Prithvi,[^jakubik2023prithvi] ScaleMAE,[^reed2023scalemae] Granite-GFM | Satellite pixels and patches over space and time |
 | Time series | TimesFM,[^das2024timesfm] Chronos,[^ansari2024chronos] Moirai,[^woo2024moirai] TTM (Tiny Time Mixers),[^ekambaram2024ttm] Toto,[^cohen2025toto] TimeGPT[^garza2023timegpt] | Numeric sequences |
@@ -49,6 +51,9 @@ Two families are directly relevant to this book and get dedicated treatment: [ti
 [^garza2023timegpt]: Garza, A., Challu, C., Mergenthaler-Canseco, M. (2023). [TimeGPT-1](https://arxiv.org/abs/2310.03589). arXiv:2310.03589
 [^hamann2024foundation]: Hamann, H. F., Gjorgiev, B., Brunschwiler, T. et al. (2024). [Foundation models for the electric power grid](https://doi.org/10.1016/j.joule.2024.11.002). *Joule*, 8(12), 3245–3258.
 [^naeem2026llmpower]: Naeem, Z., Cirrincione, G., Favuzza, S. et al. (2026). [Large language models in power systems: From grid operations to home energy management](https://doi.org/10.3390/en19163769). *Energies*, 19(16), 3769.
+[^caron2021dino]: Caron, M., Touvron, H., Misra, I. et al. (2021). [Emerging properties in self-supervised vision transformers](https://arxiv.org/abs/2104.14294). *ICCV 2021*. arXiv:2104.14294
+[^wu2024janus]: Wu, C., Chen, X., Wu, Z. et al. (2024). [Janus: Decoupling visual encoding for unified multimodal understanding and generation](https://arxiv.org/abs/2410.13848). arXiv:2410.13848
+[^bommasani2021foundation]: Bommasani, R., Hudson, D. A., Adeli, E. et al. (2021). [On the opportunities and risks of foundation models](https://arxiv.org/abs/2108.07258). arXiv:2108.07258. The paper that coined "foundation model"; defines it as a model "trained on broad data at scale" and "adaptable to a wide range of downstream tasks" — closely paralleling this book's own three-property definition in [§2.1](../chapter-2-fm-foundations/2-1-what-defines-an-fm.html).
 
 ---
 [← Previous: 1.2 FMs in One Page](1-2-fms-in-one-page.html) · [Next: 1.4 Directions the Field Is Moving →](1-4-fm-field-directions.html)
