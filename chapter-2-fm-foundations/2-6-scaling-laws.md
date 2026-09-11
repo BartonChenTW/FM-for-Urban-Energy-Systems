@@ -44,19 +44,21 @@ Fine-tuning takes a pretrained model and adjusts it — usually with a comparati
 Two adaptation regimes worth distinguishing:
 
 - **Full fine-tuning** updates all of the model's parameters. Most accurate, most compute, and the risk of forgetting general capability while over-fitting to the small local set.
-- **Parameter-efficient fine-tuning (PEFT)**, such as LoRA, updates only a small additional set of parameters while freezing the pretrained ones. Cheaper, faster, and the usual practical choice at modest compute budgets — see [§4.9.1](../chapter-4-directions/4-9-1-methods-tier1.html) for where this is recommended in this book's build paths.
+- **Parameter-efficient fine-tuning (PEFT)**, such as LoRA (Low-Rank Adaptation, which injects small trainable rank-decomposition matrices into each layer instead of updating the full weight matrices),[^hu2021lora] updates only a small additional set of parameters while freezing the pretrained ones. Cheaper, faster, and the usual practical choice at modest compute budgets — see [§4.9.1](../chapter-4-directions/4-9-1-methods-tier1.html) for where this is recommended in this book's build paths.
 
 **Zero-shot** means using the pretrained model on a new instance with no additional training at all — the strongest form of transfer, and the first thing worth trying before any fine-tuning effort (see [§4.1](../chapter-4-directions/4-1-off-the-shelf-fms.html)).
 
 ## Scaling laws
 
-A scaling law is an empirical relationship between a model's size (or its training data volume, or the compute spent training it) and its performance — typically, error falls off as a predictable power-law function of these quantities as they grow. Scaling laws were first established clearly for language models and are part of what justified the foundation-model bet there: if performance improves predictably with scale, spending more compute is a reliable way to buy capability.
+A scaling law is an empirical relationship between a model's size (or its training data volume, or the compute spent training it) and its performance — typically, error falls off as a predictable power-law function of these quantities as they grow. Scaling laws were first established clearly for language models, where cross-entropy loss was shown to scale as a power law with model size, dataset size, and training compute across more than seven orders of magnitude,[^kaplan2020scaling] and are part of what justified the foundation-model bet there: if performance improves predictably with scale, spending more compute is a reliable way to buy capability.
 
 **Why this matters for judging any FM proposal, including the case study in [Chapter 5](../chapter-5-case-study/index.html):** a scaling law is not guaranteed to hold in a new domain. It has to be demonstrated, and demonstrating it early is cheap relative to committing to a large model. [§4.9.3 (Tier 3)](../chapter-4-directions/4-9-3-methods-tier3.html) recommends running a small scaling study — training on 10², 10³, 10⁴ samples and fitting the error curve — before committing to a large data-generation campaign, for exactly this reason.
 
-Time-series foundation models are a directly relevant recent example: Toto 2.0 is reported as the first time-series model to demonstrate classic scaling-law behaviour.[^cohen2025toto] That this needed demonstrating, and was notable when it was, is itself informative — scaling behaviour in a new data modality is a finding, not an assumption.
+Time-series foundation models are a directly relevant recent example: Toto 2.0 is reported as the first time-series model to demonstrate classic scaling-law behaviour, with a single training recipe producing reliable forecast-quality improvements across a 625× range of model size (4M to 2.5B parameters).[^khwaja2026toto2] That this needed demonstrating, and was notable when it was, is itself informative — scaling behaviour in a new data modality is a finding, not an assumption.
 
-[^cohen2025toto]: Cohen, B., Khwaja, E., Doubli, Y. et al. (2025). [This time is different: An observability perspective on time series foundation models](https://arxiv.org/abs/2505.14766). arXiv:2505.14766.
+[^khwaja2026toto2]: Khwaja, E., Lettieri, C., Woo, G. et al. (2026). [Toto 2.0: Time series forecasting enters the scaling era](https://arxiv.org/abs/2605.20119). arXiv:2605.20119.
+[^kaplan2020scaling]: Kaplan, J., McCandlish, S., Henighan, T. et al. (2020). [Scaling laws for neural language models](https://arxiv.org/abs/2001.08361). arXiv:2001.08361.
+[^hu2021lora]: Hu, E. J., Shen, Y., Wallis, P. et al. (2021). [LoRA: Low-rank adaptation of large language models](https://arxiv.org/abs/2106.09685). arXiv:2106.09685.
 
 ---
 [← Previous: 2.5 What Does Not Exist Yet](2-5-what-does-not-exist-yet.html) · [Next: 2.7 Architectures →](2-7-architectures.html)

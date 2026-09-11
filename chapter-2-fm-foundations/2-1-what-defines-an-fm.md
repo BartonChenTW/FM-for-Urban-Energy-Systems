@@ -17,7 +17,7 @@ redirect_from: /02-fm-fundamentals.html
 
 ---
 
-Three properties, all required:
+The term was coined to describe models trained on broad data at scale that can be adapted to a wide range of downstream tasks.[^bommasani2021opportunities] This book uses three properties, all required, as the operational version of that idea:
 
 1. **Pretrained on a broad distribution**, not on the single instance it will be used on.
 2. **Transfers** — it is useful on instances it has never seen, zero-shot or with light adaptation.
@@ -29,6 +29,8 @@ Both are approximation. The difference is entirely in the training distribution 
 
 {: .note }
 Property 3 is the one most often quietly dropped. A model that amortises one solve for one task family is a transferable surrogate, not a foundation model. This matters for framing: calling it an FM without multi-task evidence invites exactly the criticism that is hardest to answer.
+
+[^bommasani2021opportunities]: Bommasani, R., Hudson, D. A., Adeli, E. et al. (2021). [On the opportunities and risks of foundation models](https://arxiv.org/abs/2108.07258). arXiv:2108.07258.
 
 ---
 [← Back to Chapter 2](index.html) · [Next: 2.2 The Five Design Decisions →](2-2-five-design-decisions.html)
