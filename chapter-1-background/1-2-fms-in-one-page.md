@@ -43,7 +43,7 @@ Three consequences follow directly from the recipe, and they are the reason this
 This page deliberately does not cover architectures (transformers, graph neural networks, etc.) or training mechanics (self-supervision, fine-tuning, scaling laws) — those are covered properly, with more precision, in [Chapter 2](../chapter-2-fm-foundations/index.html) once the domain motivation is established.
 
 [^kirillov2023sam]: Kirillov, A., Mintun, E., Ravi, N. et al. (2023). Segment Anything. *ICCV 2023*. [arXiv:2304.02643](https://arxiv.org/abs/2304.02643)
-[^lam2023graphcast]: Lam, R., Sanchez-Gonzalez, A., Willson, M. et al. (2023). Learning skillful medium-range global weather forecasting. *Science*, 382(6677), 1416–1421. https://doi.org/10.1126/science.adi2336
+[^lam2023graphcast]: Lam, R., Sanchez-Gonzalez, A., Willson, M. et al. (2023). [Learning skillful medium-range global weather forecasting](https://doi.org/10.1126/science.adi2336). *Science*, 382(6677), 1416–1421.
 
 ---
 [← Previous: 1.1 What a UES Contains](1-1-what-is-ues.html) · [Next: 1.3 The FM Landscape by Domain →](1-3-fm-landscape-by-domain.html)
