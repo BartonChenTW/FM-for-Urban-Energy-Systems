@@ -110,6 +110,14 @@ exclude = [
   #   10.2172/1967948 -- Parker et al. 2023, ComStock reference
   #     documentation (section 4.2)
   '^https://doi\.org/10\.2172/',
+  # This book's own GitHub Pages URL. Checked from README.md and
+  # CONTRIBUTING.md. GitHub's runners sometimes get "Connection reset
+  # by peer" (os error 104) against bartonchentw.github.io even though
+  # the site is up in a browser -- same class of flake as the PyPSA
+  # publisher host above (not a timeout, so accept_timeouts does not
+  # forgive it). Verified the URL is live before excluding. Do not
+  # treat this as a licence to skip other github.io links.
+  '^https://bartonchentw\.github\.io/FM4UES/?$',
 ]
 
 # Skip files that aren't meant to be checked as published pages.
