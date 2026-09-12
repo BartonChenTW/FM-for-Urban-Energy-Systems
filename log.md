@@ -6,6 +6,20 @@ Record structural changes, content merges, renamed or moved pages, and decisions
 
 ---
 
+## 2026-09-13 (light/dark mode toggle)
+
+Barton asked to enable light/dark mode. just-the-docs already ships both color schemes (`assets/css/just-the-docs-light.css`/`-dark.css`, `color_scheme: light|dark` in `_config.yml`) and a `jtd.setTheme(name)` runtime function, but no user-facing toggle button, no click handler, and no persistence across page loads.
+
+Researched the theme's actual mechanism directly rather than assuming (this session had already gotten one Sass convention wrong earlier by assuming instead of checking): fetched the theme's own `assets/js/just-the-docs.js` source and confirmed `jtd.setTheme`/`jtd.getTheme` work by reading/rewriting the `href` of the page's first `[rel="stylesheet"]` link — there's no `data-theme` attribute or CSS custom-property switch involved. Also confirmed, by fetching `_includes/components/sidebar.html` and `components/footer.html` directly, that `nav_footer_custom.html` (the documented include point for this kind of control) renders **twice** on every page — once in the desktop sidebar, once in a `d-md-none` mobile-only footer copy present in the DOM even on desktop. Using `id="..."` there would have caused duplicate-ID bugs; built the toggle with classes and DOM-scoped `querySelector` instead, and guarded the click-listener registration with a `window` flag so the listener (whose script tag also renders twice) doesn't attach twice and double-toggle on click.
+
+Added:
+- `_includes/nav_footer_custom.html`: the toggle button (sun/moon SVG icons, inline, no external asset) plus its script — reads/writes `localStorage.theme`, calls `jtd.setTheme`, syncs both DOM copies of the button.
+- `_includes/head_custom.html`: a new script block (added before the existing external-links-in-new-tab script already there) that re-applies a saved `localStorage.theme` preference by rewriting the stylesheet `href`, as early as this include runs, so a returning visitor's preference applies before paint rather than flashing the site's default light scheme first. Not perfectly flicker-free without forking the theme's own `head.html` (this include runs after the theme's stylesheet `<link>` tags, confirmed by fetching `head.html`) -- judged not worth it for this.
+
+`_config.yml`'s `color_scheme: light` is unchanged and correct to leave as-is: it sets the build-time default for a first-time visitor; dark is a client-side, opt-in preference on top of that.
+
+**Not verified in this environment** -- no Ruby/Jekyll/browser here, so this could not be built and clicked. What was verified: Liquid/JS bracket balance in both new files, and that the full existing site (footnotes, bib, lychee link check) still passes untouched. The real test is the next Pages build plus Barton clicking the button.
+
 ## 2026-09-12 (diagram critique + a quick correctness fix)
 
 Barton flagged that the six chapter-landing Mermaid diagrams (added 2026-09-11) aren't very helpful. Added `diagram-ideas.md` (private, excluded from the build): a page-by-page critique — every one of the six is a flowchart of the table of contents (section-number boxes, "comes after" arrows), which duplicates the sidebar nav and the "In this chapter" table rather than showing anything the reader couldn't already see. Proposes concrete replacements per chapter (e.g. Chapter 4's landing diagram → the actual screening funnel/2×2 instead of a TOC; Chapter 5's → promote the bipartite-graph worked example already in §5.4). Flags §5.5's temporal-hierarchy diagram and §5.1's roadmap as the two that already work, as a model for what "good" looks like here.

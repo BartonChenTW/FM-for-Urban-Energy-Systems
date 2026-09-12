@@ -1,0 +1,98 @@
+{%- comment -%}
+  Light/dark mode toggle button. just-the-docs ships both color schemes
+  (assets/css/just-the-docs-light.css and -dark.css, confirmed present in
+  the theme's own assets/css/) and a jtd.setTheme(name) function to swap
+  between them at runtime, but no button, no click handler, and no saved
+  preference across page loads -- all three are added here.
+
+  jtd.setTheme works by rewriting the href of the page's first
+  [rel="stylesheet"] link to assets/css/just-the-docs-<name>.css
+  (confirmed against the theme's own source). It does not track or
+  persist the current theme itself, so this handler reads the current
+  state via jtd.getTheme(), flips it, calls jtd.setTheme() with the new
+  value, and writes it to localStorage so head_custom.html's script can
+  re-apply it on the next page load before paint.
+
+  Placed in nav_footer_custom.html per the theme's documented convention
+  for this include. IMPORTANT: the theme renders this include TWICE on
+  every page -- once in the desktop sidebar (components/sidebar.html)
+  and once in the mobile-only footer (components/footer.html, class
+  d-md-none, present in the DOM but display:none above the md
+  breakpoint) -- confirmed by reading both include files directly. Using
+  id="..." here would create duplicate IDs and break
+  document.getElementById in whichever copy isn't first in the DOM, so
+  every element below is selected by class within its own button's
+  subtree instead.
+{%- endcomment -%}
+<button class="js-toggle-dark-mode fm-theme-toggle" type="button" aria-label="Toggle dark mode" style="display: flex; align-items: center; gap: 0.4em; background: none; border: 1px solid currentColor; opacity: 0.75; border-radius: 4px; padding: 0.35em 0.6em; margin-top: 0.5em; font-size: 0.8em; cursor: pointer; color: inherit;">
+  <svg class="fm-theme-toggle-icon-light" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="12" cy="12" r="4"></circle>
+    <line x1="12" y1="2" x2="12" y2="4"></line>
+    <line x1="12" y1="20" x2="12" y2="22"></line>
+    <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line>
+    <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line>
+    <line x1="2" y1="12" x2="4" y2="12"></line>
+    <line x1="20" y1="12" x2="22" y2="12"></line>
+    <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line>
+    <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line>
+  </svg>
+  <svg class="fm-theme-toggle-icon-dark" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+  <span class="fm-theme-toggle-label">Dark mode</span>
+</button>
+<script>
+  (function () {
+    if (typeof jtd === 'undefined') { return; }
+
+    function currentTheme() {
+      var saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (e) { /* ignore */ }
+      // Fall back to jtd.getTheme() (the scheme this page actually built
+      // with) if nothing has been saved yet -- e.g. a first-time visitor
+      // on a site whose _config.yml default is color_scheme: light.
+      return saved || (typeof jtd.getTheme === 'function' ? jtd.getTheme() : 'light');
+    }
+
+    function updateButton(button, theme) {
+      var isDark = theme === 'dark';
+      var lightIcon = button.querySelector('.fm-theme-toggle-icon-light');
+      var darkIcon = button.querySelector('.fm-theme-toggle-icon-dark');
+      var label = button.querySelector('.fm-theme-toggle-label');
+      if (lightIcon) { lightIcon.style.display = isDark ? 'none' : ''; }
+      if (darkIcon) { darkIcon.style.display = isDark ? '' : 'none'; }
+      if (label) { label.textContent = isDark ? 'Light mode' : 'Dark mode'; }
+      button.setAttribute('aria-pressed', String(isDark));
+    }
+
+    // This include -- <script> tag and all -- renders twice per page
+    // (desktop sidebar + mobile footer copy), so this whole IIFE runs
+    // twice. Sync both button instances' icon/label state each time
+    // (cheap, order-independent), but only attach the click listener
+    // once: two independent listeners on the same click would call
+    // jtd.setTheme twice in a row and toggle the theme back to where it
+    // started. window.fmThemeToggleBound survives across both script
+    // executions (they share the same window), unlike a variable scoped
+    // inside this IIFE.
+    var buttons = document.querySelectorAll('.fm-theme-toggle');
+    var theme = currentTheme();
+    for (var i = 0; i < buttons.length; i++) {
+      updateButton(buttons[i], theme);
+    }
+
+    if (window.fmThemeToggleBound) { return; }
+    window.fmThemeToggleBound = true;
+
+    document.addEventListener('click', function (event) {
+      var button = event.target.closest ? event.target.closest('.fm-theme-toggle') : null;
+      if (!button) { return; }
+      var next = currentTheme() === 'dark' ? 'light' : 'dark';
+      jtd.setTheme(next);
+      try { localStorage.setItem('theme', next); } catch (e) { /* ignore */ }
+      var all = document.querySelectorAll('.fm-theme-toggle');
+      for (var j = 0; j < all.length; j++) {
+        updateButton(all[j], next);
+      }
+    });
+  })();
+</script>

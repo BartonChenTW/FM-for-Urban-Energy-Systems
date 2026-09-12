@@ -1,4 +1,38 @@
 {%- comment -%}
+  Apply the reader's saved light/dark preference before the page paints.
+
+  just-the-docs' color scheme is a static build-time choice (_config.yml's
+  color_scheme) rendered as a single <link rel="stylesheet"> pointing at
+  assets/css/just-the-docs-<scheme>.css. jtd.setTheme(name) (used by the
+  toggle button in nav_footer_custom.html) works by rewriting that link's
+  href at runtime -- there is no data-theme attribute or CSS variable
+  switch involved, confirmed against the theme's own source
+  (jtd.setTheme selects the first [rel="stylesheet"] link and points its
+  href at "assets/css/just-the-docs-" + theme + ".css").
+
+  This script does the same href swap, but as early as this include runs
+  (near the end of <head>, after the theme's own stylesheet links are
+  already in the DOM -- confirmed against the theme's head.html) rather
+  than waiting for the toggle button's click handler, so a returning
+  visitor's saved preference applies before first paint instead of after
+  a visible flash of the site's default light scheme. It can't be
+  perfectly flicker-free without restructuring the theme's own head.html,
+  which isn't worth forking just for this.
+{%- endcomment -%}
+<script>
+  (function () {
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) { /* ignore */ }
+    if (saved === 'light' || saved === 'dark') {
+      var link = document.querySelector('link[rel="stylesheet"]');
+      if (link) {
+        link.setAttribute('href', '{{ "assets/css/just-the-docs-" | relative_url }}' + saved + '.css');
+      }
+    }
+  })();
+</script>
+
+{%- comment -%}
   Open external links in a new tab, leaving internal navigation alone.
 
   Why a script rather than editing every link: the book's citations are
