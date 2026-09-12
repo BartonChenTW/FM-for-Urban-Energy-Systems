@@ -3,7 +3,7 @@ title: Chapter 4 — Directions for FMs in UES
 nav_order: 5
 has_children: true
 status: draft
-last_reviewed: 2026-09-11
+last_reviewed: 2026-09-13
 ---
 
 # Chapter 4 — Directions for Foundation Models in Urban Energy Systems
@@ -18,20 +18,22 @@ A broad, neutral survey of which problems a foundation model could plausibly lea
 **Chapter 4 vs Chapter 5.** This chapter surveys the field broadly: what's already usable off the shelf, which sub-fields pass a screening test, and the methods landscape by problem tier. It does not commit to one representation or one roadmap. [Chapter 5](../chapter-5-case-study/index.html) does exactly that, for one specific case — a foundation model for multi-carrier energy hubs.
 
 ```mermaid
-flowchart TD
-    A["4.1 Off-the-shelf FMs"] --> H["4.5-4.7 Screening"]
-    B["4.2 FMs for building stocks"] --> H
-    C["4.3 LLM agents for simulation"] --> H
-    D["4.4 Generative design"] --> H
-    H --> I["4.8 Candidate sub-fields"]
-    I --> J["4.9 Methods by problem class"]
-    J --> K["4.9.1 Tier 1: single hub"]
-    J --> L["4.9.2 Tier 2: multi-hub"]
-    J --> M["4.9.3 Tier 3: design/sizing"]
-    K --> N["4.10 Building it"]
-    L --> N
-    M --> N
+quadrantChart
+    title Screening UES sub-fields: data x basic element
+    x-axis Scarce public data --> Abundant public data
+    y-axis No clean basic element --> Clean basic element
+    quadrant-1 Already FM-ready
+    quadrant-2 Element exists; generate the data
+    quadrant-3 Not yet FM-ready
+    quadrant-4 Data exists; fusion missing
+    Load FM: [0.88, 0.90]
+    Grid FM: [0.74, 0.84]
+    Weather / microclimate: [0.78, 0.46]
+    UBEM: [0.22, 0.62]
+    Multi-carrier hub: [0.12, 0.16]
 ```
+
+The chapter's argument is this screen, not the reading order. **Load** and **grid** already have a natural basic element and public (or physically simulated) pretraining data. **UBEM** has an element but is data-generation-bottlenecked. **Weather / microclimate** has abundant geospatial data that is not yet fused with load or grid. The **multi-carrier hub** fails both axes — which is why it is the [Chapter 5](../chapter-5-case-study/index.html) case study rather than a near-term product. Task-level verdicts (T1–T9, including T4 dispatch as the strongest candidate) are in [§4.6](4-6-screening-tasks.html) and [§4.7](4-7-reading-the-screen.html).
 
 ## In this chapter
 
