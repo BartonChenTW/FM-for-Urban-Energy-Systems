@@ -17,7 +17,7 @@ last_reviewed: 2026-09-11
 
 ---
 
-The power-systems community has already made the move this document is about. Grid foundation models for benchmarking AC-OPF surrogate learning now exist,[^hamann2024foundation] alongside work on scaling laws of machine learning for optimal power flow, and work on data scaling laws for multi-task electric energy system intelligence with limited fine-tuning.
+The power-systems community has already made the move this document is about. Grid foundation models for benchmarking AC-OPF surrogate learning now exist,[^hamann2024foundation] alongside work on scaling laws of machine learning for optimal power flow,[^liu2026scalingopf] and work on data scaling laws for multi-task electric energy system intelligence with limited fine-tuning.[^liu2025multitask]
 
 **This is the single most important reference point.** It means (a) the concept is validated, and (b) the analogous work for urban *multi-carrier* systems is conspicuously absent — which is the gap this book's [case study in Chapter 5](../chapter-5-case-study/index.html) addresses.
 
@@ -34,6 +34,8 @@ Read together with [§2.3.1](2-3-choosing-a-basic-element.html#231-the-criterion
 [^puech2025gridfmdatakit]: Puech, A., Mazzonelli, M., Cintas, C. et al. (2025). [gridfm-datakit-v1: A Python library for scalable and realistic power flow and OPF data generation](https://arxiv.org/abs/2512.14658). arXiv:2512.14658.
 [^varbella2024powergraph]: Varbella, A., Amara, K., Gjorgiev, B. et al. (2024). [PowerGraph: A power grid benchmark dataset for graph neural networks](https://doi.org/10.6084/m9.figshare.22820534). NeurIPS 2024, Datasets and Benchmarks Track.
 [^babaeinejadsarookolaee2019pglib]: Babaeinejadsarookolaee, S., Birchfield, A., Christie, R. D. et al. (2019). [The power grid library for benchmarking AC optimal power flow algorithms](https://arxiv.org/abs/1908.02788). arXiv:1908.02788.
+[^liu2026scalingopf]: Liu, X., He, X., Chen, Y. (2026). [Scaling laws of machine learning for optimal power flow](https://arxiv.org/abs/2601.02706). arXiv:2601.02706.
+[^liu2025multitask]: Liu, S., Dong, L., Tian, C., Xie, L. (2025). [Unlocking multi-task electric energy system intelligence: Data scaling laws and performance with limited fine-tuning](https://arxiv.org/abs/2503.20040). arXiv:2503.20040.
 
 ---
 [← Previous: 2.4.1 Time-Series FMs](2-4-1-time-series-fms.html) · [Next: 2.4.3 Clean-Energy Forecasting FMs →](2-4-3-clean-energy-forecasting-fms.html)

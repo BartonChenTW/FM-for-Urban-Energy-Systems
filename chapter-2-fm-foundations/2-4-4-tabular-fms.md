@@ -41,7 +41,7 @@ It therefore scores better than any element in §2.3.2(a)–(d), which is why it
 
 **Documented limitations to design around.**
 
-- Highly sensitive to distribution shift; incorporating source data with a differing distribution can cause negative transfer and degrade target accuracy. This maps directly onto the held-out-typology test (P3 in [§2.3.3](2-3-choosing-a-basic-element.html#233-representation-strategies-and-testable-predictions)).
+- Highly sensitive to distribution shift; incorporating source data with a differing distribution can cause negative transfer and degrade target accuracy.[^lin2026contextconstrained] This maps directly onto the held-out-typology test (P3 in [§2.3.3](2-3-choosing-a-basic-element.html#233-representation-strategies-and-testable-predictions)).
 - Bounded by maximum context size. TabPFN-2.5 scaled in-context learning to roughly 50,000 samples and 2,000 features;[^priorlabs2025tabpfn25] TabICL uses a two-stage, column-then-row attention architecture reaching around 500,000 samples on affordable hardware.[^qu2025tabicl]
 
 **Predicted profile:** strong on scalar outcomes (P1), structurally weak on hourly profiles (P2), questionable across unseen typologies (P3). Tabular FMs are best understood as **R1 with a foundation model attached** — which makes them a more informative baseline than gradient boosting alone.
@@ -50,6 +50,7 @@ It therefore scores better than any element in §2.3.2(a)–(d), which is why it
 [^hollmann2025tabpfnv2]: Hollmann, N., Müller, S., Purucker, L. et al. (2025). [Accurate predictions on small data with a tabular foundation model](https://doi.org/10.1038/s41586-024-08328-6). *Nature*, 637, 319–326.
 [^priorlabs2025tabpfn25]: Prior Labs (2025). [TabPFN-2.5: Advancing the state of the art in tabular foundation models](https://arxiv.org/abs/2511.08667). arXiv:2511.08667
 [^qu2025tabicl]: Qu, J., Holzmüller, D., Varoquaux, G., Le Morvan, M. (2025). [TabICL: A tabular foundation model for in-context learning on large data](https://arxiv.org/abs/2502.05564). ICML 2025. arXiv:2502.05564
+[^lin2026contextconstrained]: Lin, Y., Li, S. (2026). [Context-constrained transfer learning for tabular foundation models via data distillation](https://arxiv.org/abs/2607.04809). arXiv:2607.04809
 
 ---
 [← Previous: 2.4.3 Clean-Energy Forecasting FMs](2-4-3-clean-energy-forecasting-fms.html) · [Next: 2.4.5 Geospatial & Weather FMs →](2-4-5-geospatial-weather-fms.html)

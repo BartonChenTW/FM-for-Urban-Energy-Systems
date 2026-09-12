@@ -29,7 +29,7 @@ Not exhaustive, but covering the families you will meet. The point of this table
 | **Power system** | pandapower, PowerModels, MATPOWER,[^zimmerman2011matpower] PyPSA[^brown2018pypsa] | T4, T6 | bus/line-resolved states |
 | **Co-simulation** | FMI/FMU, mosaik, HELICS | cross-task | coupled trajectories |
 
-Tool reviews in this space distinguish **integrated** approaches (one solver, one formulation) from **co-simulation** approaches (separate sub-models exchanging data) — a distinction that matters for foundation models, because integrated tools produce coherent single-object outputs while co-simulation produces multiple loosely-coupled streams.
+A taxonomic review of co-simulation practice for buildings and smart energy systems surveys exactly this landscape of coupled, tool-spanning approaches.[^alfalouji2023cosimulation] The distinction that matters for foundation models: **integrated** approaches (one solver, one formulation) produce coherent single-object outputs, while **co-simulation** approaches (separate sub-models exchanging data at a coupling interface) produce multiple loosely-coupled streams.
 
 {: .note }
 A second and more consequential way to read this table is **by the basic element each family commits to** — whole building, thermal zone, component, node/bus, or time series. That grouping, not the tool family, determines what a foundation model trained on the output can transfer. See [§2.3 Choosing a Basic Element](../chapter-2-fm-foundations/2-3-choosing-a-basic-element.html).
@@ -40,6 +40,7 @@ MATPOWER — steady-state operations, planning and analysis tools for power syst
 
 [^zimmerman2011matpower]: Zimmerman, R. D., Murillo-Sánchez, C. E., Thomas, R. J. (2011). [MATPOWER: Steady-state operations, planning, and analysis tools for power systems research and education](https://doi.org/10.1109/TPWRS.2010.2051168). *IEEE Transactions on Power Systems*, 26(1), 12–19.
 [^brown2018pypsa]: Brown, T., Hörsch, J., Schlachtberger, D. (2018). [PyPSA: Python for power system analysis](https://doi.org/10.5334/jors.188). *Journal of Open Research Software*, 6(1), 4.
+[^alfalouji2023cosimulation]: Alfalouji, Q., Schranz, T., Falay, B. et al. (2023). [Co-simulation for buildings and smart energy systems — A taxonomic review](https://doi.org/10.1016/j.simpat.2023.102770). *Simulation Modelling Practice and Theory*, 126, 102770.
 
 ---
 [← Previous: 3.5 Design and Sizing Optimisation](3-5-design-sizing-optimisation.html) · [Next: 3.7 Schemas and Data Standards →](3-7-schemas-and-standards.html)
