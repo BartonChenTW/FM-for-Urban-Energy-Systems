@@ -23,9 +23,9 @@ quadrantChart
     x-axis Scarce public data --> Abundant public data
     y-axis No clean basic element --> Clean basic element
     quadrant-1 Already FM-ready
-    quadrant-2 Element exists; generate the data
+    quadrant-2 "Element exists; generate the data"
     quadrant-3 Not yet FM-ready
-    quadrant-4 Data exists; fusion missing
+    quadrant-4 "Data exists; fusion missing"
     Load FM: [0.88, 0.90]
     Grid FM: [0.74, 0.84]
     Weather / microclimate: [0.78, 0.46]
