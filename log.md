@@ -6,6 +6,32 @@ Record structural changes, content merges, renamed or moved pages, and decisions
 
 ---
 
+## 2026-09-13 (new §2.9: UES-FM evaluation criteria)
+
+Barton shared a draft (originally from ChatGPT) proposing seven evaluation dimensions for judging UES-specific foundation-model claims — generality, transferability, task generality, physical consistency, data efficiency, uncertainty awareness, computational benefit — plus a benchmark table and a proposed alternative FM definition, and asked whether/where it fits.
+
+Assessment: the seven-dimension framework fills a real gap (§2.1 defines what an FM *is* generically; nothing previously said how to judge whether a *UES* FM proposal is good specifically), but the draft as supplied couldn't go in directly:
+- Two of its five references ([2], [4]) were cited with no author list, which this book's own sourcing standard treats as unverified.
+- It restated the §2.1 definition and proposed a second, competing "working definition" — redundant with, and in tension with, the one already in the book.
+- It assumed a direct line to "the case study in Chapter 5" that didn't exist yet.
+
+Verified all five references before using any of them (Crossref API for the four DOI-based ones, arXiv/search for the specific claims attributed to each):
+- Reference [2] ("Foundation models for the electric power grid", Joule 8(12):3245-3258) is exactly the paper already in this book's bib as `hamann2024foundation` -- reused that key rather than adding a duplicate.
+- [1] Bommasani et al. 2021 -- already cited in this book (§1.3, §2.1).
+- [3] Karniadakis et al. 2021, "Physics-informed machine learning", *Nature Reviews Physics* 3(6):422-440 -- real, confirmed via Crossref.
+- [4] Ma, Jiang, Hu & Chen (2025), "A review of physics-informed machine learning for building energy modeling", *Applied Energy* 381:125169 -- real, confirmed via Crossref; also independently verified the specific "physics-informed inputs/loss functions/architectural design/ensemble models" fourfold taxonomy is genuinely this paper's own categorisation (not [3]'s), via a direct search of its abstract, and attributed it correctly to [4] alone rather than to both papers jointly as the draft implied.
+- [5] Xu, Hu, Atamturktur, Chen & Wang (2025), "Systematic review on uncertainty quantification in machine learning-based building energy modeling", *Renewable and Sustainable Energy Reviews* 218:115817 -- real, confirmed via Crossref; the "aleatoric and epistemic uncertainty" claim and the "three primary sources: building operations, simulation tools, ML model" detail both independently confirmed via search of the paper's actual findings.
+
+Added, on branch `docs/ues-fm-evaluation-criteria`:
+- `chapter-2-fm-foundations/2-9-ues-fm-evaluation-criteria.md`: the seven dimensions, trimmed from the original draft -- no restated FM definition (already in §2.1), no duplicate surrogate/FM contrast (already in §2.8, cross-referenced instead), framed as sharpening the existing definition rather than replacing it. Cross-links out to where this book already touches each dimension (§5.6 physics loss, §3.2 data scarcity, §2.8/§3.4/§3.5 amortisation, Chapter 6 G4 benchmarks gap).
+- `chapter-5-case-study/5-8-risks.md` §5.8.3: a new sub-section applying the seven dimensions honestly to this book's own case study -- a table stating plainly which dimensions are demonstrated (none), designed-for-but-undemonstrated (generality, task generality), concretely addressed as a design target (physical consistency, computational benefit), or genuinely unaddressed (data efficiency, uncertainty awareness). This is the "bridge to Chapter 5" the original draft claimed but didn't yet have, since Chapter 5 didn't reference the framework before this change.
+- 3 new `.bib` entries (`karniadakis2021piml`, `ma2025piml_bem`, `xu2025uq_bem`); reused `hamann2024foundation` and `bommasani2021opportunities` rather than duplicating.
+- Updated `chapter-2-fm-foundations/index.md` (TOC table + diagram) and `2-8-surrogates-vs-fms.md`'s footer nav link for the new §2.9.
+
+Dropped from the original draft: the restated Bommasani definition, the proposed second "working definition" blockquote, and the generic benchmark table (replaced with one specific to this book's actual case study rather than a hypothetical generic one).
+
+Verified locally: footnote ref/def integrity clean site-wide, 77 bib entries (74 -> 77), no duplicate keys, brace-balanced. 0 link-check errors, 127 OK.
+
 ## 2026-09-13 (light/dark mode toggle)
 
 Barton asked to enable light/dark mode. just-the-docs already ships both color schemes (`assets/css/just-the-docs-light.css`/`-dark.css`, `color_scheme: light|dark` in `_config.yml`) and a `jtd.setTheme(name)` runtime function, but no user-facing toggle button, no click handler, and no persistence across page loads.

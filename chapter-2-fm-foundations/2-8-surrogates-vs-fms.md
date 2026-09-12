@@ -48,4 +48,4 @@ The economic case for paying the higher upfront cost of foundation-model trainin
 The amortisation arithmetic only holds if the model actually transfers. Where the basic element fails the criterion in [§2.3.1](2-3-choosing-a-basic-element.html#231-the-criterion), what looks like a foundation model is a collection of memorised cases, and the payback never arrives — it is a surrogate with foundation-model marketing. Check the representation before running the amortisation calculation.
 
 ---
-[← Previous: 2.7 Architectures](2-7-architectures.html) · [Back to Chapter 2](index.html) · [Next: Chapter 3 — Simulation and Optimisation in UES →](../chapter-3-sim-opt/index.html)
+[← Previous: 2.7 Architectures](2-7-architectures.html) · [Back to Chapter 2](index.html) · [Next: 2.9 Evaluation Criteria for UES Foundation Models →](2-9-ues-fm-evaluation-criteria.html)

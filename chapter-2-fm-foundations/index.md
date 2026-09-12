@@ -23,6 +23,7 @@ flowchart TD
     F["2.6 Self-supervision, fine-tuning, scaling laws"] --> B
     G["2.7 Architectures: transformers, GNNs, neural operators"] --> B
     H["2.8 Surrogates vs foundation models"] --> A
+    H --> I["2.9 Evaluation criteria for UES FMs"]
 ```
 
 ## In this chapter
@@ -42,6 +43,7 @@ flowchart TD
 | 2.6 | [Self-supervised pretraining, fine-tuning, scaling laws](2-6-scaling-laws.html) | ML basics for readers without an ML background |
 | 2.7 | [Architectures: transformers, GNNs, neural operators](2-7-architectures.html) | ML basics, continued |
 | 2.8 | [Surrogates vs foundation models](2-8-surrogates-vs-fms.html) | The contrast UES readers already understand half of |
+| 2.9 | [Evaluation criteria for UES foundation models](2-9-ues-fm-evaluation-criteria.html) | Seven dimensions for judging a UES-FM proposal beyond the generic three-property test |
 
 ---
 [← Previous: Chapter 1 — Background](../chapter-1-background/index.html) · [Next: Chapter 3 — Simulation and Optimisation in UES →](../chapter-3-sim-opt/index.html)
