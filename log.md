@@ -6,6 +6,14 @@ Record structural changes, content merges, renamed or moved pages, and decisions
 
 ---
 
+## 2026-09-12 (diagram critique + a quick correctness fix)
+
+Barton flagged that the six chapter-landing Mermaid diagrams (added 2026-09-11) aren't very helpful. Added `diagram-ideas.md` (private, excluded from the build): a page-by-page critique — every one of the six is a flowchart of the table of contents (section-number boxes, "comes after" arrows), which duplicates the sidebar nav and the "In this chapter" table rather than showing anything the reader couldn't already see. Proposes concrete replacements per chapter (e.g. Chapter 4's landing diagram → the actual screening funnel/2×2 instead of a TOC; Chapter 5's → promote the bipartite-graph worked example already in §5.4). Flags §5.5's temporal-hierarchy diagram and §5.1's roadmap as the two that already work, as a model for what "good" looks like here.
+
+While reviewing, found and fixed a real bug independent of the redesign question: `chapter-4-directions/index.md`'s diagram used wrong section numbers (`4.9 Screening`, `4.10 Candidate sub-fields`, `4.11 Methods`, `4.12 Building it`) — the actual numbering (confirmed against the page's own "In this chapter" table, right below the diagram) is §4.5–4.7 (screening), §4.8 (candidate sub-fields), §4.9/4.9.1–3 (methods/tiers), §4.10 (building it). Corrected.
+
+Added a TODO item pointing at `diagram-ideas.md`, and excluded that file from the site build.
+
 ## 2026-09-11 (branch protection docs + site link)
 
 Barton turned on branch protection for `main` (require PR before merging, require the `lychee` link-check status check, block force-push/deletion, no bypass even for the owner) via the GitHub UI — I don't have `gh` CLI access in this environment, so this was applied by Barton directly, not by me.
