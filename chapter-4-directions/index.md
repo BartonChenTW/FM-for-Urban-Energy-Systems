@@ -19,16 +19,16 @@ A broad, neutral survey of which problems a foundation model could plausibly lea
 
 ```mermaid
 flowchart TD
-    A["4.1 Off-the-shelf FMs"] --> H["4.9 Screening"]
+    A["4.1 Off-the-shelf FMs"] --> H["4.5-4.7 Screening"]
     B["4.2 FMs for building stocks"] --> H
     C["4.3 LLM agents for simulation"] --> H
     D["4.4 Generative design"] --> H
-    H --> I["4.10 Candidate sub-fields"]
-    I --> J["4.11 Methods by problem class"]
-    J --> K["4.11.1 Tier 1: single hub"]
-    J --> L["4.11.2 Tier 2: multi-hub"]
-    J --> M["4.11.3 Tier 3: design/sizing"]
-    K --> N["4.12 Building it"]
+    H --> I["4.8 Candidate sub-fields"]
+    I --> J["4.9 Methods by problem class"]
+    J --> K["4.9.1 Tier 1: single hub"]
+    J --> L["4.9.2 Tier 2: multi-hub"]
+    J --> M["4.9.3 Tier 3: design/sizing"]
+    K --> N["4.10 Building it"]
     L --> N
     M --> N
 ```
