@@ -33,5 +33,21 @@ last_reviewed: 2026-09-11
 {: .note }
 These risks and open questions are deliberately kept separate from [Chapter 6's open gaps](../chapter-6-outlook/6-1-open-gaps.html), which are framed as research contributions available to the wider field. The items here are specific to this one case study's engineering choices, not general statements about what UES-FM research needs.
 
+## 5.8.3 Reading this proposal against the seven evaluation dimensions
+
+[§2.9](../chapter-2-fm-foundations/2-9-ues-fm-evaluation-criteria.html) sets out seven dimensions for judging any UES foundation-model claim. Applying them here, honestly, rather than only to a hypothetical future proposal:
+
+| Dimension | Where this case study stands |
+| :--- | :--- |
+| Generality | Designed for it — the token schema ([§5.5](5-5-token-schema.html)) and module decomposition ([§5.7](5-7-module-decomposition.html)) target dispatch, design and sizing together — but this is a design intent, not yet a demonstrated result. No task has been run. |
+| Transferability | The entire premise (see [§5.2](5-2-representation-problem.html)) — untested. Risk 5 above (*"a very expensive interpolator"*) is precisely the failure mode where this claim would not hold. |
+| Task generality | Same status as generality: designed for, not demonstrated. |
+| Physical consistency | Addressed directly by the physics loss in [§5.6](5-6-physics-loss.html) — the most concretely specified dimension of the seven, for this proposal. |
+| Data efficiency | Unaddressed. Risk 4 (*"no real data, ever"*) means this cannot even be measured against a real baseline yet, only against synthetic data's own generating assumptions. |
+| Uncertainty awareness | Not designed in. The `shadow_price` auxiliary head (unsettled question above) is the closest thing to it, and that is about supervision signal, not calibrated uncertainty. This is a genuine gap in the current proposal, not only a general field gap. |
+| Computational benefit | The whole roadmap ([§5.1](5-1-roadmap.html)) is staked on this, per the amortisation argument in [§3.5](../chapter-3-sim-opt/3-5-design-sizing-optimisation.html) — but, again, per risk 5, unproven until Phase 1 actually beats a tuned reduced-order model on held-out topologies.
+
+**The honest summary: two of seven dimensions (physical consistency, computational benefit as a design target) are concretely addressed; two (generality, task generality) are designed for but undemonstrated; three (transferability, data efficiency, uncertainty awareness) are either the central open bet of the whole programme or not yet addressed at all.** Any claim from this case study that it "is" a UES foundation model, rather than a proposal for one, should be read against this table, not against the roadmap's aspirations alone.
+
 ---
 [← Previous: 5.7 Module and Task Decomposition](5-7-module-decomposition.html) · [Back to Chapter 5](index.html) · [Next: Chapter 6 — Outlook →](../chapter-6-outlook/index.html)
