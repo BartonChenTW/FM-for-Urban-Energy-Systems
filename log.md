@@ -146,3 +146,19 @@ Reordered to oldest-first, with new entries appended at the bottom. Two branches
 Pure reordering — no entry content removed or altered, verified by diffing old and new content sorted, and by word count.
 
 Note on this branch's own history: the first attempt at this reordering was cut from a `main` that predated the §2.9 entry, so once §2.9 merged the branch conflicted across the whole file (one side had rewritten every line's position, the other had inserted a new section at the top). Rather than resolve that hunk-by-hunk, the branch was reset onto current `main` and the reordering redone against the nine-section content — same end state, no conflict.
+
+
+## 2026-09-13 (Chapter 4 landing: screening 2×2)
+
+Replaced the Chapter 4 landing-page Mermaid diagram. It was a table-of-contents flowchart (section boxes and "comes after" arrows), which duplicates the sidebar nav and the "In this chapter" table on the same page. `diagram-ideas.md` already named this page as the first replacement: the chapter's actual argument is a *screening decision*, which is a 2×2, not a reading-order flowchart.
+
+The new diagram is a Mermaid `quadrantChart` with axes "public-data availability" × "basic-element clarity", placing the five sub-fields already assessed in §4.5 / §4.8:
+
+- Load FM and Grid FM in the mature quadrant (clean basic element + public or physically-simulated data).
+- UBEM in the "element exists; generate the data" quadrant (simulator-grounded, privately generable).
+- Weather / microclimate in the "data exists; fusion missing" quadrant (HLS / Sentinel / ERA5 abundant, not yet fused with load or grid).
+- Multi-carrier hub in the immature quadrant (no clean basic element, essentially no public data) — the reason it is the Chapter 5 case study.
+
+No new claims; a short caption under the chart points at §4.5–4.8 and at the T1–T9 task screen in §4.6/§4.7. `last_reviewed` on the landing page bumped to 2026-09-13.
+
+Uses `quadrantChart`, which needs Mermaid 11 (already pinned as `11.4.1` in `_config.yml`). If GitHub Pages fails to render it, fall back to a labelled 2×2 flowchart — noted in TODO.md.
