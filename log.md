@@ -230,3 +230,30 @@ Neither reference list entry carried a DOI, which is where both defects hid. Wor
 - `amos2017optnet` + `donti2017taskbased` → a new "fourth option" paragraph on differentiable optimisation layers, with two caveats the source draft omitted: the formulations are **convex** (so G9's integer decisions remain open) and each forward pass contains a solve (partly giving back the amortisation speedup that motivates surrogates at all).
 
 Contributor guidance this suggests: footnotes not `(Author, Year)` parentheticals, a resolvable DOI/arXiv ID on every reference, and check `nav_order` against the chapter before claiming a slot.
+
+## 2026-09-13 (UES scope reviews in §1.1)
+
+Barton supplied five review papers to ground §1.1's definition of what an urban energy system contains. **All five verified exactly against Crossref** — titles, authors, journals, volumes and pages all matched as supplied, a clean sweep (worth noting against the previous contribution, where two of six citations were defective).
+
+§1.1 previously ran to about twenty lines: a scales table, the multi-carrier definition, and the energy-hub abstraction. It said nothing about distributed resources, autonomy, climate exposure, or the control layer — and a repo-wide search confirmed *none* of "decentralis", "microgrid", "resilien", "smart city" or "sector coupling" appeared anywhere in the book. So this was a genuine gap in the opening definition, not duplication.
+
+Added a new subsection, **"What the boundary contains beyond the hub"**, with four claims rather than a transcription of the source paragraphs:
+
+| Reference | Claim it carries |
+| :--- | :--- |
+| `sola2020multidomain` | Demand, generation and networks are modelled jointly because isolating them loses the interactions that make the system urban |
+| `bishop2024multidomaindata` | The data spans building stock, transport and geography; assembling it is a recognised obstacle, not a preliminary |
+| `weinand2020decentralized` | DERs and microgrids give districts varying degrees of energy autonomy — the supply side is no longer just a transmission connection |
+| `nik2021climateresilient` | The local climate is a resilience question under extreme events, not merely a weather input |
+| `martins2021smartcitytools` | Multi-carrier balancing depends on metering, DSM and automated control |
+
+Per the CONTRIBUTING rule, the subsection closes by stating what each widening **costs**, rather than leaving the references as scope decoration: multi-domain scope means a corpus spanning sources never collected together (§3.2, §3.7); decentralisation means configuration varies between instances, so transfer must cross system designs and not only time (§2.9 dim. 2); climate exposure puts the boundary conditions themselves under uncertainty (§2.9 dim. 6). The closing line ties the breadth back to why the grid bus works as a basic element and a UES equivalent does not (§2.3).
+
+Two date discrepancies recorded rather than silently picked, same as the earlier Park case:
+
+- **Nik et al.** — published online 2020, print issue 2021 (vol. 8, no. 3). Cited as 2021, `note` field records both.
+- **Bishop et al.** — supplied as 2023; Crossref gives published-print 2024. Cited as 2024, `note` field records both.
+
+Deliberately did *not* import the "smart city" framing as a section theme — the book otherwise avoids that vocabulary — but kept the Martins reference for the control/DSM layer it actually supports.
+
+`lychee.toml`: excluded the OUP DOI prefix (`10.1093`). `academic.oup.com` returns 403 to automated checkers, the same bot-blocking already handled for Wiley, Science, MDPI, OSTI and ACM; the Nik et al. DOI was verified against Crossref before excluding.
