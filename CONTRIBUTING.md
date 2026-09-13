@@ -90,6 +90,37 @@ what make a citation load-bearing rather than decorative. A reference that
 only supports "work exists in this area" is usually better merged into an
 existing sentence than given one of its own.
 
+### Every identifier must resolve
+
+Look each source up before citing it. Do not reconstruct a citation from
+memory, and do not infer a DOI or arXiv ID from a pattern — a plausible
+identifier that points at the wrong paper is worse than no identifier,
+because it survives a skim. Both failures have reached this repo already:
+a citation with a real author but an invented title and venue, and an
+arXiv ID belonging to an entirely unrelated paper.
+
+- Check the DOI resolves (`https://api.crossref.org/works/<DOI>` returns
+  the paper you mean) or the arXiv abstract page shows the title and
+  authors you are citing.
+- If you cannot verify a source, write `[citation needed — could not
+  verify]` in the text and say so in the pull request. That is an
+  acceptable contribution; a fabricated identifier is not.
+- Prefer the primary source over a survey. Surveys are right for
+  landscape claims, not for specific results.
+- One citation per claim. Stacking references does not add rigour.
+
+### Small and verified beats large and plausible
+
+A short, well-sourced improvement is more useful here than a broad
+rewrite. If you are editing an existing section, prefer one kind of change
+per pull request — repair something broken, add a citation to an unsourced
+claim, sharpen an imprecise statement, or fill one visible gap — and keep
+existing cross-references intact.
+
+Saying what you considered and **rejected**, and why, is welcome in the
+pull request description. It shows restraint and gives the maintainer a
+backlog.
+
 ## Local build
 
 ```bash

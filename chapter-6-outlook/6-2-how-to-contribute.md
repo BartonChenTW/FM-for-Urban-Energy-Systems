@@ -27,11 +27,11 @@ This is a living knowledge base — corrections, references, and new sections ar
 
 ## Ways to contribute
 
-- **Report an error or an outdated claim** — open an issue.
-- **Suggest a reference** — open an issue with the citation (a DOI or URL is enough) and a one-line note on which section it belongs to.
-- **Propose a new section or restructuring** — open an issue first to discuss scope before writing, since this book has an explicit outline (sections are numbered and cross-referenced).
-- **Fix a typo or small wording issue** — a pull request directly is fine, no need to open an issue first.
-- **Larger additions** (a new section, a reworked argument, filling in a stub) — open an issue to discuss before investing time in a draft.
+- **Report an error or an outdated claim** — [open an issue](https://github.com/BartonChenTW/FM4UES/issues).
+- **Suggest a reference** — [open an issue](https://github.com/BartonChenTW/FM4UES/issues) with the citation (a DOI or URL is enough) and a one-line note on which section it belongs to.
+- **Propose a new section or restructuring** — [open an issue](https://github.com/BartonChenTW/FM4UES/issues) first to discuss scope before writing, since this book has an explicit outline (sections are numbered and cross-referenced).
+- **Fix a typo or small wording issue** — [open a pull request](https://github.com/BartonChenTW/FM4UES/pulls) directly is fine, no need to open an issue first.
+- **Larger additions** (a new section, a reworked argument, filling in a stub) — [open an issue](https://github.com/BartonChenTW/FM4UES/issues) to discuss before investing time in a draft.
 
 ## Style notes
 
