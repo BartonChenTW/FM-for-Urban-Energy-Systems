@@ -1,0 +1,332 @@
+{%- comment -%}
+  Footnote hover preview tooltip.
+
+  Adds a floating tooltip that shows the full reference text when hovering
+  over a footnote number in the main text. Preserves normal click
+  behaviour (jump to footnote section) as fallback.
+
+  Implementation notes:
+  - Kramdown (Jekyll's default Markdown engine) renders footnote references
+    as: <sup id="fnref:key"><a href="#fn:key" class="footnote">[n]</a></sup>
+  - Footnote definitions are in: <div class="footnotes"><ol><li id="fn:key">...</li></ol></div>
+  - This script creates a tooltip that clones the footnote content and
+    positions it near the reference on hover/focus.
+  - On touch devices, the native click-to-jump behaviour is preserved.
+  - Uses vanilla JS + CSS, no dependencies.
+{%- endcomment -%}
+
+<style>
+  /* Tooltip container - hidden by default */
+  .fn-tooltip {
+    --fn-tooltip-bg: #fff;
+    --fn-tooltip-color: #333;
+    --fn-tooltip-border: #ddd;
+    --fn-tooltip-arrow: #ddd;
+    
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1000;
+    max-width: 400px;
+    min-width: 200px;
+    padding: 0.75em 1em;
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    line-height: 1.4;
+    color: var(--fn-tooltip-color);
+    background-color: var(--fn-tooltip-bg);
+    border: 1px solid var(--fn-tooltip-border);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    pointer-events: auto;
+    transition: opacity 0.15s ease, visibility 0.15s ease;
+  }
+
+  /* Pre-apply dark mode if we detect it early (before JS runs) */
+  /* This prevents a flash of light-mode tooltip */
+  body.fn-dark-mode .fn-tooltip,
+  body.jtd-dark .fn-tooltip,
+  body[data-theme="dark"] .fn-tooltip {
+    --fn-tooltip-bg: #2d2d2d;
+    --fn-tooltip-color: #e0e0e0;
+    --fn-tooltip-border: #444;
+    --fn-tooltip-arrow: #444;
+  }
+
+  /* Dark mode: use our custom class added by the JS */
+  .fn-dark-mode .fn-tooltip {
+    --fn-tooltip-bg: #2d2d2d;
+    --fn-tooltip-color: #e0e0e0;
+    --fn-tooltip-border: #444;
+    --fn-tooltip-arrow: #444;
+  }
+
+  /* Tooltip content styling */
+  .fn-tooltip .fn-content {
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Tooltip content links (DOIs, URLs) */
+  .fn-tooltip .fn-content a {
+    color: var(--fn-tooltip-color);
+    text-decoration: underline;
+  }
+
+  .fn-tooltip .fn-content a:hover {
+    color: #0078ff;
+  }
+
+  /* Tooltip arrow (optional visual touch) */
+  .fn-tooltip::after {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 16px;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid var(--fn-tooltip-arrow);
+  }
+
+  /* Visible state */
+  .fn-tooltip.visible {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  /* Highlight footnote reference when tooltip is visible */
+  sup[id^="fnref:"].fn-hover-active,
+  sup[id^="fnref:"]:hover,
+  sup[id^="fnref:"]:focus-within {
+    background-color: rgba(0, 120, 255, 0.1);
+    border-radius: 2px;
+  }
+
+  /* Ensure footnote links are focusable for keyboard navigation */
+  sup[id^="fnref:"] a.footnote {
+    outline: none;
+  }
+
+  sup[id^="fnref:"] a.footnote:focus {
+    outline: 2px solid #0078ff;
+    outline-offset: 2px;
+  }
+</style>
+
+<script>
+  (function () {
+    'use strict';
+
+    // Only run once per page
+    if (window.fnTooltipInitialized) { return; }
+    window.fnTooltipInitialized = true;
+
+    // Detect dark mode and add a class to body for our CSS
+    // Run immediately to prevent flash of wrong colors
+    function updateDarkModeClass() {
+      // Try jtd first (just-the-docs theme API)
+      if (typeof jtd !== 'undefined' && typeof jtd.getTheme === 'function') {
+        try {
+          var theme = jtd.getTheme();
+          if (theme === 'dark') {
+            document.body.classList.add('fn-dark-mode');
+            return;
+          } else {
+            document.body.classList.remove('fn-dark-mode');
+            return;
+          }
+        } catch (e) { /* ignore */ }
+      }
+      // Fallback: check localStorage
+      try {
+        var savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+          document.body.classList.add('fn-dark-mode');
+        } else {
+          document.body.classList.remove('fn-dark-mode');
+        }
+      } catch (e) { /* ignore */ }
+    }
+
+    // Run dark mode detection immediately (before DOM is ready)
+    updateDarkModeClass();
+
+    // Wait for DOM to be ready for the main initialization
+    if (document.readyState !== 'loading') {
+      init();
+    } else {
+      document.addEventListener('DOMContentLoaded', init);
+    }
+
+    // Also update when theme changes (if the toggle is used)
+    if (typeof jtd !== 'undefined') {
+      // just-the-docs doesn't fire events, but we can poll or listen for style changes
+      // For simplicity, we'll just rely on the class detection above
+    }
+
+    function init() {
+      // Check if there are any footnote references on this page
+      var refs = document.querySelectorAll('sup[id^="fnref:"]');
+      if (refs.length === 0) { return; }
+
+      // Build a map of footnote IDs to their content
+      var footnoteMap = {};
+      var footnoteSection = document.querySelector('div.footnotes');
+      if (!footnoteSection) { return; }
+
+      // Extract each footnote's content
+      var footnoteItems = footnoteSection.querySelectorAll('li[id^="fn:"]');
+      for (var i = 0; i < footnoteItems.length; i++) {
+        var item = footnoteItems[i];
+        var id = item.id;
+        if (!id) { continue; }
+
+        // Clone the content and remove backlink for tooltip display
+        // Do NOT modify the original DOM
+        var content = item.innerHTML;
+        var tempDiv = document.createElement('div');
+        tempDiv.innerHTML = content;
+        
+        // Remove the backlink from the cloned content only
+        var backLinkEl = tempDiv.querySelector('a.footnote-back');
+        if (backLinkEl) {
+          backLinkEl.remove();
+        }
+        
+        footnoteMap[id] = tempDiv.innerHTML;
+      }
+
+      // Create tooltip element
+      var tooltip = document.createElement('div');
+      tooltip.className = 'fn-tooltip';
+      tooltip.setAttribute('role', 'tooltip');
+      tooltip.setAttribute('aria-hidden', 'true');
+      tooltip._activeLink = null; // Track which link is active
+      document.body.appendChild(tooltip);
+
+      // Add hover/focus event listeners to each footnote reference
+      for (var j = 0; j < refs.length; j++) {
+        var ref = refs[j];
+        var link = ref.querySelector('a.footnote');
+        if (!link) { continue; }
+
+        var footnoteId = link.getAttribute('href');
+        if (!footnoteId || footnoteId.charAt(0) !== '#') { continue; }
+        
+        var targetId = footnoteId.substring(1); // Remove the #
+        var content = footnoteMap[targetId];
+        if (!content) { continue; }
+
+        // Store reference for this link
+        link._fnContent = content;
+        link._fnTooltip = tooltip;
+
+        // Mouse events
+        link.addEventListener('mouseenter', handleShow);
+        link.addEventListener('mouseleave', handleHide);
+
+        // Keyboard events
+        link.addEventListener('focus', handleShow);
+        link.addEventListener('blur', handleHide);
+      }
+
+      // Track if we're in a touch interaction
+      var isTouch = 'ontouchstart' in window;
+      if (isTouch) {
+        // On touch devices, we let the default click behavior work
+        // (tap to jump to footnote)
+      }
+    }
+
+    function handleShow(e) {
+      var link = e.target;
+      var tooltip = link._fnTooltip;
+      var content = link._fnContent;
+
+      if (!tooltip || !content) { return; }
+
+      // Set content - wrap in div for styling
+      tooltip.innerHTML = '<div class="fn-content">' + content + '</div>';
+      
+      // Store the active link on the tooltip for resize/scroll handlers
+      tooltip._activeLink = link;
+      
+      // Position tooltip near the footnote reference
+      positionTooltip(tooltip, link);
+      
+      // Show tooltip
+      tooltip.classList.add('visible');
+      tooltip.setAttribute('aria-hidden', 'false');
+      
+      // Mark the reference as active
+      var sup = link.closest('sup');
+      if (sup) { sup.classList.add('fn-hover-active'); }
+    }
+
+    function handleHide(e) {
+      var link = e.target;
+      var tooltip = link._fnTooltip;
+
+      if (!tooltip) { return; }
+
+      // Hide tooltip
+      tooltip.classList.remove('visible');
+      tooltip.setAttribute('aria-hidden', 'true');
+      tooltip._activeLink = null;
+      
+      // Remove active state
+      var sup = link.closest('sup');
+      if (sup) { sup.classList.remove('fn-hover-active'); }
+    }
+
+    function positionTooltip(tooltip, link) {
+      // Get position of the link element
+      var rect = link.getBoundingClientRect();
+      
+      // Position below the footnote number
+      var top = rect.bottom + window.scrollY + 4;
+      var left = rect.left + window.scrollX;
+      
+      // Ensure tooltip stays within viewport
+      var viewportWidth = window.innerWidth;
+      var tooltipWidth = 420; // Approximate max width
+      
+      // Adjust left if tooltip would go off right edge
+      if (left + tooltipWidth > viewportWidth + window.scrollX) {
+        left = viewportWidth + window.scrollX - tooltipWidth - 10;
+      }
+      
+      // Adjust for left edge
+      if (left < window.scrollX + 10) {
+        left = window.scrollX + 10;
+      }
+
+      tooltip.style.top = top + 'px';
+      tooltip.style.left = left + 'px';
+    }
+
+    // Reposition tooltip on window resize
+    window.addEventListener('resize', function() {
+      var tooltip = document.querySelector('.fn-tooltip.visible');
+      if (tooltip && tooltip._activeLink) {
+        positionTooltip(tooltip, tooltip._activeLink);
+      }
+    });
+
+    // Hide tooltip on scroll for simplicity
+    // (optional: could reposition instead, but hiding is simpler and less distracting)
+    window.addEventListener('scroll', function() {
+      var tooltip = document.querySelector('.fn-tooltip.visible');
+      if (tooltip) {
+        tooltip.classList.remove('visible');
+        tooltip.setAttribute('aria-hidden', 'true');
+        tooltip._activeLink = null;
+        // Remove active state from any footnote
+        var activeSup = document.querySelector('sup.fn-hover-active');
+        if (activeSup) { activeSup.classList.remove('fn-hover-active'); }
+      }
+    });
+  })();
+</script>
