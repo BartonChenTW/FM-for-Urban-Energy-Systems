@@ -60,6 +60,8 @@ This is where domain-specific difficulty concentrates. Evidence from adjacent fi
 
 Transformer, graph neural network, neural operator, state-space model, or hybrid. Determined largely by what structure the data has (sequence? graph? function?). See [§2.7](2-7-architectures.html) for what each of these architecture families actually does, aimed at readers without an ML background.
 
+**State-space models** are the one family [§2.7](2-7-architectures.html) does not cover, and they matter here for a specific reason: they process a sequence in time linear in its length rather than quadratic, by carrying a recurrent state instead of attending to every pair of positions.[^gu2022s4] Selective state-space models make that state input-dependent, recovering much of the modelling power attention provides.[^gu2023mamba] The relevance to this domain is the seasonal-storage problem — an 8760-hour year at hourly resolution is long enough that quadratic attention cost is a real constraint (see the timescale table in [§4.9.1](../chapter-4-directions/4-9-1-methods-tier1.html)). **What this does not resolve** is the multi-carrier coupling that motivates cross-variate attention in the first place: a cheaper way to handle length says nothing about how carriers exchange information, so the two decisions have to be made separately.
+
 ## D4 — Pretraining objective
 
 Next-step prediction, masked reconstruction, supervised imitation of a solver, or self-supervised contrastive. For simulation surrogates this is usually supervised regression on solver output; for sequence models, next-token or next-patch prediction. See [§2.6](2-6-scaling-laws.html) for what "self-supervised" means in practice.
@@ -67,6 +69,10 @@ Next-step prediction, masked reconstruction, supervised imitation of a solver, o
 ## D5 — Evaluation
 
 What counts as success, and on what held-out distribution? For physical systems this must include **feasibility and conservation**, not only error.
+
+The reason is that low average error and physical validity are different properties, and a model can have the first without the second. Work on learned AC-OPF proxies makes the gap explicit by reporting constraint violations alongside prediction error, and by training against the problem's Lagrangian dual so that violations are penalised rather than merely measured.[^fioretto2020acopf] Where hard constraints must hold exactly, feasibility can instead be built into the model: a completion-and-correction scheme enforces equality constraints by construction and corrects the remaining inequality violations through the network itself.[^donti2021dc3]
+
+**Neither result removes the evaluation burden — they relocate it.** Both are demonstrated on single-carrier power flow with a fixed constraint set, whereas a multi-carrier hub adds conversion relations, storage continuity across the horizon, and discrete on/off decisions, so "feasible" is a longer list of things to check and some of them are combinatorial. The practical consequence for this book is that a feasibility number is only meaningful alongside the constraint set it was measured against: see the six-metric reporting protocol in [§4.10.3](../chapter-4-directions/4-10-building-it.html) and dimension 4 of [§2.9](2-9-ues-fm-evaluation-criteria.html).
 
 [^unistruct2024]: [Representation Learning of Structured Data for Medical Foundation Models (UniStruct)](https://arxiv.org/abs/2410.13351). arXiv:2410.13351.
 [^earthcoupling2026]: [Toward AI-Enabled Earth System Coupling](https://arxiv.org/abs/2604.03289). arXiv:2604.03289.
@@ -79,6 +85,10 @@ What counts as success, and on what held-out distribution? For physical systems 
 [^ansari2024chronos]: Ansari, A. F., Stella, L., Turkmen, C. et al. (2024). [Chronos: Learning the language of time series](https://arxiv.org/abs/2403.07815). *Transactions on Machine Learning Research*. arXiv:2403.07815.
 [^lam2023graphcast]: Lam, R., Sanchez-Gonzalez, A., Willson, M. et al. (2023). [Learning skillful medium-range global weather forecasting](https://doi.org/10.1126/science.adi2336). *Science*, 382(6677), 1416–1421.
 [^bodnar2025aurora]: Bodnar, C., Bruinsma, W. P., Lucic, A. et al. (2025). [A foundation model for the Earth system](https://doi.org/10.1038/s41586-025-09005-y). *Nature*, 641, 1180–1187.
+[^gu2022s4]: Gu, A., Goel, K., Ré, C. (2022). [Efficiently modeling long sequences with structured state spaces](https://arxiv.org/abs/2111.00396). ICLR 2022. arXiv:2111.00396.
+[^gu2023mamba]: Gu, A., Dao, T. (2023). [Mamba: Linear-time sequence modeling with selective state spaces](https://arxiv.org/abs/2312.00752). arXiv:2312.00752.
+[^fioretto2020acopf]: Fioretto, F., Mak, T. W. K., Van Hentenryck, P. (2020). [Predicting AC optimal power flows: Combining deep learning and Lagrangian dual methods](https://doi.org/10.1609/aaai.v34i01.5403). *AAAI 2020*, 630–637.
+[^donti2021dc3]: Donti, P. L., Rolnick, D., Kolter, J. Z. (2021). [DC3: A learning method for optimization with hard constraints](https://arxiv.org/abs/2104.12225). ICLR 2021. arXiv:2104.12225.
 
 ---
 [← Previous: 2.1 What Defines an FM](2-1-what-defines-an-fm.html) · [Next: 2.3 Choosing a Basic Element →](2-3-choosing-a-basic-element.html)
