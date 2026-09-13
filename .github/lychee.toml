@@ -132,6 +132,15 @@ exclude = [
   #     Review 8(3) (section 1.1) -- title, all three authors and journal
   #     match what the text cites.
   '^https://doi\.org/10\.1093/',
+  # AAAI (DOI prefix 10.1609) returns HTTP/2 protocol errors to lychee
+  # on GitHub Actions runners, even though the URLs resolve fine in a
+  # browser. Excluded by prefix since AAAI is a recurring publisher
+  # in ML/AI citations. Verified against the Crossref API before excluding:
+  #   10.1609/aaai.v34i01.5403 -- Fioretto, Mak & Van Hentenryck (2020),
+  #     "Predicting AC optimal power flows: Combining deep learning and
+  #     Lagrangian dual methods" (section 2.2) -- title, all three authors
+  #     and venue match what the text cites.
+  '^https://doi\.org/10\.1609/',
   # This book's own GitHub Pages URL. Checked from README.md and
   # CONTRIBUTING.md. GitHub's runners sometimes get "Connection reset
   # by peer" (os error 104) against bartonchentw.github.io even though
