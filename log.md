@@ -257,3 +257,34 @@ Two date discrepancies recorded rather than silently picked, same as the earlier
 Deliberately did *not* import the "smart city" framing as a section theme — the book otherwise avoids that vocabulary — but kept the Martins reference for the control/DSM layer it actually supports.
 
 `lychee.toml`: excluded the OUP DOI prefix (`10.1093`). `academic.oup.com` returns 403 to automated checkers, the same bot-blocking already handled for Wiley, Science, MDPI, OSTI and ACM; the Nik et al. DOI was verified against Crossref before excluding.
+
+## 2026-09-13 (§2.2 D3/D5 citations, from a mostly-rejected rewrite)
+
+Mistral proposed a full rewrite of §2.2 plus a contribution guideline. **The rewrite was largely rejected; two of its findings were acted on, and its guideline was adopted.**
+
+**The premise was false.** It reported that §2.2 was "truncated (marked with [...])" and "fragmented". A repo-wide search finds no `[...]` anywhere in the book, and §2.2 is 84 lines / ~900 words with 12 working footnotes. The truncation was in its own web scrape of the rendered page, not in the source.
+
+What the rewrite would have cost, had it been merged wholesale:
+
+- **D1** — replaced the four abstract candidates (one timestep / one (configuration, boundary conditions, trajectory) triple / one whole model instance / one modelling decision) with four scale tiers (building / hub / grid segment / district). Shallower, and the scale tiers duplicate the table already in §1.1. The existing four are about *what kind of object* an example is, which is precisely the question §2.3 then adjudicates with a criterion.
+- **D2** — dropped four **cited** bullets (GridFM float tokenisation, UniStruct medical codes, Earth-coupling aliasing, Moirai multi-resolution) in favour of an uncited "four dimensions" table. Net loss of four citations.
+- **D3/D4** — added plausible but entirely uncited tables, partly duplicating §2.7, which already covers transformers, GNNs and neural operators with primary sources.
+- Also: American spelling throughout against the repo's British convention, and the submission itself ended mid-sentence at "Self-supervised".
+
+**Two findings were real, and are what this commit acts on:**
+
+1. **D5 was one sentence** — correctly identified as the thinnest subsection. It is now four sentences with two primary sources. Deliberately *not* a restatement of §4.10.3's six-metric protocol or §2.9 dimension 4: D5's job is the principle (low average error and physical validity are different properties), with the protocol and the criterion cross-linked rather than copied.
+2. **D3's "state-space model" was an unreferenced passing mention**, and §2.7 — which D3 points at for detail — does not cover state-space models at all. That cross-reference silently under-delivered on one of the five families D3 names. Now cited, with the 8760-hour seasonal-storage motivation and an explicit statement of what it does *not* solve (multi-carrier coupling is a separate decision from sequence length).
+
+| Reference | Placement | Claim |
+| :--- | :--- | :--- |
+| `gu2022s4` | D3 | Linear-time sequence processing via a recurrent state rather than pairwise attention |
+| `gu2023mamba` | D3 | Selective state spaces make that state input-dependent, recovering much of attention's modelling power |
+| `fioretto2020acopf` | D5 | Learned AC-OPF proxies report constraint violations alongside error, and train against the Lagrangian dual so violations are penalised not merely measured |
+| `donti2021dc3` | D5 | Completion-and-correction enforces equality constraints by construction and corrects remaining inequality violations through the network |
+
+Both D5 sources are single-carrier power flow with a fixed constraint set, so the text says plainly that they relocate the evaluation burden rather than remove it — a multi-carrier hub adds conversion, storage continuity and discrete on/off decisions, some of them combinatorial.
+
+**One citation honestly incomplete.** Mamba's arXiv comments field is empty, so the venue could not be confirmed from metadata. Cited as a preprint, with a `note` field recording that the venue is unconfirmed, rather than asserting COLM 2024 from memory.
+
+**Guideline adopted.** Mistral's contribution guideline was the strongest part of the submission — better than what `CONTRIBUTING.md` had. Added in condensed form: every identifier must resolve before being cited (with both of this repo's actual fabrication incidents named as the reason), `[citation needed — could not verify]` as an acceptable output, primary sources over surveys, one citation per claim, one kind of change per PR, and a rejected-list in the PR description as a welcome habit.

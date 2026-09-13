@@ -13,7 +13,7 @@ A working textbook: what gets simulated, what could be learned, and how to build
 Version 2.0 — 11 September 2026
 {: .label }
 
-Started by [Barton Chen](https://github.com/BartonChenTW) — open for anyone to contribute. See [how to contribute](chapter-6-outlook/6-2-how-to-contribute.html).
+Initiated by [Barton Chen](https://github.com/BartonChenTW) from the [Urban Energy Systems Lab](https://www.empa.ch/web/s313) at [Empa](https://www.empa.ch/) — open for anyone to contribute. See [how to contribute](chapter-6-outlook/6-2-how-to-contribute.html). Most content was drafted and edited with AI assistance under Barton Chen's direction and review.
 {: .fs-3 }
 
 Drafted and edited with AI assistance (Claude Opus 5 and Claude Sonnet 5, Anthropic) under Barton Chen's direction and review — see [`CONTRIBUTING.md`](https://github.com/BartonChenTW/FM4UES/blob/main/CONTRIBUTING.md) for how claims are sourced and checked.
