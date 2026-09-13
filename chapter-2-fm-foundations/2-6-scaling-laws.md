@@ -56,9 +56,12 @@ A scaling law is an empirical relationship between a model's size (or its traini
 
 Time-series foundation models are a directly relevant recent example: Toto 2.0 is reported as the first time-series model to demonstrate classic scaling-law behaviour, with a single training recipe producing reliable forecast-quality improvements across a 625× range of model size (4M to 2.5B parameters).[^khwaja2026toto2] That this needed demonstrating, and was notable when it was, is itself informative — scaling behaviour in a new data modality is a finding, not an assumption.
 
+**And "scale" does not only mean parameters.** An empirical study on commercial building energy consumption, spanning architectures from RNNs through fine-tuned open-source foundation models, reports that dataset heterogeneity and model architecture affected post-training forecasting performance more than parameter count did — isolated by comparing two curated ComStock subsets identical in size and region but differing in building-type diversity.[^bose2024rnnstofm] For this book that reframes the planning question in [§4.10.1](../chapter-4-directions/4-10-building-it.html#4101-data-generation-and-sampling-design): the open question for urban energy systems is not "how large a model" but **what kind of diversity in the training distribution actually produces transferable knowledge** — which is a sampling-design decision, made before any model is trained, not a budget decision made after.
+
 [^khwaja2026toto2]: Khwaja, E., Lettieri, C., Woo, G. et al. (2026). [Toto 2.0: Time series forecasting enters the scaling era](https://arxiv.org/abs/2605.20119). arXiv:2605.20119.
 [^kaplan2020scaling]: Kaplan, J., McCandlish, S., Henighan, T. et al. (2020). [Scaling laws for neural language models](https://arxiv.org/abs/2001.08361). arXiv:2001.08361.
 [^hu2021lora]: Hu, E. J., Shen, Y., Wallis, P. et al. (2021). [LoRA: Low-rank adaptation of large language models](https://arxiv.org/abs/2106.09685). arXiv:2106.09685.
+[^bose2024rnnstofm]: Bose, S., Li, Y., Van Sant, A., Zhang, Y., Kim, K. (2024). [From RNNs to foundation models: An empirical study on commercial building energy consumption](https://arxiv.org/abs/2411.14421). arXiv:2411.14421. NeurIPS 2024 Workshop on Time Series in the Age of Large Models.
 
 ---
 [← Previous: 2.5 What Does Not Exist Yet](2-5-what-does-not-exist-yet.html) · [Next: 2.7 Architectures →](2-7-architectures.html)

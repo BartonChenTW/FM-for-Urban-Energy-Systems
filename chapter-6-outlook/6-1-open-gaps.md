@@ -36,6 +36,8 @@ Storage state of charge as a slow, bounded, path-dependent variable. Not handled
 
 None exist for urban multi-carrier operation or design. This is the cheapest high-value artifact available and the one most likely to outlive its author. See [Phase 0](../chapter-5-case-study/5-1-roadmap.html#phase-0-year-01--representation-and-the-data-engine) and the downstream benchmark suite in [§5.7](../chapter-5-case-study/5-7-module-decomposition.html).
 
+The building-scale precedent already exists: time-series foundation models have been benchmarked on public IoT and building-energy datasets, with the heterogeneity of that data and the physical constraints of buildings identified as the persistent difficulties.[^lin2024tsfmbuilding] **What that work demonstrates is also what it bounds** — it evaluates single-modality sequence models on metered building data, so a generic time-series benchmark can establish that an FM forecasts a building well without saying anything about whether it respects a carrier-conversion constraint, a storage balance, or a network topology. A UES benchmark therefore cannot be assembled by pointing existing FM benchmarks at energy data; it has to score the things [§2.9](../chapter-2-fm-foundations/2-9-ues-fm-evaluation-criteria.html) lists that generic benchmarks do not — physical consistency and multi-carrier transfer in particular.
+
 ### G5 — Feasibility guarantees for multi-carrier design surrogates
 
 Established for power flow; open for multi-carrier hubs with discrete decisions. See [§4.9.3](../chapter-4-directions/4-9-3-methods-tier3.html).
@@ -55,6 +57,8 @@ No building decomposition satisfies the four requirements of [§2.3.1](../chapte
 ### G9 — Representing a decision space alongside a state space
 
 Every existing energy foundation model represents what a system *is* or *does*. None represents what could be *done to it* — the discrete, combinatorial, constraint-bound space of possible interventions. This is required for any FM targeting retrofit, investment or design support (Tier 3, [§4.9.3](../chapter-4-directions/4-9-3-methods-tier3.html)), has no counterpart in the grid literature to borrow from, and is the least developed question in this book. See also [§4.4 Generative Design](../chapter-4-directions/4-4-generative-design.html).
+
+[^lin2024tsfmbuilding]: Lin, X., Prabowo, A., Razzak, I. et al. (2024). [Exploring capabilities of time series foundation models in building analytics](https://arxiv.org/abs/2411.08888). arXiv:2411.08888.
 
 ---
 [← Back to Chapter 6](index.html) · [Next: 6.2 How to Contribute →](6-2-how-to-contribute.html)

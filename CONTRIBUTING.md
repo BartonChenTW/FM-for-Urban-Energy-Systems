@@ -75,6 +75,21 @@ Physics-informed models reduce data needs.[^raissi2019]
 Use the same citation key as the `.bib` entry (e.g. `raissi2019`) as the
 footnote name, so the two stay traceable to each other.
 
+**Do not add a reference to the bibliography alone.** A `.bib` entry with
+no corresponding claim in the text adds nothing a reader can use. Every
+reference should be attached to a specific statement that makes three
+things explicit:
+
+1. **What the work demonstrated** — the concrete result, not just the topic.
+2. **What limitation remains** — the boundary of what it establishes.
+3. **How that limitation bears on urban energy systems** — why the gap
+   matters here, ideally cross-linked to the section that takes it up.
+
+The second and third points are the ones most often skipped, and they are
+what make a citation load-bearing rather than decorative. A reference that
+only supports "work exists in this area" is usually better merged into an
+existing sentence than given one of its own.
+
 ## Local build
 
 ```bash

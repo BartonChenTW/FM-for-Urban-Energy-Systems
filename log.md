@@ -189,3 +189,22 @@ Applied **Fix B** (quoting) rather than Fix A (rewording), to preserve the PR au
 Also scanned every other Mermaid block in the book for the same bug class — no other block contains a semicolon, and `quadrantChart` is the only non-`flowchart` diagram in use, so this is contained to this one page.
 
 Updated the `TODO.md` note that had said to fall back to a `flowchart` if Pages failed to render the quadrant chart; that advice was based on the wrong diagnosis and is now corrected.
+
+## 2026-09-13 (four energy-domain FM references)
+
+Applied Barton's 14-point editing guideline: add four references, each **tied to a specific claim in the main text** rather than parked in the bibliography. Placement was chosen by topic (Barton's call) rather than by the chapter numbers the guideline listed, so each citation sits where the book already makes the relevant argument.
+
+| Reference | Placed in | Claim it supports |
+| :--- | :--- | :--- |
+| Arjunan et al. 2026, *EnergyFM* (e-Energy '26) | §2.4.2, new subsection | Domain-specific energy FMs already exist on the demand side; their basic element is a single-carrier meter series, which is exactly what the multi-carrier layer lacks |
+| Park et al. 2025, *Energy and Buildings* 348:116446 | §2.9, dimensions 2 and 6 | Zero-shot transfer can fall short off-distribution while fine-tuning recovers much of it — so transferability is measured, not assumed; also that probabilistic forecasting is achievable with FMs |
+| Bose et al. 2024, arXiv:2411.14421 | §2.6, scaling laws | Dataset heterogeneity and architecture outweighed parameter count — reframes the planning question as sampling design, not model budget |
+| Lin et al. 2024, arXiv:2411.08888 | §6.1, G4 — Benchmarks | Building-scale TSFM benchmarks exist but score only single-modality metered data, so a UES benchmark cannot be assembled by pointing generic FM benchmarks at energy data |
+
+**Fixed a fabricated author field.** The pre-existing `energyfm2026` entry credited the institutions (`{Empa and IBM Research and IISc Bangalore}`) as the author — a placeholder, not real metadata. Crossref gives the actual authors: Arjunan, Srivastava, Kumar, Jati, Ekambaram, Dayama, pages 556–568. Entry corrected and rekeyed to `arjunan2026energyfm` to match the `firstauthorYEARshortname` convention; the old key was uncited anywhere, so nothing dangled. It is now cited for the first time.
+
+**Date discrepancy recorded rather than smoothed over.** Barton's guideline dates Park et al. to 2026; Crossref returns 2025 (online-first, in a 2026-dated issue). The `.bib` entry uses 2025 with a `note` field stating both, so the next person doesn't silently "correct" it in either direction.
+
+Added the guideline's item 13 to `CONTRIBUTING.md`'s references workflow as a standing rule: a reference must be attached to a statement making explicit (1) what the work demonstrated, (2) what limitation remains, (3) how that limitation bears on urban energy systems. The second and third are the ones usually skipped, and are what make a citation load-bearing rather than decorative.
+
+All four references verified against Crossref/arXiv before use. Checked after editing: footnote ref/def integrity on all four edited pages, bib key uniqueness, brace balance (596/596), and DOI/arXiv identifiers matching between `.bib` and footnotes.
