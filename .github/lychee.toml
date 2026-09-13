@@ -132,6 +132,11 @@ exclude = [
   #     Review 8(3) (section 1.1) -- title, all three authors and journal
   #     match what the text cites.
   '^https://doi\.org/10\.1093/',
+  # Empa (Swiss Federal Laboratories for Materials Science and Technology)
+  # returns 403 Forbidden to lychee, same bot-blocking pattern as above.
+  # Both URLs in index.md (main site and Urban Energy Systems Lab page)
+  # verified to load correctly in a browser before excluding.
+  '^https://www\.empa\.ch/',
   # This book's own GitHub Pages URL. Checked from README.md and
   # CONTRIBUTING.md. GitHub's runners sometimes get "Connection reset
   # by peer" (os error 104) against bartonchentw.github.io even though
