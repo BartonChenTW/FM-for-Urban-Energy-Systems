@@ -162,3 +162,30 @@ The new diagram is a Mermaid `quadrantChart` with axes "public-data availability
 No new claims; a short caption under the chart points at §4.5–4.8 and at the T1–T9 task screen in §4.6/§4.7. `last_reviewed` on the landing page bumped to 2026-09-13.
 
 Uses `quadrantChart`, which needs Mermaid 11 (already pinned as `11.4.1` in `_config.yml`). If GitHub Pages fails to render it, fall back to a labelled 2×2 flowchart — noted in TODO.md.
+
+## 2026-09-13 (fix: Chapter 4 quadrantChart syntax error)
+
+Barton reported a large "Syntax error in text — mermaid version 11.4.1" box on the Chapter 4 landing page, in place of the screening 2×2 added by PR #19.
+
+I had reviewed that PR and said the diagram would render, on the strength of having confirmed `quadrantChart` shipped in Mermaid v10.2.0 (so the repo's 11.4.1 pin covers it). That was the wrong check: the version was never the problem, and I asserted it would render without ever running the block through a parser.
+
+**Root cause: two unquoted semicolons.** In the quadrant grammar (`quadrant.jison`), `";"` returns a `SEMI` token and `eol` is defined as `NEWLINE | SEMI | EOF` — a semicolon terminates a statement. So `quadrant-2 Element exists; generate the data` parsed as `quadrant-2 Element exists`, then failed trying to read `generate the data` as a fresh statement. Same for `quadrant-4 Data exists; fusion missing`.
+
+Verified empirically rather than by inference this time — installed Mermaid 11.4.1 locally and parsed the exact block plus isolated single-character variants:
+
+| Case | Result |
+| :--- | :--- |
+| Exact block from `main` | FAIL — `Parse error on line 6: ...s; generate the data` |
+| Semicolon in a quadrant label, isolated | FAIL — same error |
+| Colon in `title`, isolated | PASS (lexer rule `<title>(?!\n\|;\|#)*[^\n]*` does not exclude `:`) |
+| Slash in a point name, isolated | PASS (`/` is in the grammar's `PUNCTUATION` class) |
+| Fix A — semicolons replaced with dashes | PASS |
+| Fix B — quadrant labels wrapped in double quotes | PASS |
+
+So the title colon and the `Weather / microclimate` slash were both innocent; only the semicolons broke it.
+
+Applied **Fix B** (quoting) rather than Fix A (rewording), to preserve the PR author's exact wording. Re-extracted the block from the file on disk after the edit and re-parsed it: PASS.
+
+Also scanned every other Mermaid block in the book for the same bug class — no other block contains a semicolon, and `quadrantChart` is the only non-`flowchart` diagram in use, so this is contained to this one page.
+
+Updated the `TODO.md` note that had said to fall back to a `flowchart` if Pages failed to render the quadrant chart; that advice was based on the wrong diagnosis and is now corrected.
