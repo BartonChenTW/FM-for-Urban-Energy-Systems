@@ -150,14 +150,15 @@
       } catch (e) { /* ignore */ }
     }
 
-    // Run dark mode detection immediately (before DOM is ready)
-    updateDarkModeClass();
-
-    // Wait for DOM to be ready for the main initialization
+    // Wait for DOM to be ready before accessing document.body
     if (document.readyState !== 'loading') {
+      updateDarkModeClass();
       init();
     } else {
-      document.addEventListener('DOMContentLoaded', init);
+      document.addEventListener('DOMContentLoaded', function () {
+        updateDarkModeClass();
+        init();
+      });
     }
 
     // Also update when theme changes (if the toggle is used)
