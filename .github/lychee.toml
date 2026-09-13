@@ -122,6 +122,16 @@ exclude = [
   #     pp. 556-568 (section 2.4.2) -- title, all six authors and page
   #     range match what the text cites.
   '^https://doi\.org/10\.1145/',
+  # Oxford University Press (DOI prefix 10.1093) redirects to
+  # academic.oup.com, which returns 403 Forbidden to lychee even with a
+  # browser user agent -- the same bot-blocking as Wiley/Science/MDPI/ACM
+  # above, not a missing page. Excluded by prefix for consistency with
+  # those entries. Verified against the Crossref API before excluding:
+  #   10.1093/nsr/nwaa134 -- Nik, Perera & Chen, "Towards climate
+  #     resilient urban energy systems: a review", National Science
+  #     Review 8(3) (section 1.1) -- title, all three authors and journal
+  #     match what the text cites.
+  '^https://doi\.org/10\.1093/',
   # This book's own GitHub Pages URL. Checked from README.md and
   # CONTRIBUTING.md. GitHub's runners sometimes get "Connection reset
   # by peer" (os error 104) against bartonchentw.github.io even though
