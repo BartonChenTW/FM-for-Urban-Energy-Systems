@@ -208,3 +208,25 @@ Applied Barton's 14-point editing guideline: add four references, each **tied to
 Added the guideline's item 13 to `CONTRIBUTING.md`'s references workflow as a standing rule: a reference must be attached to a statement making explicit (1) what the work demonstrated, (2) what limitation remains, (3) how that limitation bears on urban energy systems. The second and third are the ones usually skipped, and are what make a citation load-bearing rather than decorative.
 
 All four references verified against Crossref/arXiv before use. Checked after editing: footnote ref/def integrity on all four edited pages, bib key uniqueness, brace balance (596/596), and DOI/arXiv identifiers matching between `.bib` and footnotes.
+## 2026-09-13 (optimisation-learning citations, from a rejected contribution)
+
+Gemini proposed a new §3.6 "Integrating FMs into Dispatch Optimisation". **Not merged**, for three reasons:
+
+1. **Slot collision.** It claimed `nav_order: 6` in Chapter 3, already held by §3.6 The Tool Landscape, which §3.5 and §3.7 both link by filename in their footer nav.
+2. **Duplication.** Its three paradigms (end-to-end surrogate / warm-start / differentiable layers) are §4.9.3's existing three families, but without the recommendation, the Big-M MILP pattern, or the retrofit deployment-risk corollary. It also asserted dispatch is a *real-time* bottleneck, which contradicts §3.8 — single runs are affordable, loops are not.
+3. **Two bad citations out of six.** Verified every reference: Raissi, Kotary, Amos & Kolter, and Donti et al. all check out exactly. The other two did not.
+
+| Cited as | Reality |
+| :--- | :--- |
+| Baker (2019), "Learning to Optimize: Accelerating OPF via Data-driven Initialization", *PESGM 2019* | Title and venue invented. Real paper: Baker, "Learning Warm-Start Points for AC Optimal Power Flow", **IEEE MLSP 2019**, `10.1109/mlsp.2019.8918690` — right author, right year, right topic |
+| Chatzos et al. (2020), arXiv:2006.11893 | **That ID is "The societal impact of ion beam therapy"** — an unrelated physics paper. Dropped entirely; the real Chatzos work exists but its identifier was not established |
+
+Neither reference list entry carried a DOI, which is where both defects hid. Worth noting the Baker failure mode: plausible title, correct author, true underlying claim — it passes a skim.
+
+**What was harvested.** §4.9.3 recommended warm-starting as the default with *no citation for warm-starting*, and Family 2's "no feasibility guarantees" claim was likewise uncited. Added, each tied to a claim per the CONTRIBUTING rule:
+
+- `kotary2021survey` → Family 2, for the general fast-but-unconstrained trade across combinatorial domains.
+- `baker2019warmstart` → Family 3, for the established continuous-AC-OPF warm-start result — **plus what it does not settle**: it warm-starts a continuous problem, while hub design binds on discrete technology/commitment decisions, where a bad predicted binary can send branch-and-bound down a worse tree. Flagged as a tractable open experiment, linked to D4 in §5.7.
+- `amos2017optnet` + `donti2017taskbased` → a new "fourth option" paragraph on differentiable optimisation layers, with two caveats the source draft omitted: the formulations are **convex** (so G9's integer decisions remain open) and each forward pass contains a solve (partly giving back the amortisation speedup that motivates surrogates at all).
+
+Contributor guidance this suggests: footnotes not `(Author, Year)` parentheticals, a resolvable DOI/arXiv ID on every reference, and check `nav_order` against the chapter before claiming a slot.
