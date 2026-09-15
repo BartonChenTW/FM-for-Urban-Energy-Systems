@@ -22,7 +22,7 @@ If you read only one page in this book, read this one. It gives the criterion fo
 
 ## 2.3.1 The criterion
 
-D1 and D2 (see [§2.2](2-2-five-design-decisions.html)) are usually treated as implementation detail. They are not. The choice of basic element determines what transfers, and no amount of architecture or compute compensates for a bad one.
+D1 — Unit of observation (what is one training example?) and D2 — Tokenisation/encoding (how is a training example turned into something the architecture consumes?), see [§2.2](2-2-five-design-decisions.html), are usually treated as implementation detail. They are not. The choice of basic element determines what transfers, and no amount of architecture or compute compensates for a bad one.
 
 **Why grid foundation models work.** Power networks supply their own basic element. A bus is a bus in Switzerland and in Texas, at 20 kV and at 380 kV. Two engineers decomposing the same network produce the same buses and lines. Networks are assembled from these elements by known rules. The model therefore learns *the element* and its interactions, and an unseen network is a new arrangement of familiar parts. Tokenisation is essentially given by the domain.
 
