@@ -3,7 +3,7 @@ title: "3.1 Taxonomy of Modelling Tasks"
 parent: Chapter 3 — Simulation and Optimisation in UES
 nav_order: 1
 status: draft
-last_reviewed: 2026-09-11
+last_reviewed: 2026-09-14
 ---
 
 # 3.1 Taxonomy of Modelling Tasks
@@ -15,6 +15,38 @@ last_reviewed: 2026-09-11
 {:toc}
 
 ---
+
+## What an energy-system model computes
+
+[§1.1](../chapter-1-background/1-1-what-is-ues.html) described what an urban energy system *contains* — demands, conversion technologies, storage and networks, coupled across carriers. This chapter is about what a *model* of one computes. At a high level, that is a mapping:
+
+**System description + external conditions → model → system outcomes**
+
+The inputs may include building characteristics, technology parameters, weather, occupancy, energy prices, network characteristics, or technology availability. The outputs may include energy demand, generation, energy flows, temperatures, equipment operation, investment decisions, operating costs, or emissions. Which inputs and which outputs is exactly what distinguishes one task from another — and that is what the taxonomy below organises.
+
+### Simulation and optimisation answer different questions
+
+The mapping above hides a distinction that runs through the whole chapter. **Simulation** asks:
+
+> *Given the system and its conditions, what happens?*
+
+A building simulation takes the envelope, HVAC system, occupancy, weather and control assumptions, and estimates heating and cooling demand or indoor conditions over time.[^crawley2008simulation] At larger scales, simulations represent energy flows through multiple technologies, buildings or networks.
+
+**Optimisation** asks:
+
+> *Given the system, objectives and constraints, what should we do?*
+
+An optimisation model may decide how a heat pump, battery and grid connection should be operated to minimise cost or emissions subject to technical constraints, formalised through decision variables, constraints and an objective function.[^conejo2010decision] A design optimisation instead decides which technologies to install and at what capacity.
+
+The two are closely related but not interchangeable. A simulation *evaluates* a specified system under specified conditions; an optimisation *searches* among possible decisions for one that satisfies the constraints and scores well on the objective. That difference drives different mathematical formulations, different computational costs, and different opportunities for machine learning — which is why T1/T2/T6 and T4/T5/T8 below behave so differently as learning targets.
+
+### Why this framing matters for foundation models
+
+Viewed this way, many energy-system computations are structured mappings from inputs to outputs, which is what makes them candidates for learned approximation at all — replacing an expensive simulation, or amortising a repeatedly-called solver ([§1.5](../chapter-1-background/1-5-why-ues-why-now.html)).
+
+But they are not ordinary black-box prediction problems. They encode conservation laws, engineering constraints, operational limits, discrete decisions, objective functions, and assumptions about uncertain human behaviour. A foundation model here has to interact with that structure rather than merely fit an input–output relation. The recurring question, taken up as a screening test in [§4.6](../chapter-4-directions/4-6-screening-tasks.html), is **which parts of energy-system modelling can benefit from foundation-model approaches, and what structure must be preserved when they are learned or approximated.**
+
+## The nine tasks
 
 Each row is a distinct *task* with a distinct mathematical structure — and foundation-model potential differs sharply between them. This table is used again in [§4.6 Screening the Tasks](../chapter-4-directions/4-6-screening-tasks.html).
 
@@ -45,6 +77,8 @@ T1 also carries a representation problem the other tasks do not, because the dec
 
 [^ferrando2020ubem]: Ferrando, M., Causone, F., Hong, T., Chen, Y. (2020). [Urban building energy modeling (UBEM) tools: A state-of-the-art review of bottom-up physics-based approaches](https://arxiv.org/abs/2103.01761). *Sustainable Cities and Society*, 62, 102408.
 [^doma2023occupant]: Doma, A., Ouf, M. (2023). [Modelling occupant behaviour for urban scale simulation: Review of available approaches and tools](https://doi.org/10.1007/s12273-022-0939-3). *Building Simulation*, 16, 169–184.
+[^crawley2008simulation]: Crawley, D. B., Hand, J. W., Kummert, M., Griffith, B. T. (2008). [Contrasting the capabilities of building energy performance simulation programs](https://doi.org/10.1016/j.buildenv.2006.10.027). *Building and Environment*, 43(4), 661–673.
+[^conejo2010decision]: Conejo, A. J., Carrión, M., Morales, J. M. (2010). [Decision Making Under Uncertainty in Electricity Markets](https://doi.org/10.1007/978-1-4419-7421-1). Springer US. International Series in Operations Research & Management Science, 153.
 
 ---
 [← Back to Chapter 3](index.html) · [Next: 3.2 Building Energy Simulation →](3-2-building-simulation-data.html)
