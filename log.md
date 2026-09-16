@@ -306,3 +306,28 @@ Barton had drafted a "What does an energy-system model actually do?" section on 
 **References.** Two new citations, both verified against Crossref: `crawley2008simulation` (Building and Environment 43(4):661–673, DOI 10.1016/j.buildenv.2006.10.027) and `conejo2010decision` (Springer US, ISOR&MS 153, DOI 10.1007/978-1-4419-7421-1). Added to `references/fm-for-ues.bib` (93 → 95 entries; `conejo2010decision` is the file's first `@book`) and written as hyperlinked footnotes in house style — the draft's versions were plain text with `&` in the author lists, against the convention in 120 of the book's 124 footnote definitions. The draft also redefined `ferrando2020ubem` and `geidl2007opf`, already defined in §1.1/§3.1/§3.3; those duplicates are gone with the landing-page revert.
 
 `last_reviewed` on §3.1 bumped to 2026-09-14. Chapter 3 landing page left untouched (the draft was never committed).
+
+## 2026-09-16 (fill in §2.4.3, clean-energy forecasting FMs)
+
+§2.4.3 was a stub: one sentence on multi-modal fusion and patch tokenisation, one citation, nothing else — despite being labelled "(Mature)" and sitting between two substantive siblings. Considered deleting it as irrelevant. Rejected: renewable generation forecasting is the one energy sub-domain besides the grid where domain-pretrained FMs demonstrably work, and [§2.4](chapter-2-fm-foundations/2-4-existing-fms-relevant-to-energy.md) promises the reader a survey "organised by family". Removing it would leave the promise unmet and drop the clearest worked example of [§2.3.1](chapter-2-fm-foundations/2-3-choosing-a-basic-element.md)'s criterion succeeding.
+
+**An error found in the one citation that was there.** `ferdaus2025cleanenergy` was recorded as *Renewable Energy*. Crossref gives *Renewable and Sustainable Energy Reviews* — a different journal. The review has since been published (vol. 226, art. 116452, DOI `10.1016/j.rser.2025.116452`); the arXiv record carries no `journal_ref`, so the venue could not have come from there. Corrected, DOI added, author list expanded from `and others` to all five. Like the fabricated `energyfm2026` author field caught on 2026-09-13, this one surfaced by running an *existing* entry past Crossref rather than while adding a new one — worth doing periodically across the whole `.bib`, not only at insertion time.
+
+**Four primary sources added**, each verified by fetching the arXiv record and matching the title before citing:
+
+| Key | What it demonstrates |
+| :--- | :--- |
+| `fan2025windfm` | WindFM — 8.1M params, WIND Toolkit (~150B timesteps, 126k sites), SOTA zero-shot, holds on another continent, weights public |
+| `huang2026tyanwp` | Tyan-WP — same corpus, static site embedding + power–meteorology fusion, U.S. → U.K. transfer |
+| `mishra2025spirit` | SPIRIT — solar cold start, ~70% over prior zero-shot SOTA where the conventional route needs 5+ years of site data |
+| `longarini2026coldstart` | 440 PV sites; general covariate-aware TSFMs on *synthetic* histories beat baselines 1.7–2×, insensitive to the generator |
+
+Surveys were kept for the landscape claim only, per CONTRIBUTING; the specific results are all primary.
+
+**The argument the section now carries**, rather than a list of models. Renewable forecasting matured early because a generation site passes all four requirements of §2.3.1 with no convention to argue about — the positive case that §2.3.2's building analysis is the negative of. Three limits then keep it from being read as encouragement for a UES FM: (1) WindFM and Tyan-WP both sit on the same public WIND Toolkit corpus, and the multi-carrier case has neither an agreed element nor a corpus; (2) these models forecast an *exogenous, weather-driven input* — a boundary condition upstream of the hub, not the system, so nothing about conversion, storage state, topology or discrete decisions ([§3.3](chapter-3-sim-opt/3-3-energy-hub-formalism.md)); (3) single-carrier, single-task, short-horizon, which is narrower than the multi-task transfer that separates an FM from a surrogate ([§2.8](chapter-2-fm-foundations/2-8-surrogates-vs-fms.md)).
+
+The `longarini2026coldstart` finding is the one flagged as most useful here: accuracy tracked *the availability of plausible temporal context*, not the fidelity of whatever generated it — which bears on how much a UES corpus would have to be real versus merely plausible.
+
+**Scope held deliberately.** No claim that a hub FM follows from any of this; §2.4.3 ends by routing the reader to [§4.1](chapter-4-directions/4-1-off-the-shelf-fms.md) (use the forecast off the shelf) and explicitly says that is not a step toward a UES foundation model. Bibliography 93 → 97 entries. `last_reviewed` bumped to 2026-09-16.
+
+**Not verified in a browser.** Footnote rendering and the two new anchor links checked by grep against the target headings, not by a Jekyll build.

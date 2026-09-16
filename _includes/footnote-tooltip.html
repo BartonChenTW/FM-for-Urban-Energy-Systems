@@ -39,7 +39,25 @@
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     pointer-events: auto;
+    user-select: text;
+    -webkit-user-select: text;
     transition: opacity 0.15s ease, visibility 0.15s ease;
+  }
+
+  /* Invisible bridge over the gap between the reference and the box, so the
+     pointer can travel down into the tooltip without crossing dead space. */
+  .fn-tooltip::before {
+    content: '';
+    position: absolute;
+    top: -0.9em;
+    left: 0;
+    right: 0;
+    height: 0.9em;
+  }
+
+  /* A hidden tooltip must not swallow clicks on the page underneath. */
+  .fn-tooltip:not(.visible) {
+    pointer-events: none;
   }
 
   /* Pre-apply dark mode if we detect it early (before JS runs) */
@@ -226,12 +244,19 @@
 
         // Mouse events
         link.addEventListener('mouseenter', handleShow);
-        link.addEventListener('mouseleave', handleHide);
+        link.addEventListener('mouseleave', scheduleHide);
 
         // Keyboard events
         link.addEventListener('focus', handleShow);
-        link.addEventListener('blur', handleHide);
+        link.addEventListener('blur', scheduleHide);
       }
+
+      // Keep the tooltip open while the pointer or keyboard focus is inside
+      // it, so its text can be selected and its links clicked.
+      tooltip.addEventListener('mouseenter', cancelHide);
+      tooltip.addEventListener('mouseleave', scheduleHide);
+      tooltip.addEventListener('focusin', cancelHide);
+      tooltip.addEventListener('focusout', scheduleHide);
 
       // Track if we're in a touch interaction
       var isTouch = 'ontouchstart' in window;
@@ -242,6 +267,7 @@
     }
 
     function handleShow(e) {
+      cancelHide();
       var link = e.target;
       var tooltip = link._fnTooltip;
       var content = link._fnContent;
@@ -266,20 +292,45 @@
       if (sup) { sup.classList.add('fn-hover-active'); }
     }
 
-    function handleHide(e) {
-      var link = e.target;
-      var tooltip = link._fnTooltip;
+    // Grace period (ms) that lets the pointer travel from the footnote
+    // reference into the tooltip without the tooltip disappearing.
+    var HIDE_DELAY = 250;
+    var hideTimer = null;
 
+    function cancelHide() {
+      if (hideTimer !== null) {
+        clearTimeout(hideTimer);
+        hideTimer = null;
+      }
+    }
+
+    function scheduleHide() {
+      cancelHide();
+      hideTimer = setTimeout(hideTooltip, HIDE_DELAY);
+    }
+
+    function hideTooltip(force) {
+      cancelHide();
+
+      var tooltip = document.querySelector('.fn-tooltip');
       if (!tooltip) { return; }
 
-      // Hide tooltip
+      // Don't pull the box out from under a selection being made inside it.
+      if (!force) {
+        var sel = window.getSelection ? window.getSelection() : null;
+        if (sel && !sel.isCollapsed && sel.anchorNode &&
+            tooltip.contains(sel.anchorNode)) {
+          return;
+        }
+      }
+
       tooltip.classList.remove('visible');
       tooltip.setAttribute('aria-hidden', 'true');
       tooltip._activeLink = null;
-      
-      // Remove active state
-      var sup = link.closest('sup');
-      if (sup) { sup.classList.remove('fn-hover-active'); }
+
+      // Remove active state from whichever reference is highlighted
+      var activeSup = document.querySelector('sup.fn-hover-active');
+      if (activeSup) { activeSup.classList.remove('fn-hover-active'); }
     }
 
     function positionTooltip(tooltip, link) {
@@ -316,18 +367,30 @@
       }
     });
 
-    // Hide tooltip on scroll for simplicity
-    // (optional: could reposition instead, but hiding is simpler and less distracting)
+    // Reposition on scroll rather than hiding: scrolling while reading the
+    // tooltip (or scrolling it into view to click a link) must not dismiss it.
     window.addEventListener('scroll', function() {
       var tooltip = document.querySelector('.fn-tooltip.visible');
-      if (tooltip) {
-        tooltip.classList.remove('visible');
-        tooltip.setAttribute('aria-hidden', 'true');
-        tooltip._activeLink = null;
-        // Remove active state from any footnote
-        var activeSup = document.querySelector('sup.fn-hover-active');
-        if (activeSup) { activeSup.classList.remove('fn-hover-active'); }
+      if (tooltip && tooltip._activeLink) {
+        positionTooltip(tooltip, tooltip._activeLink);
       }
+    }, { passive: true });
+
+    // Escape dismisses the tooltip, and so does a click outside it.
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        hideTooltip(true);
+      }
+    });
+
+    document.addEventListener('mousedown', function (e) {
+      var tooltip = document.querySelector('.fn-tooltip.visible');
+      if (!tooltip) { return; }
+      if (tooltip.contains(e.target)) { return; }
+      if (e.target.closest && e.target.closest('sup[id^="fnref:"]')) { return; }
+      // Force the hide: a stale selection inside the tooltip must not keep it
+      // pinned open once the reader has clicked elsewhere.
+      hideTooltip(true);
     });
   })();
 </script>
